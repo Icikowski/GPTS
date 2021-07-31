@@ -1,0 +1,7 @@
+apiVersion: v2
+name: gpts
+description: GPTS - General Purpose Test Service
+type: application
+version: 0.5.0
+appVersion: "0.5.0"
+icon: https://github.com/Icikowski/GPTS/raw/master/.assets/helm_icon.png
