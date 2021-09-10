@@ -4,8 +4,16 @@ on:
     branches:
       - master
       - dev
+    paths:
+      - "application/**"
   pull_request:
-    types: [opened, synchronize, reopened]
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths:
+      - "application/**"
+
 jobs:
   tests:
     name: Tests and coverage
