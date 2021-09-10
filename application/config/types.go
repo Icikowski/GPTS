@@ -82,18 +82,15 @@ var _ zerolog.LogObjectMarshaler = Response{}
 
 // MarshalZerologObject implements zerolog.LogObjectMarshaler interface
 func (r Response) MarshalZerologObject(e *zerolog.Event) {
-	e.Interface("status", map[bool]interface{}{
-		true:  *r.Status,
-		false: "nil",
-	}[r.Status != nil])
-	e.Interface("contentType", map[bool]interface{}{
-		true:  *r.ContentType,
-		false: "nil",
-	}[r.ContentType != nil])
-	e.Interface("headers", map[bool]interface{}{
-		true:  *r.Headers,
-		false: "nil",
-	}[r.Headers != nil])
+	if r.Status != nil {
+		e.Int("status", *r.Status)
+	}
+	if r.ContentType != nil {
+		e.Str("contentType", *r.ContentType)
+	}
+	if r.Headers != nil {
+		e.Interface("headers", *r.Headers)
+	}
 }
 
 var _ zerolog.LogObjectMarshaler = Route{}
