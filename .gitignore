@@ -7,6 +7,9 @@
 *.dylib
 gpts
 
+# Save chart
+!chart/**
+
 # Test binary, built with `go test -c`
 *.test
 

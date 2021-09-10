@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "gpts.fullname" . }}-test-connection"
+  labels:
+    {{- include "gpts.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "gpts.fullname" . }}:{{ .Values.gpts.servicePort | default 80 }}']
+  restartPolicy: Never

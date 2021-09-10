@@ -1,0 +1,92 @@
+site_name: GPTS - General Purpose Test Service
+site_description: Project documentation
+site_author: Piotr Icikowski
+site_url: https://icikowski.github.io/GPTS/
+repo_url: https://github.com/Icikowski/GPTS
+repo_name: Icikowski/GPTS
+edit_uri: ""
+
+nav:
+  - Home: 
+    - About project: index.md
+    - Changelog: changelog.md
+  - Installation guide:
+    - Executable files: installation/executables.md
+    - Docker: installation/docker.md
+    - Kubernetes (via Helm): installation/k8s.md
+  - User guide:
+    - Configuring endpoints: usage/endpoints.md
+    - Liveness & readiness probes: usage/health.md
+  - Examples:
+    - Simple usages: examples/simple.md
+    - Advanced usages: examples/advanced.md
+
+theme:
+  name: material
+  language: en
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+      primary: indigo
+      accent: blue
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+      primary: indigo
+      accent: blue
+  font:
+    text: Roboto
+    code: Fira Code
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+
+extra:
+  social:
+    - icon: fontawesome/brands/facebook
+      link: https://facebook.com/Icikowski
+      name: Facebook
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/piotr-icikowski
+      name: LinkedIn
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/Icikowski
+      name: GitHub
+    - icon: fontawesome/solid/envelope
+      link: mailto:piotrekicikowski@gmail.com?subject=%5BGPTS%5D%20Subject%20goes%20here...
+      name: E-mail
+  generator: false
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - footnotes
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed
+  - pymdownx.tilde
+  - meta
+
+plugins:
+  - search
+  - git-revision-date-localized
+
+extra_css:
+  - stylesheets/extra.css
