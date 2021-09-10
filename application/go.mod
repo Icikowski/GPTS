@@ -4,7 +4,6 @@ go 1.16
 
 require (
 	github.com/golang/protobuf v1.5.2 // indirect
-	github.com/google/uuid v1.3.0
 	github.com/gorilla/mux v1.8.0
 	github.com/heptiolabs/healthcheck v0.0.0-20180807145615-6ff867650f40
 	github.com/prometheus/common v0.30.0 // indirect
