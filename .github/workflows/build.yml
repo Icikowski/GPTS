@@ -36,10 +36,10 @@ jobs:
       - name: Download coverage report
         uses: actions/download-artifact@v2.0.10
       - name: Prepare coverage report
-        working-directory: artifacts
+        working-directory: artifact
         run: mv cover.out coverage.txt
       - name: Upload coverage report to Codecov
-        working-directory: artifacts
+        working-directory: artifact
         run: bash <(curl -s https://codecov.io/bash)
   sonarcloud:
     name: SonarCloud
@@ -54,7 +54,7 @@ jobs:
       - name: Download coverage report
         uses: actions/download-artifact@v2.0.10
       - name: Prepare coverage report
-        run: artifacts/cover.out application/
+        run: artifact/cover.out application/
       - name: Perform SonarCloud scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
