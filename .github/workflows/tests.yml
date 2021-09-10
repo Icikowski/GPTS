@@ -4,15 +4,15 @@ on:
     branches:
       - master
       - dev
-    # paths:
-    #   - "application/**"
+    paths:
+      - "application/**"
   pull_request:
     types:
       - opened
       - synchronize
       - reopened
-    # paths:
-    #   - "application/**"
+    paths:
+      - "application/**"
 
 jobs:
   tests:
