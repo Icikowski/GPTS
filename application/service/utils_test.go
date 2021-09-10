@@ -35,50 +35,35 @@ func TestGetResponseForError(t *testing.T) {
 
 func TestGetSortedRoutes(t *testing.T) {
 	tests := map[string]struct {
-		givenEntries  []config.RouteDefinition
-		expectedPaths []config.RouteDefinition
+		givenEntries  map[string]config.Route
+		expectedPaths []string
 	}{
 		"scenario 1": {
-			givenEntries: []config.RouteDefinition{
-				{Path: "/a"},
-				{Path: "/b"},
-				{Path: "/c"},
+			givenEntries: map[string]config.Route{
+				"/a": {},
+				"/b": {},
+				"/c": {},
 			},
-			expectedPaths: []config.RouteDefinition{
-				{Path: "/c"},
-				{Path: "/b"},
-				{Path: "/a"},
-			},
+			expectedPaths: []string{"/c", "/b", "/a"},
 		},
 		"scenario 2": {
-			givenEntries: []config.RouteDefinition{
-				{Path: "/"},
-				{Path: "/a"},
-				{Path: "/b"},
-				{Path: "/a/x"},
+			givenEntries: map[string]config.Route{
+				"/":    {},
+				"/a":   {},
+				"/b":   {},
+				"/a/x": {},
 			},
-			expectedPaths: []config.RouteDefinition{
-				{Path: "/a/x"},
-				{Path: "/b"},
-				{Path: "/a"},
-				{Path: "/"},
-			},
+			expectedPaths: []string{"/a/x", "/b", "/a", "/"},
 		},
 		"scenario 3": {
-			givenEntries: []config.RouteDefinition{
-				{Path: "/a"},
-				{Path: "/"},
-				{Path: "/b"},
-				{Path: "/b/x"},
-				{Path: "/a/x"},
+			givenEntries: map[string]config.Route{
+				"/a":   {},
+				"/":    {},
+				"/b":   {},
+				"/b/x": {},
+				"/a/x": {},
 			},
-			expectedPaths: []config.RouteDefinition{
-				{Path: "/b/x"},
-				{Path: "/a/x"},
-				{Path: "/b"},
-				{Path: "/a"},
-				{Path: "/"},
-			},
+			expectedPaths: []string{"/b/x", "/a/x", "/b", "/a", "/"},
 		},
 	}
 

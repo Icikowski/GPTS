@@ -7,8 +7,9 @@ import (
 )
 
 var mainLog zerolog.Logger = zerolog.New(zerolog.ConsoleWriter{
-	NoColor: false,
-	Out:     os.Stdout,
+	NoColor:    false,
+	Out:        os.Stdout,
+	TimeFormat: zerolog.TimeFormatUnix,
 })
 
 // ForComponent creates sublogger instance for given component

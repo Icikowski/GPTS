@@ -2,7 +2,6 @@ package service
 
 import (
 	"context"
-	"encoding/json"
 	"errors"
 	"net/http"
 	"strings"
@@ -87,17 +86,9 @@ func getConfigHandlerFunction(server *http.Server) func(w http.ResponseWriter, r
 		case http.MethodPost:
 			innerLog.Info().Msg("processing incoming configuration")
 
-			var entries []config.RouteDefinition
+			var entries map[string]config.Route
 			err = resolveContent(&entries)
 			if err != nil {
-				return
-			}
-
-			valid, warns := config.CurrentConfiguration.ValidateConfiguration(entries)
-			if !valid {
-				innerLog.Warn().Strs("warnings", *warns).Msg("configuration cannot be applied due to warnings")
-				w.WriteHeader(http.StatusConflict)
-				json.NewEncoder(w).Encode(*warns)
 				return
 			}
 

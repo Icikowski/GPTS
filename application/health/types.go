@@ -17,6 +17,6 @@ func (s *status) GetStatus() bool {
 // SetStatus sets the current status of monitored entity
 func (s *status) SetStatus(ready bool) {
 	s.mutex.Lock()
+	defer s.mutex.Unlock()
 	s.readiness = ready
-	s.mutex.Unlock()
 }

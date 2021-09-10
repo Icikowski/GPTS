@@ -55,7 +55,7 @@ func TestGetConfigHandlerFunction(t *testing.T) {
 		"post valid configuration as JSON": {
 			requestMethod:                http.MethodPost,
 			contentType:                  common.ContentTypeJSON,
-			payload:                      `[{"path":"/a","method":"all"},{"path":"/b","method":"all"}]`,
+			payload:                      `{"/a": {}, "/b": {}}`,
 			expectedStatus:               http.StatusAccepted,
 			expectedConfigurationEntries: []string{"/a", "/b"},
 			serverShouldBeClosed:         true,
@@ -71,7 +71,7 @@ func TestGetConfigHandlerFunction(t *testing.T) {
 		"post valid configuration as YAML": {
 			requestMethod:                http.MethodPost,
 			contentType:                  common.ContentTypeYAML,
-			payload:                      "- path: /a\n  method: all\n- path: /b\n  method: all",
+			payload:                      "/a: {}\n/b: {}",
 			expectedStatus:               http.StatusAccepted,
 			expectedConfigurationEntries: []string{"/a", "/b"},
 			serverShouldBeClosed:         true,
@@ -96,7 +96,7 @@ func TestGetConfigHandlerFunction(t *testing.T) {
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			initialEntries := []config.RouteDefinition{}
+			initialEntries := map[string]config.Route{}
 			config.CurrentConfiguration.SetConfiguration(initialEntries)
 
 			server := &http.Server{
@@ -141,8 +141,8 @@ func TestGetConfigHandlerFunction(t *testing.T) {
 
 			currentConfig := config.CurrentConfiguration.GetConfiguration()
 			entries := make([]string, 0, len(currentConfig))
-			for _, route := range currentConfig {
-				entries = append(entries, route.Path)
+			for name := range currentConfig {
+				entries = append(entries, name)
 			}
 			require.ElementsMatch(t, entries, tc.expectedConfigurationEntries, "expected configuration not found")
 

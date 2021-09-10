@@ -30,17 +30,17 @@ func getResponseForError(err error) (int, []byte) {
 	return details.Status, payload
 }
 
-func getSortedRoutes(routes []config.RouteDefinition) []config.RouteDefinition {
-	sorted := make([]config.RouteDefinition, len(routes))
-	copy(sorted, routes)
+func getSortedRoutes(routes map[string]config.Route) []string {
+	sorted := []string{}
+	for key := range routes {
+		sorted = append(sorted, key)
+	}
+
 	sort.SliceStable(sorted, func(i, j int) bool {
-		return sorted[i].Path > sorted[j].Path
+		return sorted[i] > sorted[j]
 	})
 	sort.SliceStable(sorted, func(i, j int) bool {
-		return strings.Count(sorted[i].Path, "/") > strings.Count(sorted[j].Path, "/")
-	})
-	sort.SliceStable(sorted, func(i, j int) bool {
-		return sorted[i].Method > sorted[j].Method
+		return strings.Count(sorted[i], "/") > strings.Count(sorted[j], "/")
 	})
 	return sorted
 }

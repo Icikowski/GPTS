@@ -7,7 +7,6 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/rs/zerolog"
-	"icikowski.pl/gpts/common"
 	"icikowski.pl/gpts/config"
 	"icikowski.pl/gpts/health"
 )
@@ -27,14 +26,12 @@ func PrepareServer(port string) *http.Server {
 	entries := config.CurrentConfiguration.GetConfiguration()
 	sortedRoutes := getSortedRoutes(entries)
 	log.Info().Msg("paths registration order determined")
-	for _, route := range sortedRoutes {
+	for _, path := range sortedRoutes {
+		path := path
+		route := entries[path]
+
 		log.Info().
-			Dict(
-				"subject",
-				zerolog.Dict().
-					Str("method", route.Method).
-					Str("path", route.Path),
-			).
+			Object("route", route).
 			Msg("preparing handler")
 
 		var handler = func(w http.ResponseWriter, r *http.Request) {
@@ -49,16 +46,54 @@ func PrepareServer(port string) *http.Server {
 				Dict(
 					"endpoint",
 					zerolog.Dict().
-						Str("path", route.Path).
-						Str("method", route.Method).
+						Str("path", path).
 						Str("type", "user"),
 				).
 				Logger()
 
-			status := route.Status
-			contentType := route.ContentType
-			content := route.Content
-			headers := route.Headers
+			var (
+				status      *int
+				contentType *string
+				content     *string
+				headers     *map[string]string
+			)
+
+			switch {
+			case r.Method == http.MethodGet && route.GET != nil:
+				status = route.GET.Status
+				contentType = route.GET.ContentType
+				content = route.GET.Content
+				headers = route.GET.Headers
+			case r.Method == http.MethodPost && route.POST != nil:
+				status = route.POST.Status
+				contentType = route.POST.ContentType
+				content = route.POST.Content
+				headers = route.POST.Headers
+			case r.Method == http.MethodPut && route.PUT != nil:
+				status = route.PUT.Status
+				contentType = route.PUT.ContentType
+				content = route.PUT.Content
+				headers = route.PUT.Headers
+			case r.Method == http.MethodPatch && route.PATCH != nil:
+				status = route.PATCH.Status
+				contentType = route.PATCH.ContentType
+				content = route.PATCH.Content
+				headers = route.PATCH.Headers
+			case r.Method == http.MethodDelete && route.DELETE != nil:
+				status = route.DELETE.Status
+				contentType = route.DELETE.ContentType
+				content = route.DELETE.Content
+				headers = route.DELETE.Headers
+			case route.Default != nil:
+				status = route.Default.Status
+				contentType = route.Default.ContentType
+				content = route.Default.Content
+				headers = route.Default.Headers
+			default:
+				status = new(int)
+				*status = http.StatusServiceUnavailable
+
+			}
 
 			var finalContent []byte
 
@@ -95,15 +130,7 @@ func PrepareServer(port string) *http.Server {
 			innerLog.Info().Msg("request served")
 		}
 
-		rt := r.Get(route.ID)
-		if rt == nil {
-			rt = r.NewRoute().Name(route.ID).Path(route.Path)
-		}
-
-		rt.HandlerFunc(handler)
-		if route.Method != common.MethodAll {
-			rt.Methods(route.Method)
-		}
+		r.HandleFunc(path, handler)
 	}
 
 	r.NotFoundHandler = getDefaultHandler()
