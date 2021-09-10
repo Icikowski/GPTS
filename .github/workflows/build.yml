@@ -33,13 +33,14 @@ jobs:
     needs: [tests]
     if: (needs.tests.result == 'success')
     steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2 
       - name: Download coverage report
         uses: actions/download-artifact@v2.0.10
       - name: Prepare coverage report
-        working-directory: artifact
-        run: mv cover.out coverage.txt
+        run: cp artifacts/cover.out application/coverage.txt
       - name: Upload coverage report to Codecov
-        working-directory: artifact
+        working-directory: application
         run: bash <(curl -s https://codecov.io/bash)
   sonarcloud:
     name: SonarCloud
@@ -54,7 +55,7 @@ jobs:
       - name: Download coverage report
         uses: actions/download-artifact@v2.0.10
       - name: Prepare coverage report
-        run: artifact/cover.out application/
+        run: cp artifact/cover.out application/
       - name: Perform SonarCloud scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
