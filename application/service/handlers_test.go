@@ -128,7 +128,7 @@ func TestGetConfigHandlerFunction(t *testing.T) {
 			require.NoError(t, err, "request could not be prepared")
 			if tc.contentType != "" {
 				request.Header.Add("Accept", tc.contentType)
-				request.Header.Add("Content-Type", tc.contentType)
+				request.Header.Add(common.HeaderContentType, tc.contentType)
 			}
 
 			response, err := client.Do(request)
@@ -136,7 +136,7 @@ func TestGetConfigHandlerFunction(t *testing.T) {
 
 			require.Equal(t, tc.expectedStatus, response.StatusCode, "status code does not match expected value")
 			if tc.expectedContentType != "" {
-				require.Equal(t, tc.expectedContentType, response.Header.Get("Content-Type"), "content type does not match expected value")
+				require.Equal(t, tc.expectedContentType, response.Header.Get(common.HeaderContentType), "content type does not match expected value")
 			}
 
 			currentConfig := config.CurrentConfiguration.GetConfiguration()
@@ -205,7 +205,7 @@ func TestGetDefaultHandler(t *testing.T) {
 			require.NoError(t, err, "no error expected")
 
 			require.Equal(t, http.StatusOK, response.StatusCode, "status code is different than 200 OK")
-			require.Equal(t, tc.expectedContentType, response.Header.Get("Content-Type"), "content type does not match expected value")
+			require.Equal(t, tc.expectedContentType, response.Header.Get(common.HeaderContentType), "content type does not match expected value")
 		})
 	}
 

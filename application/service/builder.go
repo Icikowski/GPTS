@@ -7,6 +7,7 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/rs/zerolog"
+	"icikowski.pl/gpts/common"
 	"icikowski.pl/gpts/config"
 	"icikowski.pl/gpts/health"
 )
@@ -124,7 +125,7 @@ func PrepareServer(port string) *http.Server {
 				finalContent = []byte(*content)
 			}
 
-			w.Header().Set("Content-Type", *contentType)
+			w.Header().Set(common.HeaderContentType, *contentType)
 			w.WriteHeader(*status)
 			_, _ = w.Write(finalContent)
 			innerLog.Info().Msg("request served")

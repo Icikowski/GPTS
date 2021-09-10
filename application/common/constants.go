@@ -9,6 +9,12 @@ const (
 	ContentTypeYAML = "text/yaml"
 )
 
+// Headers
+const (
+	// HeaderContentType represents "Content-Type" header key
+	HeaderContentType = "Content-Type"
+)
+
 // Messages
 const (
 	// MsgContentTypeNotAllowed represent a human-readable message for wrong media type error

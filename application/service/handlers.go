@@ -33,7 +33,7 @@ func getConfigHandlerFunction(server *http.Server) func(w http.ResponseWriter, r
 
 		resolveContent := func(target interface{}) error {
 			var resolverError error
-			switch r.Header.Get("Content-Type") {
+			switch r.Header.Get(common.HeaderContentType) {
 			case common.ContentTypeJSON:
 				innerLog.Debug().Msg("detected JSON configuration payload")
 				resolverError = getDecoder(common.ContentTypeJSON, r.Body)(target)
@@ -48,7 +48,7 @@ func getConfigHandlerFunction(server *http.Server) func(w http.ResponseWriter, r
 			if resolverError != nil {
 				innerLog.Warn().Err(resolverError).Msg("error while parsing configuration")
 				status, payload := getResponseForError(resolverError)
-				w.Header().Set("Content-Type", common.ContentTypeJSON)
+				w.Header().Set(common.HeaderContentType, common.ContentTypeJSON)
 				w.WriteHeader(status)
 				_, _ = w.Write(payload)
 				return resolverError
@@ -77,7 +77,7 @@ func getConfigHandlerFunction(server *http.Server) func(w http.ResponseWriter, r
 				mediaType = common.ContentTypeJSON
 			}
 
-			w.Header().Set("Content-Type", mediaType)
+			w.Header().Set(common.HeaderContentType, mediaType)
 			w.WriteHeader(http.StatusOK)
 			_ = getEncoder(mediaType, w)(config.CurrentConfiguration.GetConfiguration())
 
@@ -135,7 +135,7 @@ func getDefaultHandler() http.Handler {
 			mediaType = common.ContentTypeJSON
 		}
 
-		w.Header().Add("Content-Type", mediaType)
+		w.Header().Add(common.HeaderContentType, mediaType)
 		w.WriteHeader(http.StatusOK)
 		_ = getEncoder(mediaType, w)(response)
 
