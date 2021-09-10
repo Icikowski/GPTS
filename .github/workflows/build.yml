@@ -38,7 +38,7 @@ jobs:
       - name: Download coverage report
         uses: actions/download-artifact@v2.0.10
       - name: Prepare coverage report
-        run: cp artifacts/cover.out application/coverage.txt
+        run: cp artifact/cover.out application/coverage.txt
       - name: Upload coverage report to Codecov
         working-directory: application
         run: bash <(curl -s https://codecov.io/bash)
