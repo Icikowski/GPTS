@@ -4,15 +4,15 @@ on:
     branches:
       - master
       - dev
-    paths:
-      - "application/**"
+    # paths:
+    #   - "application/**"
   pull_request:
     types:
       - opened
       - synchronize
       - reopened
-    paths:
-      - "application/**"
+    # paths:
+    #   - "application/**"
 
 jobs:
   tests:
@@ -62,8 +62,8 @@ jobs:
           fetch-depth: 0
       - name: Download coverage report
         uses: actions/download-artifact@v2.0.10
-      - name: Prepare coverage report
-        run: cp artifact/cover.out application/
+      - name: Prepare adjusted coverage report
+        run: cat artifact/cover.out | sed 's/icikowski.pl\/gpts/application/' | tee application/cover.out
       - name: Perform SonarCloud scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
