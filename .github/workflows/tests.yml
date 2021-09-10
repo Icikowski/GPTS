@@ -1,4 +1,4 @@
-name: Minor build
+name: Tests, coverage & code quality
 on:
   push:
     branches:
