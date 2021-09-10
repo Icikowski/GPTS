@@ -1,4 +1,4 @@
-name: Build
+name: Minor build
 on:
   push:
     branches:
@@ -7,15 +7,60 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
+  tests:
+    name: Tests and coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2 
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.17
+      - name: Perform tests
+        working-directory: application
+        run: make test
+      - name: Prepare coverage report
+        working-directory: application
+        run: make coverage
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          path: "application/cover.out"
+  codecov:
+    name: Codecov
+    runs-on: ubuntu-latest
+    needs: [tests]
+    if: (needs.tests.result == 'success')
+    steps:
+      - name: Download coverage report
+        uses: actions/download-artifact@v2.0.10
+      - name: Prepare coverage report
+        working-directory: artifacts
+        run: mv cover.out coverage.txt
+      - name: Upload coverage report to Codecov
+        working-directory: artifacts
+        run: bash <(curl -s https://codecov.io/bash)
   sonarcloud:
     name: SonarCloud
     runs-on: ubuntu-latest
+    needs: [tests]
+    if: (needs.tests.result == 'success')
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout the repository
+        uses: actions/checkout@v2
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: SonarCloud Scan
+          fetch-depth: 0
+      - name: Download coverage report
+        uses: actions/download-artifact@v2.0.10
+      - name: Prepare coverage report
+        run: artifacts/cover.out application/
+      - name: Perform SonarCloud scan
         uses: SonarSource/sonarcloud-github-action@master
+        with:
+          projectBaseDir: application
+          args: >
+            -Dsonar.go.coverage.reportPaths=cover.out
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
