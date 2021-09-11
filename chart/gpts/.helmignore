@@ -23,3 +23,7 @@
 .idea/
 *.tmproj
 .vscode/
+
+# Templates
+
+*.template
