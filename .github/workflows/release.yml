@@ -58,7 +58,6 @@ jobs:
         uses: actions/download-artifact@v2.0.10
         with:
           name: coverage
-      - run: tree
       - name: Prepare adjusted coverage report
         run: cat cover.out | sed 's/icikowski.pl\/gpts/application/' | tee application/cover.out
         continue-on-error: false
@@ -78,6 +77,8 @@ jobs:
     outputs:
       version: ${{ steps.version.outputs.version }}
     steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
       - name: Determine version
         id: version
         run: echo ::set-output name=version::${GITHUB_REF/refs\/tags\/v/}
