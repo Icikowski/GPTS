@@ -27,4 +27,4 @@ coverage: clean
 	go tool cover -html cover.out -o cover.html
 
 image: clean
-	docker build . -t ghcr.io/icikowski/gpts:$(shell cat Dockerfile | grep '# Version' | awk '{{ print $$3 }}')
+	docker build . -t ghcr.io/icikowski/gpts:$(shell git rev-parse --short HEAD)
