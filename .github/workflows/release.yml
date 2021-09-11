@@ -39,7 +39,7 @@ jobs:
         with:
           name: coverage
       - name: Prepare coverage report
-        run: cp application/cover.out application/coverage.txt
+        run: cp cover.out application/coverage.txt
         continue-on-error: false
       - name: Upload coverage report to Codecov
         working-directory: application
@@ -187,4 +187,4 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         prerelease: false
-        files: application/bin/gpts-*
+        files: gpts-*
