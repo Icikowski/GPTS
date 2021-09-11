@@ -38,8 +38,11 @@ jobs:
         uses: actions/download-artifact@v2.0.10
         with:
           name: coverage
+      - name: List files
+        run: tree
       - name: Prepare coverage report
         run: cp coverage/cover.out application/coverage.txt
+        continue-on-error: false
       - name: Upload coverage report to Codecov
         working-directory: application
         run: bash <(curl -s https://codecov.io/bash)
@@ -59,6 +62,7 @@ jobs:
           name: coverage
       - name: Prepare adjusted coverage report
         run: cat coverage/cover.out | sed 's/icikowski.pl\/gpts/application/' | tee application/cover.out
+        continue-on-error: false
       - name: Perform SonarCloud scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
