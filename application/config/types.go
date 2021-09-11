@@ -12,14 +12,14 @@ import (
 // Response represents response details
 type Response struct {
 	Status      *int               `json:"status,omitempty" yaml:"status,omitempty"`
-	ContentType *string            `json:"content_type,omitempty" yaml:"content_type,omitempty"`
+	ContentType *string            `json:"contentType,omitempty" yaml:"content_type,omitempty"`
 	Content     *string            `json:"content,omitempty" yaml:"content,omitempty"`
 	Headers     *map[string]string `json:"headers,omitempty" yaml:"headers,omitempty"`
 }
 
 // Route represents single route details
 type Route struct {
-	AllowSubpaths bool      `json:"allow_subpaths" yaml:"allow_subpaths"`
+	AllowSubpaths bool      `json:"allowSubpaths" yaml:"allow_subpaths"`
 	GET           *Response `json:"get,omitempty" yaml:"get,omitempty"`
 	POST          *Response `json:"post,omitempty" yaml:"post,omitempty"`
 	PUT           *Response `json:"put,omitempty" yaml:"put,omitempty"`

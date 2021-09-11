@@ -3,7 +3,7 @@ openapi: "3.0.3"
 info:
   title: GPTS - General Purpose Test Service
   description: Description of available endpoints in application
-  version: "1.0.0"
+  version: "0.5.0"
 
 externalDocs:
   description: GPTS documentation
@@ -11,49 +11,54 @@ externalDocs:
 
 components:
   schemas:
-    RouteDetails:
+    Response:
       type: object
-      description: Route details object
+      description: Method-specific response specification
       properties:
-        id:
-          description: Unique route identifier (UUID) 
-          type: string
-        path:
-          description: Request path
-          type: string
-        method:
-          description: Request method
-          type: string
-          enum:
-            - GET
-            - POST
-            - PUT
-            - PATCH
-            - DELETE
-            - ALL
         status:
-          description: Response code
+          description: HTTP status code
           type: integer
           default: 200
-        content_type:
-          description: Response media type
+        contentType:
+          description: Value of "Content-Type" header
           type: string
-          default: "text/plain"
+          default: text/plain
         content:
-          description: Response body
+          description: Content served as a response for request (text or base64-encoded binary)
           type: string
           default: ""
         headers:
-          description: Additional headers
+          description: Map of headers added to the response for request
           type: object
-          additionalProperties:
+          additionalProperties: 
             type: string
-          example:
-            Server: Apache
-            Connection: close
-      required:
-        - path
-        - method
+          default: null
+    Route:
+      type: object
+      description: Declarative route configuration with specified responses (default and/or method-specific)
+      properties:
+        allowSubpaths:
+          description: Determines whether subpaths should be covered by given definition
+          type: boolean
+          default: false
+        default:
+          description: Default response defined for given route
+          $ref: '#/components/schemas/Response'
+        get:
+          description: Response for GET requests for given route
+          $ref: '#/components/schemas/Response'
+        post:
+          description: Response for POST requests for given route
+          $ref: '#/components/schemas/Response'
+        put:
+          description: Response for PUT requests for given route
+          $ref: '#/components/schemas/Response'
+        patch:
+          description: Response for PATCH requests for given route
+          $ref: '#/components/schemas/Response'
+        delete:
+          description: Response for DELETE requests for given route
+          $ref: '#/components/schemas/Response'
     ErrorResponse:
       type: object
       description: Error response
@@ -97,47 +102,48 @@ components:
   examples:
     default_config:
       value:
-          - path: /hello
-            method: ALL
-            status: 200
-            content_type: application/json
-            content: "{\"message\":\"Hello World!\"}"
-            headers:
-              "X-SentBy": "GPTS - General Purpose Test Service"
+          /hello:
+            allowSubpaths: true
+            default:
+              status: 200
+              contentType: application/json
+              content: "{\"message\":\"Hello World!\"}"
+              headers:
+                "X-SentBy": "GPTS - General Purpose Test Service"
     extended_config:
       value:
-        - path: /page/favicon.png
-          method: GET
-          content_type: image/png
-          content: base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAA3NCSVQICAjb4U/gAAAACXBIWXMAAABvAAAAbwHxotxDAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAALdQTFRF//////8A//8A/9c8+883+9A3/9g7/9k8+c44+Mw2/9k6+Mw3+c43/9k798s198s2/tU698o2/9k798o29so1/9k7+c039cc19cc0PkNHQEVJQkdLXVtFd29DeHBDfHNEfnRDgnhDi39Cj4JCnIxBqpdArZlArppAsp1A1rk+6Mc88c488s8889A89MU09cg19dE898o2+Ms2+c43+tA4+9I4/NQ5/Nc7/dY7/dc7/dg7/tg6/9k74gqg4QAAABl0Uk5TAAECJkVGcICgr7O1tbW/wMHk5ujq9vv8/XpzYNYAAACySURBVBgZTcGJmoFgAIbRr6JozCCyzNhCdr+9GO/9X9ckzzOcowfH84PA9xw9WW5ILnRtZaxP/tUsSS4v95LkhLxpFeQBq3gDm3gF5w/5wOhnCtPvISR1BcCkO4d5dwKXtgJI0yWZZZpy6siH/p7cvs+hIQ9mY3LjWWK+5IT8RvEa1nF025mi5MJt0RsMeovr0ZQl2bU7sN2S7EzTVsYqtc7J5XQwpmzrqVCptzuNalGZP8XEJJiuHj/GAAAAAElFTkSuQmCC
-        - path: /page
-          method: GET
-          content_type: text/html
-          content: |
-            <!DOCTYPE html>
-            <html lang="pl">
-              <head>
-                <title>Sample page</title>
-                <meta charset="utf-8" />
-                <link rel="icon" type="image/png" href="favicon.png" />
-              </head>
-              <body>
-                <h1>Hello, visitor!</h1>
-              </body>
-            </html>
-        - path: /contact
-          method: GET
-          content_type: application/json
-          content: |
-            {
-              "name": "John Doe",
-              "email": "j.doe@example.com",
-              "www": "https://example.com"
-            }
-        - path: /
-          method: GET
-          content_type: text/plain
-          content: "This is default response"
+        /page/favicon.png:
+          get:
+            content_type: image/png
+            content: base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAA3NCSVQICAjb4U/gAAAACXBIWXMAAABvAAAAbwHxotxDAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAALdQTFRF//////8A//8A/9c8+883+9A3/9g7/9k8+c44+Mw2/9k6+Mw3+c43/9k798s198s2/tU698o2/9k798o29so1/9k7+c039cc19cc0PkNHQEVJQkdLXVtFd29DeHBDfHNEfnRDgnhDi39Cj4JCnIxBqpdArZlArppAsp1A1rk+6Mc88c488s8889A89MU09cg19dE898o2+Ms2+c43+tA4+9I4/NQ5/Nc7/dY7/dc7/dg7/tg6/9k74gqg4QAAABl0Uk5TAAECJkVGcICgr7O1tbW/wMHk5ujq9vv8/XpzYNYAAACySURBVBgZTcGJmoFgAIbRr6JozCCyzNhCdr+9GO/9X9ckzzOcowfH84PA9xw9WW5ILnRtZaxP/tUsSS4v95LkhLxpFeQBq3gDm3gF5w/5wOhnCtPvISR1BcCkO4d5dwKXtgJI0yWZZZpy6siH/p7cvs+hIQ9mY3LjWWK+5IT8RvEa1nF025mi5MJt0RsMeovr0ZQl2bU7sN2S7EzTVsYqtc7J5XQwpmzrqVCptzuNalGZP8XEJJiuHj/GAAAAAElFTkSuQmCC
+        /page:
+          get:
+            content_type: text/html
+            content: |
+              <!DOCTYPE html>
+              <html lang="pl">
+                <head>
+                  <title>Sample page</title>
+                  <meta charset="utf-8" />
+                  <link rel="icon" type="image/png" href="favicon.png" />
+                </head>
+                <body>
+                  <h1>Hello, visitor!</h1>
+                </body>
+              </html>
+        /contact:
+          get:
+            content_type: application/json
+            content: |
+              {
+                "name": "John Doe",
+                "email": "j.doe@example.com",
+                "www": "https://example.com"
+              }
+        /:
+          get:
+            content_type: text/plain
+            content: "This is default response"
     empty_config:
       value: []
 paths:
@@ -154,7 +160,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/RouteDetails'
+                  $ref: '#/components/schemas/Route'
               examples:
                 Default configuration:
                   $ref: '#/components/examples/default_config'
@@ -166,7 +172,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/RouteDetails'
+                  $ref: '#/components/schemas/Route'
               examples:
                 Default configuration:
                   $ref: '#/components/examples/default_config'
@@ -185,7 +191,7 @@ paths:
             schema: 
               type: object
               additionalProperties:
-                $ref: '#/components/schemas/RouteDetails'
+                $ref: '#/components/schemas/Route'
             examples:
               Default configuration:
                 $ref: '#/components/examples/default_config'
@@ -197,7 +203,7 @@ paths:
             schema:
               type: object
               additionalProperties:
-                $ref: '#/components/schemas/RouteDetails'
+                $ref: '#/components/schemas/Route'
             examples:
               Default configuration:
                 $ref: '#/components/examples/default_config'
