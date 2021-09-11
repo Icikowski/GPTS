@@ -91,10 +91,10 @@ jobs:
         env:
           GPTS_VERSION: ${{ steps.version.outputs.version }}
         run: |
-          GOOS=linux GOARCH=amd64 go build . -o bin/gpts-${GPTS_VERSION}-linux-amd64
-          GOOS=linux GOARCH=386 go build . -o bin/gpts-${GPTS_VERSION}-linux-i386
-          GOOS=windows GOARCH=amd64 go build . -o bin/gpts-${GPTS_VERSION}-windows-amd64.exe
-          GOOS=windows GOARCH=386 go build . -o bin/gpts-${GPTS_VERSION}-windows-i386.exe
+          GOOS=linux GOARCH=amd64 go build -o bin/gpts-${GPTS_VERSION}-linux-amd64 .
+          GOOS=linux GOARCH=386 go build -o bin/gpts-${GPTS_VERSION}-linux-i386 .
+          GOOS=windows GOARCH=amd64 go build -o bin/gpts-${GPTS_VERSION}-windows-amd64.exe .
+          GOOS=windows GOARCH=386 go build -o bin/gpts-${GPTS_VERSION}-windows-i386.exe .
       - name: Upload artifacts
         uses: actions/upload-artifact@v2.2.4
         with:
@@ -115,12 +115,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Build image
-        working-directory: ./application
+        working-directory: application
         run: docker build . --file Dockerfile --tag $GPTS_IMAGE --label "runnumber=${GITHUB_RUN_ID}"
       - name: Log into registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
       - name: Push image
-        working-directory: ./application
+        working-directory: application
         run: |
           IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$GPTS_IMAGE
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
