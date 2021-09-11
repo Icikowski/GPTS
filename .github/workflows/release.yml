@@ -58,8 +58,9 @@ jobs:
         uses: actions/download-artifact@v2.0.10
         with:
           name: coverage
+      - run: tree
       - name: Prepare adjusted coverage report
-        run: cat application/cover.out | sed 's/icikowski.pl\/gpts/application/' | tee application/cover.out
+        run: cat cover.out | sed 's/icikowski.pl\/gpts/application/' | tee application/cover.out
         continue-on-error: false
       - name: Perform SonarCloud scan
         uses: SonarSource/sonarcloud-github-action@master
