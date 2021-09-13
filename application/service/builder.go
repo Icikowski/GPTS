@@ -32,6 +32,7 @@ func PrepareServer(port string) *http.Server {
 		route := entries[path]
 
 		log.Info().
+			Str("path", path).
 			Object("route", route).
 			Msg("preparing handler")
 
@@ -93,7 +94,6 @@ func PrepareServer(port string) *http.Server {
 			default:
 				status = new(int)
 				*status = http.StatusServiceUnavailable
-
 			}
 
 			var finalContent []byte
@@ -131,7 +131,11 @@ func PrepareServer(port string) *http.Server {
 			innerLog.Info().Msg("request served")
 		}
 
-		r.HandleFunc(path, handler)
+		if route.AllowSubpaths {
+			r.PathPrefix(path).HandlerFunc(handler)
+		} else {
+			r.HandleFunc(path, handler)
+		}
 	}
 
 	r.NotFoundHandler = getDefaultHandler()
