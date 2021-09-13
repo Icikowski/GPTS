@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"net/http"
+	"net/http/httptest"
 	"sync"
 	"testing"
 	"time"
@@ -183,19 +184,13 @@ func TestGetDefaultHandler(t *testing.T) {
 		},
 	}
 
-	server := &http.Server{
-		Addr:    ":" + testPort,
-		Handler: getDefaultHandler(),
-	}
-	go func() {
-		_ = server.ListenAndServe()
-	}()
+	testServer := httptest.NewServer(getDefaultHandler())
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			client := &http.Client{}
+			client := testServer.Client()
 
-			request, err := http.NewRequest(http.MethodGet, "http://localhost:"+testPort, nil)
+			request, err := http.NewRequest(http.MethodGet, testServer.URL, nil)
 			require.NoError(t, err, "request could not be prepared")
 			if tc.contentType != "" {
 				request.Header.Add("Accept", tc.contentType)
@@ -209,6 +204,5 @@ func TestGetDefaultHandler(t *testing.T) {
 		})
 	}
 
-	err := server.Shutdown(context.Background())
-	require.NoError(t, err, "server not closed properly")
+	testServer.Close()
 }
