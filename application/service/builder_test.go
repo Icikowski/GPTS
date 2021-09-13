@@ -3,9 +3,9 @@ package service
 // TODO: Adapt tests to new architecture
 
 import (
-	"context"
 	"encoding/json"
 	"net/http"
+	"net/http/httptest"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -24,7 +24,7 @@ func TestPrepareServer(t *testing.T) {
 			method:         http.MethodGet,
 			path:           "/config",
 			expectedStatus: http.StatusOK,
-			expectedKeys:   &[]string{"/hello", "/no-details", "/base64", "/bad-base64", "/multiple-methods"},
+			expectedKeys:   &[]string{"/hello", "/no-details", "/base64", "/bad-base64", "/multiple-methods", "/sub"},
 		},
 		"get hello route": {
 			method:         http.MethodGet,
@@ -89,6 +89,11 @@ func TestPrepareServer(t *testing.T) {
 			expectedStatus: http.StatusOK,
 			expectedKeys:   &[]string{"delete"},
 		},
+		"get on subpath of subpaths-enabled route": {
+			method:         http.MethodGet,
+			path:           "/sub/x/y/z",
+			expectedStatus: http.StatusTeapot,
+		},
 	}
 
 	config.CurrentConfiguration.SetConfiguration(map[string]config.Route{})
@@ -135,18 +140,24 @@ func TestPrepareServer(t *testing.T) {
 		},
 	}
 
+	extendedConfig["/sub"] = config.Route{
+		AllowSubpaths: true,
+		Default: &config.Response{
+			Status:  utils.IntToPointer(http.StatusTeapot),
+			Content: utils.StringToPointer("I'm a teapot and I'm everywhere"),
+		},
+	}
+
 	config.CurrentConfiguration.SetConfiguration(extendedConfig)
 
-	server := PrepareServer("30101")
-	go func() {
-		_ = server.ListenAndServe()
-	}()
+	server := PrepareServer("")
+	testServer := httptest.NewServer(server.Handler)
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			client := &http.Client{}
+			client := testServer.Client()
 
-			request, err := http.NewRequest(tc.method, "http://localhost:30101"+tc.path, nil)
+			request, err := http.NewRequest(tc.method, testServer.URL+tc.path, nil)
 			require.NoError(t, err, "no error expected during request composition")
 			response, err := client.Do(request)
 			require.NoError(t, err, "no error expected")
@@ -167,6 +178,5 @@ func TestPrepareServer(t *testing.T) {
 		})
 	}
 
-	err := server.Shutdown(context.Background())
-	require.NoError(t, err, "server not closed properly")
+	testServer.Close()
 }
