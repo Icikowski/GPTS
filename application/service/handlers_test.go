@@ -2,8 +2,8 @@ package service
 
 import (
 	"bytes"
-	"context"
 	"net/http"
+	"net/http/httptest"
 	"sync"
 	"testing"
 	"time"
@@ -12,8 +12,6 @@ import (
 	"icikowski.pl/gpts/common"
 	"icikowski.pl/gpts/config"
 )
-
-const testPort = "30100"
 
 func TestGetConfigHandlerFunction(t *testing.T) {
 	tests := map[string]struct {
@@ -99,32 +97,28 @@ func TestGetConfigHandlerFunction(t *testing.T) {
 			initialEntries := map[string]config.Route{}
 			config.CurrentConfiguration.SetConfiguration(initialEntries)
 
-			server := &http.Server{
-				Addr: ":" + testPort,
-			}
 			mux := http.NewServeMux()
+			testServer := httptest.NewUnstartedServer(mux)
 
-			handlerFunction := getConfigHandlerFunction(server)
-
+			handlerFunction := getConfigHandlerFunction(testServer.Config)
 			mux.HandleFunc("/config", handlerFunction)
-			server.Handler = mux
+
+			testServer.Config.Handler = mux
 
 			serverClosedSync := sync.Mutex{}
 			serverClosed := false
-			server.RegisterOnShutdown(func() {
+			testServer.Config.RegisterOnShutdown(func() {
 				serverClosedSync.Lock()
 				serverClosed = true
 				serverClosedSync.Unlock()
 			})
 
-			go func() {
-				_ = server.ListenAndServe()
-			}()
+			testServer.Start()
 
-			client := &http.Client{}
+			client := testServer.Client()
 			bodyReader := bytes.NewBufferString(tc.payload)
 
-			request, err := http.NewRequest(tc.requestMethod, "http://localhost:"+testPort+"/config", bodyReader)
+			request, err := http.NewRequest(tc.requestMethod, testServer.URL+"/config", bodyReader)
 			require.NoError(t, err, "request could not be prepared")
 			if tc.contentType != "" {
 				request.Header.Add("Accept", tc.contentType)
@@ -154,8 +148,7 @@ func TestGetConfigHandlerFunction(t *testing.T) {
 					return status
 				}, 5*time.Second, 1*time.Second, "server should be eventually closed")
 			} else {
-				err = server.Shutdown(context.Background())
-				require.NoError(t, err, "server not closed properly")
+				testServer.Close()
 			}
 		})
 	}
@@ -183,19 +176,13 @@ func TestGetDefaultHandler(t *testing.T) {
 		},
 	}
 
-	server := &http.Server{
-		Addr:    ":" + testPort,
-		Handler: getDefaultHandler(),
-	}
-	go func() {
-		_ = server.ListenAndServe()
-	}()
+	testServer := httptest.NewServer(getDefaultHandler())
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			client := &http.Client{}
+			client := testServer.Client()
 
-			request, err := http.NewRequest(http.MethodGet, "http://localhost:"+testPort, nil)
+			request, err := http.NewRequest(http.MethodGet, testServer.URL, nil)
 			require.NoError(t, err, "request could not be prepared")
 			if tc.contentType != "" {
 				request.Header.Add("Accept", tc.contentType)
@@ -209,6 +196,5 @@ func TestGetDefaultHandler(t *testing.T) {
 		})
 	}
 
-	err := server.Shutdown(context.Background())
-	require.NoError(t, err, "server not closed properly")
+	testServer.Close()
 }
