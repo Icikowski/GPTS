@@ -11,7 +11,7 @@ fullnameOverride: ""
 gpts:
   servicePort: 8080
   healthcheckPort: 8081
-  defaultConfigOnStartup: true
+  defaultConfigOnStartup: false
 
 service:
   type: ClusterIP
