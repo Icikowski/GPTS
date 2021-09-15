@@ -31,23 +31,23 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: GPTS_SERVER_PORT
-              value: {{ .Values.gpts.servicePort | default 80 | quote }}
+              value: {{ .Values.gpts.servicePort | default 8080 | quote }}
             - name: GPTS_HEALTHCHECK_PORT
-              value: {{ .Values.gpts.healthcheckPort | default 8000 | quote }}
+              value: {{ .Values.gpts.healthcheckPort | default 8081 | quote }}
             - name: GPTS_DEFAULT_CONFIG_ON_STARTUP
               value: {{ .Values.gpts.defaultConfigOnStartup | quote }}
           ports:
             - name: http
-              containerPort: {{ .Values.gpts.servicePort | default 80 }}
+              containerPort: {{ .Values.gpts.servicePort | default 8080 }}
               protocol: TCP
           livenessProbe:
             httpGet:
               path: /live
-              port: {{ .Values.gpts.healthcheckPort | default 8000 }}
+              port: {{ .Values.gpts.healthcheckPort | default 8081 }}
           readinessProbe:
             httpGet:
               path: /ready
-              port: {{ .Values.gpts.healthcheckPort | default 8000 }}
+              port: {{ .Values.gpts.healthcheckPort | default 8081 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
