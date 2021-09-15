@@ -15,6 +15,9 @@ LABEL org.opencontainers.image.url "https://github.com/Icikowski/GPTS"
 LABEL org.opencontainers.image.source "https://github.com/Icikowski/GPTS"
 LABEL org.opencontainers.image.licenses "GPL-3.0-or-later"
 RUN apk --no-cache add ca-certificates
-WORKDIR /root/
+RUN adduser app -u 1000 -h /app -S -D
+WORKDIR /app/
 COPY --from=builder /app/gpts .
+RUN chmod a+x gpts
+USER 1000
 CMD ["./gpts"] 
