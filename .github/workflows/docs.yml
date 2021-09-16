@@ -1,0 +1,24 @@
+name: Build documentation
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - "mkdocs.yml"
+      - "docs/**"
+
+jobs:
+  deploy:
+    name: Build and publish documentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - name: Prepare Material for MkDocs and dependencies
+        run: pip install mkdocs mkdocs-material mkdocs-git-revision-date-localized-plugin
+      - name: Build and deploy documentation
+        run: mkdocs gh-deploy --force
