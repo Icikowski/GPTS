@@ -24,6 +24,8 @@ nav:
 theme:
   name: material
   language: en
+  logo: assets/logo.svg
+  favicon: assets/favicon.png
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -86,7 +88,7 @@ markdown_extensions:
 
 plugins:
   - search
-  - git-revision-date-localized
+  - git-revision-date
 
 extra_css:
   - stylesheets/extra.css
