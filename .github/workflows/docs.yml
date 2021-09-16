@@ -19,6 +19,6 @@ jobs:
         with:
           python-version: 3.x
       - name: Prepare Material for MkDocs and dependencies
-        run: pip install mkdocs mkdocs-material mkdocs-git-revision-date-localized-plugin
+        run: pip install mkdocs mkdocs-material mkdocs-git-revision-date-plugin
       - name: Build and deploy documentation
         run: mkdocs gh-deploy --force
