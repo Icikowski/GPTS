@@ -23,7 +23,7 @@ func serviceReadinessCheck() error {
 
 // PrepareHealthEndpoints prepares and configures health endpoints
 func PrepareHealthEndpoints(port string) *http.Server {
-	log.Info().
+	log.Debug().
 		Str("port", port).
 		Msg("preparing readiness & liveness endpoints")
 
