@@ -1,7 +1,5 @@
 package service
 
-// TODO: Adapt tests to new architecture
-
 import (
 	"encoding/json"
 	"net/http"
