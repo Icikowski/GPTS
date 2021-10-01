@@ -11,11 +11,11 @@ func getFromEnvironment(variableName string, fallback string) string {
 }
 
 var (
-	// ServerPort determines the port number on which service will be running (defaults to 80)
-	ServerPort = getFromEnvironment("GPTS_SERVER_PORT", "80")
+	// ServicePort determines the port number on which service will be running (defaults to 80)
+	ServicePort = getFromEnvironment("GPTS_SERVICE_PORT", "80")
 
-	// HealthcheckPort determines the port number on which liveness & readiness endpoints will be running (defaults to 8081)
-	HealthcheckPort = getFromEnvironment("GPTS_HEALTHCHECK_PORT", "8081")
+	// HealthchecksPort determines the port number on which liveness & readiness endpoints will be running (defaults to 8081)
+	HealthchecksPort = getFromEnvironment("GPTS_HEALTHCHECKS_PORT", "8081")
 
 	// DefaultConfigOnStartup determines if default config should be loaded when application starts
 	DefaultConfigOnStartup = getFromEnvironment("GPTS_DEFAULT_CONFIG_ON_STARTUP", "false")
