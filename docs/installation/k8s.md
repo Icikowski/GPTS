@@ -5,7 +5,8 @@
 
     - **Kubernetes cluster** (tested with Kubernetes bundled with [_Docker Desktop_](https://www.docker.com/products/docker-desktop));
     - **Helm 3** (although there's a slight possibility that Helm 2 will also work);
-    - **Ingress controller** (_optional_; tested with [_NGINX Ingress Controller_](https://kubernetes.github.io/ingress-nginx/)).
+    - **Ingress controller** (_optional_; tested with [_NGINX Ingress Controller_](https://kubernetes.github.io/ingress-nginx/));
+    - Internet connection available.
 
 ## Configuring repository
 
@@ -20,15 +21,28 @@ helm repo update
 
 After repository is successfully added, you can check for available versions of `gpts` chart:
 
-```bash
-helm search repo gpts
-```
-
-???- summary "Example command output"
+=== "Latest version"
+    ```bash
+    helm search repo gpts
     ```
-    NAME            CHART VERSION   APP VERSION     DESCRIPTION
-    icikowski/gpts  0.1.0           0.1.0           GPTS - General Purpose Test Service
+    ???- summary "Example command output"
+        ```
+        NAME            CHART VERSION   APP VERSION     DESCRIPTION
+        icikowski/gpts  0.6.2           0.6.2           GPTS - General Purpose Test Service
+        ```
+=== "All versions"
+    ```bash
+    helm search repo gpts -l
     ```
+    ???- summary "Example command output"
+        ```
+        NAME            CHART VERSION   APP VERSION     DESCRIPTION
+        icikowski/gpts  0.6.2           0.6.2           GPTS - General Purpose Test Service
+        icikowski/gpts  0.6.1           0.6.1           GPTS - General Purpose Test Service
+        icikowski/gpts  0.6.0           0.6.0           GPTS - General Purpose Test Service
+        icikowski/gpts  0.5.1           0.5.1           GPTS - General Purpose Test Service
+        icikowski/gpts  0.5.0           0.5.0           GPTS - General Purpose Test Service
+        ```
 
 In order to fetch chart, execute one of following commands:
 
@@ -42,59 +56,61 @@ In order to fetch chart, execute one of following commands:
     ```
 === "Fetch particular version as .tgz"
     ```bash
-    # For example: chart version 0.1.0
-    helm fetch icikowski/gpts:0.1.0
+    # For example: chart version 0.6.0
+    helm fetch icikowski/gpts --version 0.6.0
     ```
 === "Fetch particular version and unpack it"
     ```bash
-    # For example: chart version 0.1.0
-    helm fetch icikowski/gpts:0.1.0 --untar
+    # For example: chart version 0.6.0
+    helm fetch icikowski/gpts --version 0.6.0 --untar
     ```
 
 !!! info "Downloading chart directly"
     It is also possible to download charts manually [from chart repository](https://charts.icikowski.pl), eg. for offline use.
 
-## Changing values in chart
+## Changing configuration values in chart
 
-!!! warning "Development phase"
-    Project is in early development phase. Section will be expanded after release.
+**GPTS** settings are configured with environment variables [described here](../usage/envvars.md) and can be set using following values:
 
-    Three environment variables are used to determine GPTS behavior:
-    
-    - **GPTS_SERVER_PORT** to specify service port (default: "80")
-    - **GPTS_HEALTHCHECK_PORT** to specify healthcheck endpoints port (default: "8000")
-    - **GPTS_DEFAULT_CONFIG_ON_STARTUP** to specify whether default config (/hello endpoint) should be loaded when application starts (default: "false")
+| Chart value | Environment variable | Default value |
+|-|-|-|
+| `gpts.servicePort` | `GPTS_SERVICE_PORT` | `8080` |
+| `gpts.healthchecksPort` | `GPTS_HEALTHCHECKS_PORT` | `8081` |
+| `gpts.defaultConfigOnStartup` | `GPTS_DEFAULT_CONFIG_ON_STARTUP` | `false` |
+| `gpts.logLevel` | `GPTS_LOG_LEVEL` | `info` |
 
-    Those values can be configured with following variables in `values.yaml`:
-
-    ```yaml
+???- example "Example contents of _gpts_ section in values.yaml"
+    ```yaml linenums="11"
     gpts:
-      servicePort: 80
-      healthcheckPort: 8000
-      defaultConfigOnStartup: true
+      servicePort: 8080
+      healthchecksPort: 8081
+      defaultConfigOnStartup: false
+      logLevel: info
+      # Available log levels: 
+      # debug, info, warn, error, fatal, panic, trace
     ```
 
 In order to configure chart before deployment (eg. enable ingress, change service type), you need to change values in `values.yaml` file inside chart's directory.
 
 ???- example "Example: enabling ingress for NGINX ingress class"
     === "Default values"
-        ```yaml linenums="30" hl_lines="2 3 4 7"
+        ```yaml linenums="23" hl_lines="2 3 4 7"
         ingress:
           enabled: false
           annotations: {}
             # kubernetes.io/ingress.class: nginx
             # kubernetes.io/tls-acme: "true"
           hosts:
-          - host: chart-example.local
+          - host: example.com
             paths:
             - path: /
           tls: []
           #  - secretName: chart-example-tls
           #    hosts:
-          #    - chart-example.local
+          #    - example.com
         ```
     === "Modified values"
-        ```yaml linenums="30" hl_lines="2 3 4 7"
+        ```yaml linenums="23" hl_lines="2 3 4 7"
         ingress:
           enabled: true
           annotations:
@@ -138,18 +154,22 @@ helm install -n NAMESPACE DEPLOYMENT_NAME CHART_DIRECTORY
     ```
     ```
     NAME: my-service
-    LAST DEPLOYED: Mon Apr 26 21:56:34 2021
+    LAST DEPLOYED: Fri Oct  1 18:13:34 2021
     NAMESPACE: test-service
     STATUS: deployed
     REVISION: 1
     NOTES:
-    1. Get the application URL by running these commands:
-       http://test0.host.net/
+    GPTS - General Purpose Test Service
+
+    Service installed successfully! Check out the documentation (https://icikowski.github.io/GPTS) and start using the app.
+
+    Get the application URL by running these commands:
+      http://test0.host.net/
     ```
 
 Application is up and running now! You can check it by cURLing the ingress address (if you enabled it in `values.yaml`).
 
-???- summary "Example command execution & output"
+???- summary "Example command execution & output (JSON format; default)"
     ```bash
     curl -s http://test0.host.net | jq
     ```
@@ -163,7 +183,7 @@ Application is up and running now! You can check it by cURLing the ingress addre
                 "*/*"
             ],
             "User-Agent": [
-                "curl/7.68.0"
+                "curl/7.79.1"
             ],
             "X-Forwarded-For": [
                 "192.168.65.3"
@@ -177,11 +197,14 @@ Application is up and running now! You can check it by cURLing the ingress addre
             "X-Forwarded-Proto": [
                 "http"
             ],
+            "X-Forwarded-Scheme": [
+                "http"
+            ],
             "X-Real-Ip": [
                 "192.168.65.3"
             ],
             "X-Request-Id": [
-                "b73fb52f9ee980ea9e5218993434b535"
+                "b08e79506d17797a0f890fea0579978e"
             ],
             "X-Scheme": [
                 "http"
@@ -190,5 +213,33 @@ Application is up and running now! You can check it by cURLing the ingress addre
     }
     ```
 
-!!! note "Next steps: configuring endpoints"
-    In order to configure endpoints, please check out the [_Configuring endpoints_ section of _User guide_](../usage/endpoints.md).
+???- summary "Example command execution & output (YAML format)"
+    ```bash
+    curl -s http://test0.host.net -H "Accept: text/yaml" | yq eval -
+    ```
+    ```yaml
+    host: test0.host.net
+    path: /
+    method: GET
+    headers:
+      Accept:
+        - text/yaml
+      User-Agent:
+        - curl/7.79.1
+      X-Forwarded-For:
+        - 192.168.65.3
+      X-Forwarded-Host:
+        - test0.host.net
+      X-Forwarded-Port:
+        - "80"
+      X-Forwarded-Proto:
+        - http
+      X-Forwarded-Scheme:
+        - http
+      X-Real-Ip:
+        - 192.168.65.3
+      X-Request-Id:
+        - be588ef84375e7207cdf8c1c9acfe731
+      X-Scheme:
+        - http
+    ```

@@ -1,23 +1,29 @@
-site_name: GPTS - General Purpose Test Service
+site_name: GPTS / General Purpose Test Service
 site_description: Project documentation
 site_author: Piotr Icikowski
 site_url: https://icikowski.github.io/GPTS/
 repo_url: https://github.com/Icikowski/GPTS
 repo_name: Icikowski/GPTS
 edit_uri: ""
+copyright: "&copy; Copyright by Piotr Icikowski"
 
 nav:
   - Home: 
-    - About project: index.md
+    - index.md
     - Changelog: changelog.md
+    - Development plans: devplans.md
   - Installation guide:
+    - installation/index.md
     - Executable files: installation/executables.md
     - Docker: installation/docker.md
     - Kubernetes (via Helm): installation/k8s.md
   - User guide:
-    - Configuring endpoints: usage/endpoints.md
+    - usage/index.md
+    - Environment variables: usage/envvars.md
+    - Configuring endpoints: usage/config.md
     - Liveness & readiness probes: usage/health.md
   - Examples:
+    - examples/index.md
     - Simple usages: examples/simple.md
     - Advanced usages: examples/advanced.md
 
@@ -45,9 +51,18 @@ theme:
     text: Roboto
     code: Fira Code
   features:
-    - navigation.tabs
+    - navigation.indexes
     - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
     - toc.integrate
+  icon:
+    repo: fontawesome/brands/github
 
 extra:
   social:
@@ -57,7 +72,7 @@ extra:
     - icon: fontawesome/brands/linkedin
       link: https://linkedin.com/in/piotr-icikowski
       name: LinkedIn
-    - icon: fontawesome/brands/github-alt
+    - icon: fontawesome/brands/github
       link: https://github.com/Icikowski
       name: GitHub
     - icon: fontawesome/solid/envelope
@@ -74,6 +89,9 @@ markdown_extensions:
       smart_enable: all
   - pymdownx.caret
   - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.magiclink
@@ -91,4 +109,4 @@ plugins:
   - git-revision-date
 
 extra_css:
-  - stylesheets/extra.css
+  - assets/extra.css
