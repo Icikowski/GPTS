@@ -30,12 +30,14 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: GPTS_SERVER_PORT
+            - name: GPTS_SERVICE_PORT
               value: {{ .Values.gpts.servicePort | default 8080 | quote }}
-            - name: GPTS_HEALTHCHECK_PORT
-              value: {{ .Values.gpts.healthcheckPort | default 8081 | quote }}
+            - name: GPTS_HEALTHCHECKS_PORT
+              value: {{ .Values.gpts.healthchecksPort | default 8081 | quote }}
             - name: GPTS_DEFAULT_CONFIG_ON_STARTUP
-              value: {{ .Values.gpts.defaultConfigOnStartup | quote }}
+              value: {{ .Values.gpts.defaultConfigOnStartup | default "false" | quote }}
+            - name: GPTS_LOG_LEVEL
+              value: {{ .Values.gpts.logLevel | default "info" | quote }}
           ports:
             - name: http
               containerPort: {{ .Values.gpts.servicePort | default 8080 }}
