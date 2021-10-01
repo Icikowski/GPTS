@@ -18,11 +18,11 @@ func main() {
 	log := logger.ForComponent("cli")
 
 	log.Info().
-		Str("serverPort", common.ServerPort).
-		Str("healthchecksPort", common.HealthcheckPort).
+		Str("servicePort", common.ServicePort).
+		Str("healthchecksPort", common.HealthchecksPort).
 		Msg("starting application")
 
-	healthServer := health.PrepareHealthEndpoints(common.HealthcheckPort)
+	healthServer := health.PrepareHealthEndpoints(common.HealthchecksPort)
 	go func() {
 		log.Debug().Msg("health endpoints starting")
 		if err := healthServer.ListenAndServe(); err != nil {
@@ -39,7 +39,7 @@ func main() {
 
 	for {
 		service.ExpectingShutdown = false
-		server := service.PrepareServer(common.ServerPort)
+		server := service.PrepareServer(common.ServicePort)
 		health.ServiceStatus.SetStatus(true)
 		if err := server.ListenAndServe(); err != nil {
 			if service.ExpectingShutdown && err == http.ErrServerClosed {
