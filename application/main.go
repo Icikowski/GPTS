@@ -40,7 +40,7 @@ func main() {
 	for {
 		service.ExpectingShutdown = false
 		server := service.PrepareServer(common.ServerPort)
-		health.TestServiceStatus.SetStatus(true)
+		health.ServiceStatus.SetStatus(true)
 		if err := server.ListenAndServe(); err != nil {
 			if service.ExpectingShutdown && err == http.ErrServerClosed {
 				log.Info().Msg("service has been shut down for planned maintenance")
