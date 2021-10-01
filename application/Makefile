@@ -31,16 +31,3 @@ coverage: clean
 
 image: clean
 	docker build . -t ghcr.io/icikowski/gpts:$(shell git rev-parse --short HEAD)
-
-chart: clean
-ifeq ($(OS), Windows_NT)
-	type ..\chart\gpts\Chart.template | sed "/^version/! s/\[\[GPTS_VERSION\]\]/$(shell git rev-parse --short HEAD)/" | sed "s/\[\[GPTS_VERSION\]\]/$(shell git describe --abbrev=0 | sed "s/v//")-dev/" >..\chart\gpts\Chart.yaml
-else
-	cat ../chart/gpts/Chart.template | sed "/^version/! s/\[\[GPTS_VERSION\]\]/$(shell git rev-parse --short HEAD)/" | sed "s/\[\[GPTS_VERSION\]\]/$(shell git describe --abbrev=0 | sed "s/v//")-dev/" >../chart/gpts/Chart.yaml
-endif
-	(cd ../chart && helm package gpts)
-ifeq ($(OS), Windows_NT)
-	del /f /q ..\chart\gpts\Chart.yaml
-else
-	rm -f ../chart/gpts/Chart.yaml
-endif
