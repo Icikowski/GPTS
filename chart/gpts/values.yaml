@@ -12,6 +12,9 @@ gpts:
   servicePort: 8080
   healthcheckPort: 8081
   defaultConfigOnStartup: false
+  logLevel: info
+  # Available log levels: 
+  # debug, info, warn, error, fatal, panic, trace
 
 service:
   type: ClusterIP
