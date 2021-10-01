@@ -24,7 +24,7 @@ func main() {
 
 	healthServer := health.PrepareHealthEndpoints(common.HealthcheckPort)
 	go func() {
-		log.Info().Msg("health endpoints starting")
+		log.Debug().Msg("health endpoints starting")
 		if err := healthServer.ListenAndServe(); err != nil {
 			log.Fatal().Err(err).Msg("health endpoints have been shut down unexpectedly")
 		}
@@ -34,7 +34,7 @@ func main() {
 		config.CurrentConfiguration.SetDefaultConfiguration()
 	}
 
-	log.Info().Msg("marking application liveness as UP")
+	log.Debug().Msg("marking application liveness as UP")
 	health.ApplicationStatus.SetStatus(true)
 
 	for {

@@ -26,7 +26,7 @@ func PrepareServer(port string) *http.Server {
 
 	entries := config.CurrentConfiguration.GetConfiguration()
 	sortedRoutes := getSortedRoutes(entries)
-	log.Info().Msg("paths registration order determined")
+	log.Debug().Msg("paths registration order determined")
 	for _, path := range sortedRoutes {
 		path := path
 		route := entries[path]
@@ -140,7 +140,7 @@ func PrepareServer(port string) *http.Server {
 
 	r.NotFoundHandler = getDefaultHandler()
 
-	log.Info().Msg("registering shutdown hooks")
+	log.Debug().Msg("registering shutdown hooks")
 	server.RegisterOnShutdown(func() {
 		health.ServiceStatus.SetStatus(false)
 	})
