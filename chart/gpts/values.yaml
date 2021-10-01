@@ -10,7 +10,7 @@ fullnameOverride: ""
 
 gpts:
   servicePort: 8080
-  healthcheckPort: 8081
+  healthchecksPort: 8081
   defaultConfigOnStartup: false
   logLevel: info
   # Available log levels: 
