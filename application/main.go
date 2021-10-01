@@ -10,6 +10,10 @@ import (
 	"icikowski.pl/gpts/service"
 )
 
+func init() {
+	logger.InitializeLog()
+}
+
 func main() {
 	log := logger.ForComponent("cli")
 
