@@ -19,4 +19,7 @@ var (
 
 	// DefaultConfigOnStartup determines if default config should be loaded when application starts
 	DefaultConfigOnStartup = getFromEnvironment("GPTS_DEFAULT_CONFIG_ON_STARTUP", "false")
+
+	// LogLevel determines the level of application log
+	LogLevel = getFromEnvironment("GPTS_LOG_LEVEL", "info")
 )
