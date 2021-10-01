@@ -52,7 +52,7 @@ func TestPrepareHealthEndpoints(t *testing.T) {
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
 			ApplicationStatus.SetStatus(tc.applicationStatus)
-			TestServiceStatus.SetStatus(tc.serviceStatus)
+			ServiceStatus.SetStatus(tc.serviceStatus)
 
 			liveness, _ := http.Get("http://localhost:" + testPort + "/live")
 			readiness, _ := http.Get("http://localhost:" + testPort + "/ready")

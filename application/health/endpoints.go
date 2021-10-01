@@ -14,8 +14,8 @@ func applicationLivenessCheck() error {
 	return nil
 }
 
-func testServiceReadinessCheck() error {
-	if !TestServiceStatus.GetStatus() {
+func serviceReadinessCheck() error {
+	if !ServiceStatus.GetStatus() {
 		return errors.New("DOWN")
 	}
 	return nil
@@ -29,7 +29,7 @@ func PrepareHealthEndpoints(port string) *http.Server {
 
 	health := healthcheck.NewHandler()
 	health.AddLivenessCheck("application", applicationLivenessCheck)
-	health.AddReadinessCheck("gpts", testServiceReadinessCheck)
+	health.AddReadinessCheck("gpts", serviceReadinessCheck)
 
 	return &http.Server{
 		Addr:    ":" + port,
