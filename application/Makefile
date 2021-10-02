@@ -2,6 +2,11 @@
 .SILENT: ${.PHONY}
 
 GO_TEST := go test ./... -race -p 1
+GIT_COMMIT := $(shell git rev-parse --short HEAD)
+GIT_TAG := $(shell git describe --abbrev=0 | sed "s/v//")
+
+BASE_FLAGS := -X 'main.version=${GIT_TAG}' -X 'main.gitCommit=${GIT_COMMIT}'
+
 
 all: build
 
@@ -17,7 +22,7 @@ run: clean
 	go run  .
 
 build: clean
-	go build .
+	go build -ldflags "${BASE_FLAGS}" .
 
 test: clean
 	${GO_TEST}
@@ -30,4 +35,4 @@ coverage: clean
 # COMMANDS FOR LOCAL DEVELOPMENT ONLY
 
 image: clean
-	docker build . -t ghcr.io/icikowski/gpts:$(shell git rev-parse --short HEAD)
+	docker build . -t ghcr.io/icikowski/gpts:${GIT_COMMIT} --build-arg version=${GIT_TAG}-dev --build-arg gitCommit=${GIT_COMMIT}
