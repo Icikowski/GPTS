@@ -16,6 +16,7 @@ func init() {
 
 var version = common.BuildValueUnknown
 var gitCommit = common.BuildValueUnknown
+var binaryType = common.BuildValueUnknown
 
 func main() {
 	log := logger.ForComponent("cli")
@@ -23,6 +24,7 @@ func main() {
 	log.Info().
 		Str("version", version).
 		Str("gitCommit", gitCommit).
+		Str("binaryType", binaryType).
 		Msg("version information")
 
 	log.Info().
