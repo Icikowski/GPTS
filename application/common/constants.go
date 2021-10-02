@@ -20,3 +20,9 @@ const (
 	// MsgContentTypeNotAllowed represent a human-readable message for wrong media type error
 	MsgContentTypeNotAllowed = "wrong media type (accepting application/json or text/yaml)"
 )
+
+// Build variables default value
+const (
+	// BuildValueUnknown represents an "unknown" word
+	BuildValueUnknown = "unknown"
+)

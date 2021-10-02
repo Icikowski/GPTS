@@ -14,8 +14,16 @@ func init() {
 	logger.InitializeLog()
 }
 
+var version = common.BuildValueUnknown
+var gitCommit = common.BuildValueUnknown
+
 func main() {
 	log := logger.ForComponent("cli")
+
+	log.Info().
+		Str("version", version).
+		Str("gitCommit", gitCommit).
+		Msg("version information")
 
 	log.Info().
 		Str("servicePort", common.ServicePort).

@@ -1,9 +1,13 @@
 FROM golang:latest AS builder
+ARG version
+ARG gitCommit
+ENV BUILD_VERSION=${version:-unknown}
+ENV BUILD_GIT_COMMIT=${gitCommit:-unknown}
 WORKDIR /app
 COPY go.mod go.sum ./
-RUN go mod download
+RUN go mod download -x
 COPY . .
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o gpts .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o gpts -ldflags "-X 'main.version=${BUILD_VERSION}' -X 'main.gitCommit=${BUILD_GIT_COMMIT}'" .
 
 FROM alpine:latest  
 LABEL maintainer "Piotr Icikowski <piotrekicikowski@gmail.com>"
