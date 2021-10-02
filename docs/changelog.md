@@ -1,5 +1,11 @@
 # Project changelog
 
+# GPTS 0.6.3
+
+- Added static binary compilation for standalone binaries and Docker image
+- Enabled build information logging
+- Added build information to binaries
+
 ## GPTS 0.6.2
 
 - Renamed environment variables in Helm chart
