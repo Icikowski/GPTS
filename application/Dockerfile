@@ -7,7 +7,7 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download -x
 COPY . .
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o gpts -ldflags "-X 'main.version=${BUILD_VERSION}' -X 'main.gitCommit=${BUILD_GIT_COMMIT}'" .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o gpts -ldflags "-X 'main.version=${BUILD_VERSION}' -X 'main.gitCommit=${BUILD_GIT_COMMIT}' -X 'main.binaryType=static' -w -extldflags '-static'" .
 
 FROM alpine:latest  
 LABEL maintainer "Piotr Icikowski <piotrekicikowski@gmail.com>"

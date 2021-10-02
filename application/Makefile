@@ -7,6 +7,11 @@ GIT_TAG := $(shell git describe --abbrev=0 | sed "s/v//")
 
 BASE_FLAGS := -X 'main.version=${GIT_TAG}' -X 'main.gitCommit=${GIT_COMMIT}'
 
+ifeq ($(OS), Windows_NT)
+	BUILD_BEG := set CGO_ENABLED=0 &&
+else
+	BUILD_BEG := env CGO_ENABLED=0
+endif
 
 all: build
 
@@ -22,7 +27,10 @@ run: clean
 	go run  .
 
 build: clean
-	go build -ldflags "${BASE_FLAGS}" .
+	go build -ldflags "${BASE_FLAGS} -X 'main.binaryType=dynamic'" .
+
+build-static: clean
+	${BUILD_BEG} go build -ldflags "${BASE_FLAGS} -X 'main.binaryType=static' -w -extldflags '-static'" .
 
 test: clean
 	${GO_TEST}
