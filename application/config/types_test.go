@@ -50,7 +50,7 @@ func TestResponseMarshalZerologObject(t *testing.T) {
 		Headers:     &map[string]string{"a": "b"},
 	}
 
-	testLog.Info().Object("response", response).Send()
+	testLog.Info().Object("response", &response).Send()
 
 	var contents map[string]interface{}
 	err := json.Unmarshal(buffer.Bytes(), &contents)
@@ -59,6 +59,7 @@ func TestResponseMarshalZerologObject(t *testing.T) {
 	require.EqualValues(t, map[string]interface{}{
 		"level": "info",
 		"response": map[string]interface{}{
+			"configured":  true,
 			"status":      float64(http.StatusCreated),
 			"contentType": common.ContentTypeJSON,
 			"headers": map[string]interface{}{
@@ -90,12 +91,12 @@ func TestRouteMarshalZerologObject(t *testing.T) {
 		"route": map[string]interface{}{
 			"allowSubpaths": true,
 			"methods": map[string]interface{}{
-				"default": true,
-				"get":     true,
-				"post":    true,
-				"put":     false,
-				"patch":   false,
-				"delete":  false,
+				"default": map[string]interface{}{"configured": true},
+				"get":     map[string]interface{}{"configured": true},
+				"post":    map[string]interface{}{"configured": true},
+				"put":     map[string]interface{}{"configured": false},
+				"patch":   map[string]interface{}{"configured": false},
+				"delete":  map[string]interface{}{"configured": false},
 			},
 		},
 	}, contents, "log contains unexpected Route properties")

@@ -78,10 +78,15 @@ func (c *configuration) SetDefaultConfiguration() {
 	log.Info().Msg("loaded default config as current")
 }
 
-var _ zerolog.LogObjectMarshaler = Response{}
+var _ zerolog.LogObjectMarshaler = &Response{}
 
 // MarshalZerologObject implements zerolog.LogObjectMarshaler interface
-func (r Response) MarshalZerologObject(e *zerolog.Event) {
+func (r *Response) MarshalZerologObject(e *zerolog.Event) {
+	if r == nil {
+		e.Bool("configured", false)
+		return
+	}
+	e.Bool("configured", true)
 	if r.Status != nil {
 		e.Int("status", *r.Status)
 	}
@@ -99,11 +104,11 @@ var _ zerolog.LogObjectMarshaler = Route{}
 func (r Route) MarshalZerologObject(e *zerolog.Event) {
 	e.Bool("allowSubpaths", r.AllowSubpaths)
 	e.Dict("methods", zerolog.Dict().
-		Bool("default", r.Default != nil).
-		Bool("get", r.GET != nil).
-		Bool("post", r.POST != nil).
-		Bool("put", r.PUT != nil).
-		Bool("patch", r.PATCH != nil).
-		Bool("delete", r.DELETE != nil),
+		Object("default", r.Default).
+		Object("get", r.GET).
+		Object("post", r.POST).
+		Object("put", r.PUT).
+		Object("patch", r.PATCH).
+		Object("delete", r.DELETE),
 	)
 }
