@@ -5,6 +5,8 @@ import (
 	"net/http"
 
 	"github.com/heptiolabs/healthcheck"
+	"github.com/rs/zerolog"
+	"icikowski.pl/gpts/common"
 )
 
 func applicationLivenessCheck() error {
@@ -22,8 +24,9 @@ func serviceReadinessCheck() error {
 }
 
 // PrepareHealthEndpoints prepares and configures health endpoints
-func PrepareHealthEndpoints(port string) *http.Server {
-	log.Debug().
+func PrepareHealthEndpoints(log zerolog.Logger, port string) *http.Server {
+	l := log.With().Str(common.ComponentField, common.ComponentHealth).Logger()
+	l.Debug().
 		Str("port", port).
 		Msg("preparing readiness & liveness endpoints")
 

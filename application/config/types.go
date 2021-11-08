@@ -59,7 +59,9 @@ func (c *configuration) SetConfiguration(routes map[string]Route) {
 }
 
 // SetDefaultConfiguration sets up startup configuration with one prepared route
-func (c *configuration) SetDefaultConfiguration() {
+func (c *configuration) SetDefaultConfiguration(log zerolog.Logger) {
+	l := log.With().Str(common.ComponentField, common.ComponentConfig).Logger()
+
 	c.mutex.Lock()
 	c.routes = map[string]Route{
 		"/hello": {
@@ -75,7 +77,7 @@ func (c *configuration) SetDefaultConfiguration() {
 		},
 	}
 	c.mutex.Unlock()
-	log.Info().Msg("loaded default config as current")
+	l.Info().Msg("loaded default config as current")
 }
 
 var _ zerolog.LogObjectMarshaler = &Response{}

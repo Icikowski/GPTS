@@ -8,6 +8,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/rs/zerolog"
 	"github.com/stretchr/testify/require"
 	"icikowski.pl/gpts/common"
 	"icikowski.pl/gpts/config"
@@ -100,7 +101,7 @@ func TestGetConfigHandlerFunction(t *testing.T) {
 			mux := http.NewServeMux()
 			testServer := httptest.NewUnstartedServer(mux)
 
-			handlerFunction := getConfigHandlerFunction(testServer.Config)
+			handlerFunction := getConfigHandlerFunction(zerolog.Nop(), testServer.Config)
 			mux.HandleFunc("/config", handlerFunction)
 
 			testServer.Config.Handler = mux
@@ -175,7 +176,7 @@ func TestGetDefaultHandler(t *testing.T) {
 		},
 	}
 
-	testServer := httptest.NewServer(getDefaultHandler())
+	testServer := httptest.NewServer(getDefaultHandler(zerolog.Nop()))
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {

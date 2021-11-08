@@ -36,7 +36,7 @@ func TestSetDefaultConfiguration(t *testing.T) {
 
 	require.Empty(t, config.GetConfiguration(), "configuration not properly retrieved")
 
-	config.SetDefaultConfiguration()
+	config.SetDefaultConfiguration(zerolog.Nop())
 	require.Contains(t, config.routes, "/hello", "default configuration not properly set")
 }
 

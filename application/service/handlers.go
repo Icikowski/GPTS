@@ -12,7 +12,7 @@ import (
 	"icikowski.pl/gpts/config"
 )
 
-func getConfigHandlerFunction(server *http.Server) func(w http.ResponseWriter, r *http.Request) {
+func getConfigHandlerFunction(log zerolog.Logger, server *http.Server) func(w http.ResponseWriter, r *http.Request) {
 	log.Info().Msg("preparing configuration handler")
 	return func(w http.ResponseWriter, r *http.Request) {
 		innerLog := log.With().
@@ -102,7 +102,7 @@ func getConfigHandlerFunction(server *http.Server) func(w http.ResponseWriter, r
 	}
 }
 
-func getDefaultHandler() http.Handler {
+func getDefaultHandler(log zerolog.Logger) http.Handler {
 	log.Info().Msg("preparing default handler")
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		innerLog := log.With().

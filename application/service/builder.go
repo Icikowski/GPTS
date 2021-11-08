@@ -13,8 +13,9 @@ import (
 )
 
 // PrepareServer prepares, configures and runs test service server
-func PrepareServer(port string) *http.Server {
-	log.Info().Msg("preparing test service's router & server")
+func PrepareServer(log zerolog.Logger, port string) *http.Server {
+	l := log.With().Str(common.ComponentField, common.ComponentService).Logger()
+	l.Info().Msg("preparing test service's router & server")
 
 	r := mux.NewRouter().StrictSlash(true)
 	server := &http.Server{
@@ -22,22 +23,22 @@ func PrepareServer(port string) *http.Server {
 		Addr:    ":" + port,
 	}
 
-	r.HandleFunc("/config", getConfigHandlerFunction(server))
+	r.HandleFunc("/config", getConfigHandlerFunction(l, server))
 
 	entries := config.CurrentConfiguration.GetConfiguration()
 	sortedRoutes := getSortedRoutes(entries)
-	log.Debug().Msg("paths registration order determined")
+	l.Debug().Msg("paths registration order determined")
 	for _, path := range sortedRoutes {
 		path := path
 		route := entries[path]
 
-		log.Info().
+		l.Info().
 			Str("path", path).
 			Object("route", route).
 			Msg("preparing handler")
 
 		var handler = func(w http.ResponseWriter, r *http.Request) {
-			innerLog := log.With().
+			innerLog := l.With().
 				Dict(
 					"request",
 					zerolog.Dict().
@@ -138,13 +139,13 @@ func PrepareServer(port string) *http.Server {
 		}
 	}
 
-	r.NotFoundHandler = getDefaultHandler()
+	r.NotFoundHandler = getDefaultHandler(l)
 
-	log.Debug().Msg("registering shutdown hooks")
+	l.Debug().Msg("registering shutdown hooks")
 	server.RegisterOnShutdown(func() {
 		health.ServiceStatus.SetStatus(false)
 	})
 
-	log.Info().Msg("server prepared")
+	l.Info().Msg("server prepared")
 	return server
 }
