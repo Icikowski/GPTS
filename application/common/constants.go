@@ -26,3 +26,21 @@ const (
 	// BuildValueUnknown represents an "unknown" word
 	BuildValueUnknown = "unknown"
 )
+
+// Component names
+const (
+	// ComponentField represents a name of component field
+	ComponentField = "component"
+
+	// ComponentConfig represents a name of configuration manager component
+	ComponentConfig = "configuration"
+
+	// ComponentHealth represents a name of health component
+	ComponentHealth = "health"
+
+	// ComponentService represents a name of service component
+	ComponentService = "service"
+
+	// ComponentCLI represents a name of CLI component
+	ComponentCLI = "cli"
+)

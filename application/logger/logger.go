@@ -5,13 +5,9 @@ import (
 	"strings"
 
 	"github.com/rs/zerolog"
-	"icikowski.pl/gpts/common"
 )
 
-var mainLog zerolog.Logger = zerolog.New(os.Stdout).
-	With().
-	Timestamp().
-	Logger()
+var mainLog zerolog.Logger
 
 var logLevels = map[string]zerolog.Level{
 	"debug": zerolog.DebugLevel,
@@ -24,13 +20,20 @@ var logLevels = map[string]zerolog.Level{
 }
 
 // InitializeLog prepares log component for first use
-func InitializeLog() {
-	zerolog.SetGlobalLevel(logLevels[strings.ToLower(common.LogLevel)])
+func InitializeLog(pretty, level string) {
+	zerolog.SetGlobalLevel(logLevels[strings.ToLower(level)])
+	if pretty == "true" {
+		mainLog = zerolog.New(zerolog.ConsoleWriter{
+			Out:        os.Stdout,
+			NoColor:    false,
+			TimeFormat: "2006-01-02 15:04:05",
+		}).With().Timestamp().Logger()
+	} else {
+		mainLog = zerolog.New(os.Stdout).With().Timestamp().Logger()
+	}
 }
 
-// ForComponent creates sublogger instance for given component
-func ForComponent(component string) zerolog.Logger {
-	return mainLog.With().
-		Str("component", component).
-		Logger()
+// GetLogger returns a logger instance
+func GetLogger() zerolog.Logger {
+	return mainLog
 }

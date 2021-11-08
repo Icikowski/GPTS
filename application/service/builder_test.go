@@ -6,6 +6,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"github.com/rs/zerolog"
 	"github.com/stretchr/testify/require"
 	"icikowski.pl/gpts/config"
 	"icikowski.pl/gpts/utils"
@@ -95,7 +96,7 @@ func TestPrepareServer(t *testing.T) {
 	}
 
 	config.CurrentConfiguration.SetConfiguration(map[string]config.Route{})
-	config.CurrentConfiguration.SetDefaultConfiguration()
+	config.CurrentConfiguration.SetDefaultConfiguration(zerolog.Nop())
 
 	extendedConfig := config.CurrentConfiguration.GetConfiguration()
 
@@ -148,7 +149,7 @@ func TestPrepareServer(t *testing.T) {
 
 	config.CurrentConfiguration.SetConfiguration(extendedConfig)
 
-	server := PrepareServer("")
+	server := PrepareServer(zerolog.Nop(), "")
 	testServer := httptest.NewServer(server.Handler)
 
 	for name, tc := range tests {

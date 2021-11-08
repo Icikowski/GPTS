@@ -5,6 +5,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"github.com/rs/zerolog"
 	"github.com/stretchr/testify/require"
 )
 
@@ -41,7 +42,7 @@ func TestPrepareHealthEndpoints(t *testing.T) {
 		},
 	}
 
-	handler := PrepareHealthEndpoints("").Handler
+	handler := PrepareHealthEndpoints(zerolog.Nop(), "").Handler
 	testServer := httptest.NewServer(handler)
 	defer testServer.Close()
 
