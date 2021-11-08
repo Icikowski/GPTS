@@ -78,6 +78,7 @@ In order to fetch chart, execute one of following commands:
 | `gpts.healthchecksPort` | `GPTS_HEALTHCHECKS_PORT` | `8081` |
 | `gpts.defaultConfigOnStartup` | `GPTS_DEFAULT_CONFIG_ON_STARTUP` | `false` |
 | `gpts.logLevel` | `GPTS_LOG_LEVEL` | `info` |
+| `gpts.prettyLog` | `GPTS_PRETTY_LOG` | `false` |
 
 ???- example "Example contents of _gpts_ section in values.yaml"
     ```yaml linenums="11"
@@ -88,6 +89,10 @@ In order to fetch chart, execute one of following commands:
       logLevel: info
       # Available log levels: 
       # debug, info, warn, error, fatal, panic, trace
+
+      # Enabling pretty log can make the logs more user-friendly
+      # but is NOT RECOMMENDED as it impacts the performance a lot
+      prettyLog: false
     ```
 
 In order to configure chart before deployment (eg. enable ingress, change service type), you need to change values in `values.yaml` file inside chart's directory.

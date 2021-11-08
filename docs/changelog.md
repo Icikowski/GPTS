@@ -1,5 +1,10 @@
 # Project changelog
 
+## GPTS 0.6.4
+
+- Redesigned logging architecture
+- Minor code improvements
+
 ## GPTS 0.6.3
 
 - Added static binary compilation for standalone binaries and Docker image

@@ -5,7 +5,8 @@ There are four configurable **GPTS** settings which can be controlled using list
 - `GPTS_SERVICE_PORT`,
 - `GPTS_HEALTHCHECKS_PORT`,
 - `GPTS_DEFAULT_CONFIG_ON_STARTUP`,
-- `GPTS_LOG_LEVEL`.
+- `GPTS_LOG_LEVEL`,
+- `GPTS_PRETTY_LOG`.
 
 ## `GPTS_SERVICE_PORT`
 
@@ -69,3 +70,11 @@ There are four configurable **GPTS** settings which can be controlled using list
 **Allowed values**: `debug`, `info`, `warn`, `error`, `fatal`, `panic`, `trace`
 
 **Default value**: `info`
+
+## `GPTS_PRETTY_LOG`
+
+**Description**: Enables/Disables pretty log format (may impact performance)
+
+**Allowed values**: `false` or `true`
+
+**Default value**: `false`

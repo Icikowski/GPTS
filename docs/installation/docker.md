@@ -91,6 +91,7 @@ services:
     #  - GPTS_HEALTHCHECKS_PORT=8081
     #  - GPTS_DEFAULT_CONFIG_ON_STARTUP=false
     #  - GPTS_LOG_LEVEL=info
+    #  - GPTS_PRETTY_LOG=false
 
 ```
 
@@ -100,13 +101,14 @@ services:
 
     services:
       gpts:
-        image: ghcr.io/icikowski/gpts:0.6.2
+        image: ghcr.io/icikowski/gpts:0.6.4
         ports:
           - "80:80"
           - "8081:8081" # This one is optional, you can remove this line
         environment:
           - GPTS_DEFAULT_CONFIG_ON_STARTUP=true
           - GPTS_LOG_LEVEL=debug
+          - GPTS_PRETTY_LOG=true
     ```
 
 After the file is saved, you can deploy the application by executing `docker compose up -d` or `docker-compose up -d` command in directory which contains the file.
