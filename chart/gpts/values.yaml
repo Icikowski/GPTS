@@ -15,6 +15,10 @@ gpts:
   logLevel: info
   # Available log levels: 
   # debug, info, warn, error, fatal, panic, trace
+  
+  # Enabling pretty log can make the logs more user-friendly
+  # but is NOT RECOMMENDED as it impacts the performance a lot
+  prettyLog: false
 
 service:
   type: ClusterIP

@@ -38,6 +38,8 @@ spec:
               value: {{ .Values.gpts.defaultConfigOnStartup | default "false" | quote }}
             - name: GPTS_LOG_LEVEL
               value: {{ .Values.gpts.logLevel | default "info" | quote }}
+            - name: GPTS_PRETTY_LOG
+              value: {{ .Values.gpts.prettyLog | default "false" | quote }}
           ports:
             - name: http
               containerPort: {{ .Values.gpts.servicePort | default 8080 }}
