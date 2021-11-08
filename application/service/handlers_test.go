@@ -143,9 +143,8 @@ func TestGetConfigHandlerFunction(t *testing.T) {
 			if tc.serverShouldBeClosed {
 				require.Eventually(t, func() bool {
 					serverClosedSync.Lock()
-					status := serverClosed
-					serverClosedSync.Unlock()
-					return status
+					defer serverClosedSync.Unlock()
+					return serverClosed
 				}, 5*time.Second, 1*time.Second, "server should be eventually closed")
 			} else {
 				testServer.Close()
