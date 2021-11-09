@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"net/http"
 
 	"icikowski.pl/gpts/common"
@@ -11,6 +12,13 @@ import (
 )
 
 func init() {
+	flag.IntVar(&common.ServicePort, "service-port", 80, "Port on which the service will be running")
+	flag.IntVar(&common.HealthchecksPort, "health-port", 8081, "Port on which the healthchecks will be running")
+	flag.BoolVar(&common.DefaultConfigOnStartup, "default-config", false, "Enables loading the default configuration on startup")
+	flag.BoolVar(&common.PrettyLog, "pretty-log", false, "Enables the pretty logger")
+	flag.StringVar(&common.LogLevel, "log-level", "info", "Global log level; one of [debug, info, warn, error, fatal, panic, trace]")
+	flag.Parse()
+
 	logger.InitializeLog(common.PrettyLog, common.LogLevel)
 }
 
@@ -29,8 +37,8 @@ func main() {
 		Msg("version information")
 
 	l.Info().
-		Str("servicePort", common.ServicePort).
-		Str("healthchecksPort", common.HealthchecksPort).
+		Int("servicePort", common.ServicePort).
+		Int("healthchecksPort", common.HealthchecksPort).
 		Msg("starting application")
 
 	healthServer := health.PrepareHealthEndpoints(log, common.HealthchecksPort)
@@ -41,7 +49,7 @@ func main() {
 		}
 	}()
 
-	if common.DefaultConfigOnStartup == "true" {
+	if common.DefaultConfigOnStartup {
 		config.CurrentConfiguration.SetDefaultConfiguration(log)
 	}
 

@@ -2,6 +2,7 @@ package health
 
 import (
 	"errors"
+	"fmt"
 	"net/http"
 
 	"github.com/heptiolabs/healthcheck"
@@ -24,10 +25,10 @@ func serviceReadinessCheck() error {
 }
 
 // PrepareHealthEndpoints prepares and configures health endpoints
-func PrepareHealthEndpoints(log zerolog.Logger, port string) *http.Server {
+func PrepareHealthEndpoints(log zerolog.Logger, port int) *http.Server {
 	l := log.With().Str(common.ComponentField, common.ComponentHealth).Logger()
 	l.Debug().
-		Str("port", port).
+		Int("port", port).
 		Msg("preparing readiness & liveness endpoints")
 
 	health := healthcheck.NewHandler()
@@ -35,7 +36,7 @@ func PrepareHealthEndpoints(log zerolog.Logger, port string) *http.Server {
 	health.AddReadinessCheck("gpts", serviceReadinessCheck)
 
 	return &http.Server{
-		Addr:    ":" + port,
+		Addr:    fmt.Sprintf(":%d", port),
 		Handler: health,
 	}
 }

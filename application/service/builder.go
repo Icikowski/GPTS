@@ -2,6 +2,7 @@ package service
 
 import (
 	"encoding/base64"
+	"fmt"
 	"net/http"
 	"strings"
 
@@ -13,14 +14,14 @@ import (
 )
 
 // PrepareServer prepares, configures and runs test service server
-func PrepareServer(log zerolog.Logger, port string) *http.Server {
+func PrepareServer(log zerolog.Logger, port int) *http.Server {
 	l := log.With().Str(common.ComponentField, common.ComponentService).Logger()
 	l.Info().Msg("preparing test service's router & server")
 
 	r := mux.NewRouter().StrictSlash(true)
 	server := &http.Server{
 		Handler: r,
-		Addr:    ":" + port,
+		Addr:    fmt.Sprintf(":%d", port),
 	}
 
 	r.HandleFunc("/config", getConfigHandlerFunction(l, server))

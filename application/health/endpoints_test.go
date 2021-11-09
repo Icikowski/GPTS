@@ -42,7 +42,7 @@ func TestPrepareHealthEndpoints(t *testing.T) {
 		},
 	}
 
-	handler := PrepareHealthEndpoints(zerolog.Nop(), "").Handler
+	handler := PrepareHealthEndpoints(zerolog.Nop(), 80).Handler
 	testServer := httptest.NewServer(handler)
 	defer testServer.Close()
 

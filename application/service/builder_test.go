@@ -149,7 +149,7 @@ func TestPrepareServer(t *testing.T) {
 
 	config.CurrentConfiguration.SetConfiguration(extendedConfig)
 
-	server := PrepareServer(zerolog.Nop(), "")
+	server := PrepareServer(zerolog.Nop(), 80)
 	testServer := httptest.NewServer(server.Handler)
 
 	for name, tc := range tests {

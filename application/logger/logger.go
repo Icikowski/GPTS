@@ -20,9 +20,9 @@ var logLevels = map[string]zerolog.Level{
 }
 
 // InitializeLog prepares log component for first use
-func InitializeLog(pretty, level string) {
+func InitializeLog(pretty bool, level string) {
 	zerolog.SetGlobalLevel(logLevels[strings.ToLower(level)])
-	if pretty == "true" {
+	if pretty {
 		mainLog = zerolog.New(zerolog.ConsoleWriter{
 			Out:        os.Stdout,
 			NoColor:    false,
