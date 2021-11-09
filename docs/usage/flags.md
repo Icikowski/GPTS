@@ -1,14 +1,17 @@
 # Controlling **GPTS** setting with environment variables
 
-There are four configurable **GPTS** settings which can be controlled using listed environment variables:
+There are four configurable **GPTS** settings which can be controlled using listed flags and/or environment variables:
 
-- `GPTS_SERVICE_PORT`,
-- `GPTS_HEALTHCHECKS_PORT`,
-- `GPTS_DEFAULT_CONFIG_ON_STARTUP`,
-- `GPTS_LOG_LEVEL`,
-- `GPTS_PRETTY_LOG`.
+| Option name | Flag | Environment variable |
+|-|-|-|
+| [Service port](#service-port) | `--service-port` | `GPTS_SERVICE_PORT` |
+| [Healthchecks port](#healthchecks-port) | `--healthchecks-port` | `GPTS_HEALTHCHECKS_PORT` |
+| [Default configuration on startup](#default-configuration-on-startup)  | `--default-config` | `GPTS_DEFAULT_CONFIG_ON_STARTUP` |
+| [Log level](#log-level) | `--log-level` | `GPTS_LOG_LEVEL` |
+| [Pretty logging](#pretty-logging) | `--pretty-log` | `GPTS_PRETTY_LOG` |
 
-## `GPTS_SERVICE_PORT`
+
+## Service port
 
 **Description**: Defines the port on which service will be exposed; defaults to `80` in most cases, but is set to `8080` in K8s deployments due to rootless mode[^1] limitations.
 
@@ -18,7 +21,7 @@ There are four configurable **GPTS** settings which can be controlled using list
 
 **Default value**: `80` (or `8080` in Helm charts)
 
-## `GPTS_HEALTHCHECKS_PORT`
+## Healthchecks port
 
 **Description**: Defines the port on which health endpoints will be exposed.
 
@@ -26,7 +29,7 @@ There are four configurable **GPTS** settings which can be controlled using list
 
 **Default value**: `8081`
 
-## `GPTS_DEFAULT_CONFIG_ON_STARTUP`
+## Default configuration on startup
 
 **Description**: Determines whether the default configuration (see below) should be loaded or not on application start.
 
@@ -63,7 +66,7 @@ There are four configurable **GPTS** settings which can be controlled using list
               X-SentBy: GPTS - General Purpose Test Service
         ```
 
-## `GPTS_LOG_LEVEL`
+## Log level
 
 **Description**: Defines the desired log level in accordance to [`zerolog`'s log levels](https://github.com/rs/zerolog#leveled-logging).
 
@@ -71,7 +74,7 @@ There are four configurable **GPTS** settings which can be controlled using list
 
 **Default value**: `info`
 
-## `GPTS_PRETTY_LOG`
+## Pretty logging
 
 **Description**: Enables/Disables pretty log format (may impact performance)
 

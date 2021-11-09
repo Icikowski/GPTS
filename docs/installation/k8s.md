@@ -70,7 +70,7 @@ In order to fetch chart, execute one of following commands:
 
 ## Changing configuration values in chart
 
-**GPTS** settings are configured with environment variables [described here](../usage/envvars.md) and can be set using following values:
+**GPTS** settings are configured with environment variables [described here](../usage/flags.md) and can be set using following values:
 
 | Chart value | Environment variable | Default value |
 |-|-|-|

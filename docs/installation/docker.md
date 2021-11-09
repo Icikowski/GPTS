@@ -10,7 +10,7 @@
     Since the images are not tagged with `latest` tag, you can manually check the latest version by visiting the address [https://ghcr.io/icikowski/gpts](https://ghcr.io/icikowski/gpts).
 
 !!! info "Changing default settings"
-    **GPTS** settings are configured with environment variables. [Read more](../usage/envvars.md) about those variables and change configuration according to your needs by using `-e`/`--env` flag in `docker` command or using `environment` section of `docker-compose.yml` file.
+    **GPTS** settings are configured with environment variables. [Read more](../usage/flags.md) about those variables and change configuration according to your needs by using `-e`/`--env` flag in `docker` command or using `environment` section of `docker-compose.yml` file.
 
 ## Using **docker run** command
 
