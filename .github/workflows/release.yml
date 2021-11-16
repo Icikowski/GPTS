@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2 
+        with:
+          fetch-depth: 0
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
@@ -34,6 +36,8 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2 
+        with:
+          fetch-depth: 0
       - name: Download coverage report
         uses: actions/download-artifact@v2.0.10
         with:
@@ -80,6 +84,8 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Determine version
         id: version
         run: |
@@ -119,6 +125,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Build image
         working-directory: application
         run: docker build . --file Dockerfile --tag $GPTS_IMAGE --label "runnumber=${GITHUB_RUN_ID}" --build-arg version=${GPTS_VERSION} --build-arg gitCommit=${GPTS_COMMIT_ID}
@@ -142,6 +150,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Install Helm
         uses: Azure/setup-helm@v1
       - name: Replace values in chart
