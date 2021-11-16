@@ -7,12 +7,6 @@ GIT_TAG := $(shell git describe --abbrev=0 | sed "s/v//")
 
 BASE_FLAGS := -X 'main.version=${GIT_TAG}' -X 'main.gitCommit=${GIT_COMMIT}'
 
-ifeq ($(OS), Windows_NT)
-	BUILD_BEG := set CGO_ENABLED=0 &&
-else
-	BUILD_BEG := 
-endif
-
 all: build
 
 clean:
