@@ -772,7 +772,9 @@ helm repo update
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Latest version</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>helm search repo gpts
 </code></pre></div>
-<details class="- summary"><summary>Example command output</summary><div class="highlight"><pre><span></span><code>NAME            CHART VERSION   APP VERSION     DESCRIPTION
+<details class="- summary">
+<summary>Example command output</summary>
+<div class="highlight"><pre><span></span><code>NAME            CHART VERSION   APP VERSION     DESCRIPTION
 icikowski/gpts  0.6.2           0.6.2           GPTS - General Purpose Test Service
 </code></pre></div>
 </details>
@@ -780,7 +782,9 @@ icikowski/gpts  0.6.2           0.6.2           GPTS - General Purpose Test Serv
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">All versions</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>helm search repo gpts -l
 </code></pre></div>
-<details class="- summary"><summary>Example command output</summary><div class="highlight"><pre><span></span><code>NAME            CHART VERSION   APP VERSION     DESCRIPTION
+<details class="- summary">
+<summary>Example command output</summary>
+<div class="highlight"><pre><span></span><code>NAME            CHART VERSION   APP VERSION     DESCRIPTION
 icikowski/gpts  0.6.2           0.6.2           GPTS - General Purpose Test Service
 icikowski/gpts  0.6.1           0.6.1           GPTS - General Purpose Test Service
 icikowski/gpts  0.6.0           0.6.0           GPTS - General Purpose Test Service
@@ -852,7 +856,9 @@ helm fetch icikowski/gpts --version <span class="m">0</span>.6.0 --untar
 </tr>
 </tbody>
 </table>
-<details class="- example"><summary>Example contents of <em>gpts</em> section in values.yaml</summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">11</span>
+<details class="- example">
+<summary>Example contents of <em>gpts</em> section in values.yaml</summary>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
@@ -877,7 +883,9 @@ helm fetch icikowski/gpts --version <span class="m">0</span>.6.0 --untar
 </td></tr></table>
 </details>
 <p>In order to configure chart before deployment (eg. enable ingress, change service type), you need to change values in <code>values.yaml</code> file inside chart's directory.</p>
-<details class="- example"><summary>Example: enabling ingress for NGINX ingress class</summary><div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Default values</label><div class="tabbed-content">
+<details class="- example">
+<summary>Example: enabling ingress for NGINX ingress class</summary>
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Default values</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">23</span>
 <span class="normal">24</span>
 <span class="normal">25</span>
@@ -941,7 +949,9 @@ helm fetch icikowski/gpts --version <span class="m">0</span>.6.0 --untar
 <p>As the chart is prepared, you can install it on your cluster. First of all, let's prepare a namespace for deployment:</p>
 <div class="highlight"><pre><span></span><code>kubectl create ns NAMESPACE
 </code></pre></div>
-<details class="- summary"><summary>Example command execution &amp; output</summary><p><div class="highlight"><pre><span></span><code>kubectl create ns test-service
+<details class="- summary">
+<summary>Example command execution &amp; output</summary>
+<p><div class="highlight"><pre><span></span><code>kubectl create ns test-service
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>namespace/test-service created
 </code></pre></div></p>
@@ -949,7 +959,9 @@ helm fetch icikowski/gpts --version <span class="m">0</span>.6.0 --untar
 <p>The last step is the actual deployment:</p>
 <div class="highlight"><pre><span></span><code>helm install -n NAMESPACE DEPLOYMENT_NAME CHART_DIRECTORY
 </code></pre></div>
-<details class="- summary"><summary>Example command execution &amp; output</summary><p><div class="highlight"><pre><span></span><code>helm install -n test-service my-service ./gpts
+<details class="- summary">
+<summary>Example command execution &amp; output</summary>
+<p><div class="highlight"><pre><span></span><code>helm install -n test-service my-service ./gpts
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>NAME: my-service
 LAST DEPLOYED: Fri Oct  1 18:13:34 2021
@@ -966,7 +978,9 @@ Get the application URL by running these commands:
 </code></pre></div></p>
 </details>
 <p>Application is up and running now! You can check it by cURLing the ingress address (if you enabled it in <code>values.yaml</code>).</p>
-<details class="- summary"><summary>Example command execution &amp; output (JSON format; default)</summary><p><div class="highlight"><pre><span></span><code>curl -s http://test0.host.net <span class="p">|</span> jq
+<details class="- summary">
+<summary>Example command execution &amp; output (JSON format; default)</summary>
+<p><div class="highlight"><pre><span></span><code>curl -s http://test0.host.net <span class="p">|</span> jq
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
     <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;test0.host.net&quot;</span><span class="p">,</span>
@@ -1007,7 +1021,9 @@ Get the application URL by running these commands:
 <span class="p">}</span>
 </code></pre></div></p>
 </details>
-<details class="- summary"><summary>Example command execution &amp; output (YAML format)</summary><p><div class="highlight"><pre><span></span><code>curl -s http://test0.host.net -H <span class="s2">&quot;Accept: text/yaml&quot;</span> <span class="p">|</span> yq <span class="nb">eval</span> -
+<details class="- summary">
+<summary>Example command execution &amp; output (YAML format)</summary>
+<p><div class="highlight"><pre><span></span><code>curl -s http://test0.host.net -H <span class="s2">&quot;Accept: text/yaml&quot;</span> <span class="p">|</span> yq <span class="nb">eval</span> -
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">test0.host.net</span>
 <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/</span>
@@ -1043,7 +1059,7 @@ Get the application URL by running these commands:
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-11-16
+      Last update: 2021-11-09
     
   </small>
 </div>

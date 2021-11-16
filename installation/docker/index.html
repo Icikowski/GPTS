@@ -761,7 +761,9 @@
 <span class="c1"># Replace ${TAG} with desired image tag</span>
 docker run --rm -it -p <span class="si">${</span><span class="nv">SERVICE_PORT</span><span class="si">}</span>:80 ghcr.io/icikowski/gpts:<span class="si">${</span><span class="nv">TAG</span><span class="si">}</span>
 </code></pre></div>
-<details class="- summary"><summary>Example command execution &amp; output</summary><p><div class="highlight"><pre><span></span><code>docker run --rm -it -p <span class="m">80</span>:80 ghcr.io/icikowski/gpts:0.6.2
+<details class="- summary">
+<summary>Example command execution &amp; output</summary>
+<p><div class="highlight"><pre><span></span><code>docker run --rm -it -p <span class="m">80</span>:80 ghcr.io/icikowski/gpts:0.6.2
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>0.6.2: Pulling from icikowski/gpts
 a0d0a0d46f8b: Already exists
@@ -784,7 +786,9 @@ Status: Downloaded newer image for ghcr.io/icikowski/gpts:0.6.2
 <span class="c1"># Replace ${TAG} with desired image tag</span>
 docker run --rm -it -p <span class="si">${</span><span class="nv">SERVICE_PORT</span><span class="si">}</span>:80 -p <span class="si">${</span><span class="nv">HEALTHCHECKS_PORT</span><span class="si">}</span>:8081 ghcr.io/icikowski/gpts:<span class="si">${</span><span class="nv">TAG</span><span class="si">}</span>
 </code></pre></div>
-<details class="- summary"><summary>Example command execution &amp; output</summary><p><div class="highlight"><pre><span></span><code>docker run --rm -it -p <span class="m">80</span>:80 -p <span class="m">8000</span>:8000 ghcr.io/icikowski/gpts:0.1.0
+<details class="- summary">
+<summary>Example command execution &amp; output</summary>
+<p><div class="highlight"><pre><span></span><code>docker run --rm -it -p <span class="m">80</span>:80 -p <span class="m">8000</span>:8000 ghcr.io/icikowski/gpts:0.1.0
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Unable to find image &#39;ghcr.io/icikowski/gpts:0.6.2&#39; locally
 0.6.2: Pulling from icikowski/gpts
@@ -824,7 +828,9 @@ Status: Downloaded newer image for ghcr.io/icikowski/gpts:0.6.2
     <span class="c1">#  - GPTS_LOG_LEVEL=info</span>
     <span class="c1">#  - GPTS_PRETTY_LOG=false</span>
 </code></pre></div>
-<details class="- example"><summary>Example contents of docker-compose.yml</summary><div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span> <span class="s">&quot;3.3&quot;</span>
+<details class="- example">
+<summary>Example contents of docker-compose.yml</summary>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span> <span class="s">&quot;3.3&quot;</span>
 
 <span class="nt">services</span><span class="p">:</span>
   <span class="nt">gpts</span><span class="p">:</span>
@@ -839,7 +845,9 @@ Status: Downloaded newer image for ghcr.io/icikowski/gpts:0.6.2
 </code></pre></div>
 </details>
 <p>After the file is saved, you can deploy the application by executing <code>docker compose up -d</code> or <code>docker-compose up -d</code> command in directory which contains the file.</p>
-<details class="- summary"><summary>Example command execution &amp; output</summary><p><div class="highlight"><pre><span></span><code>docker compose up -d
+<details class="- summary">
+<summary>Example command execution &amp; output</summary>
+<p><div class="highlight"><pre><span></span><code>docker compose up -d
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>[+] Running 5/5
 - gpts Pulled                                                     3.4s
@@ -860,7 +868,7 @@ Status: Downloaded newer image for ghcr.io/icikowski/gpts:0.6.2
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-11-16
+      Last update: 2021-11-09
     
   </small>
 </div>

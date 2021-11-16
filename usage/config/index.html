@@ -874,7 +874,9 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># Change ${GPTS} to proper GPTS service URL</span>
 curl <span class="si">${</span><span class="nv">GPTS</span><span class="si">}</span>/config
 </code></pre></div>
-<details class="- summary"><summary>Example command execution &amp; output</summary><p><div class="highlight"><pre><span></span><code>curl -s http://localhost/config <span class="p">|</span> jq
+<details class="- summary">
+<summary>Example command execution &amp; output</summary>
+<p><div class="highlight"><pre><span></span><code>curl -s http://localhost/config <span class="p">|</span> jq
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="nt">&quot;/hello&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -896,7 +898,9 @@ curl <span class="si">${</span><span class="nv">GPTS</span><span class="si">}</s
 <div class="highlight"><pre><span></span><code><span class="c1"># Change ${GPTS} to proper GPTS service URL</span>
 curl <span class="si">${</span><span class="nv">GPTS</span><span class="si">}</span>/config -H <span class="s2">&quot;Accept: text/yaml&quot;</span>
 </code></pre></div>
-<details class="- summary"><summary>Example command execution &amp; output</summary><p><div class="highlight"><pre><span></span><code>curl -s http://localhost/config -H <span class="s2">&quot;Accept: text/yaml&quot;</span> <span class="p">|</span> yq <span class="nb">eval</span> -
+<details class="- summary">
+<summary>Example command execution &amp; output</summary>
+<p><div class="highlight"><pre><span></span><code>curl -s http://localhost/config -H <span class="s2">&quot;Accept: text/yaml&quot;</span> <span class="p">|</span> yq <span class="nb">eval</span> -
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">/hello</span><span class="p">:</span>
   <span class="nt">allowSubpaths</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -919,7 +923,9 @@ curl <span class="si">${</span><span class="nv">GPTS</span><span class="si">}</s
 <span class="s">}</span>
 <span class="s">EOF</span>
 </code></pre></div>
-<details class="- summary"><summary>Example command execution &amp; output</summary><p><div class="highlight"><pre><span></span><code>curl -X POST http://localhost/config -H <span class="s1">&#39;Content-Type: application/json&#39;</span> -w <span class="s2">&quot;%{http_code}&quot;</span> --data-binary @- <span class="s">&lt;&lt;EOF</span>
+<details class="- summary">
+<summary>Example command execution &amp; output</summary>
+<p><div class="highlight"><pre><span></span><code>curl -X POST http://localhost/config -H <span class="s1">&#39;Content-Type: application/json&#39;</span> -w <span class="s2">&quot;%{http_code}&quot;</span> --data-binary @- <span class="s">&lt;&lt;EOF</span>
 <span class="s">{</span>
 <span class="s">  &quot;/test&quot;: {</span>
 <span class="s">    &quot;default&quot;: {</span>
@@ -938,7 +944,9 @@ curl <span class="si">${</span><span class="nv">GPTS</span><span class="si">}</s
 <span class="s"># Content goes here</span>
 <span class="s">EOF</span>
 </code></pre></div>
-<details class="- summary"><summary>Example command execution &amp; output</summary><p><div class="highlight"><pre><span></span><code>curl -X POST http://localhost/config -H <span class="s1">&#39;Content-Type: text/yaml&#39;</span> -w <span class="s2">&quot;%{http_code}&quot;</span> --data-binary @- <span class="s">&lt;&lt;EOF</span>
+<details class="- summary">
+<summary>Example command execution &amp; output</summary>
+<p><div class="highlight"><pre><span></span><code>curl -X POST http://localhost/config -H <span class="s1">&#39;Content-Type: text/yaml&#39;</span> -w <span class="s2">&quot;%{http_code}&quot;</span> --data-binary @- <span class="s">&lt;&lt;EOF</span>
 <span class="s">/test:</span>
 <span class="s">  default:</span>
 <span class="s">    content: this is some test content</span>
@@ -957,7 +965,7 @@ curl <span class="si">${</span><span class="nv">GPTS</span><span class="si">}</s
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-11-16
+      Last update: 2021-10-01
     
   </small>
 </div>
