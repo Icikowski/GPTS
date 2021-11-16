@@ -1,5 +1,9 @@
 # Project changelog
 
+## GPTS 0.6.6
+
+- Fixed fetching configuration from environment variables
+
 ## GPTS 0.6.5
 
 - Added support for command line flags (configuration may be passed either by CLI flags or environment variables, where flags are prioritized)
