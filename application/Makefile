@@ -1,4 +1,4 @@
-.PHONY: clean build test coverage image chart
+.PHONY: clean build test coverage image
 .SILENT: ${.PHONY}
 
 GO_TEST := go test ./... -race -p 1
@@ -10,17 +10,13 @@ BASE_FLAGS := -X 'main.version=${GIT_TAG}' -X 'main.gitCommit=${GIT_COMMIT}'
 ifeq ($(OS), Windows_NT)
 	BUILD_BEG := set CGO_ENABLED=0 &&
 else
-	BUILD_BEG := env CGO_ENABLED=0
+	BUILD_BEG := 
 endif
 
 all: build
 
 clean:
-ifeq ($(OS), Windows_NT)
-	del /f /q *.out *.html gpts gpts.exe
-else
 	rm -f *.out *.html gpts gpts.exe
-endif
 	go clean -cache
 
 run: clean
@@ -30,7 +26,7 @@ build: clean
 	go build -ldflags "${BASE_FLAGS} -X 'main.binaryType=dynamic'" .
 
 build-static: clean
-	${BUILD_BEG} go build -ldflags "${BASE_FLAGS} -X 'main.binaryType=static' -w -extldflags '-static'" .
+	env CGO_ENABLED=0 go build -ldflags "${BASE_FLAGS} -X 'main.binaryType=static' -w -extldflags '-static'" .
 
 test: clean
 	${GO_TEST}
@@ -44,3 +40,4 @@ coverage: clean
 
 image: clean
 	docker build . -t ghcr.io/icikowski/gpts:${GIT_COMMIT} --build-arg version=${GIT_TAG}-dev --build-arg gitCommit=${GIT_COMMIT}
+	echo "Built Docker image for GPTS version \"${GIT_TAG}-dev\" with tag \"${GIT_COMMIT}\""

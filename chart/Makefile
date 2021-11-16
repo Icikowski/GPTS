@@ -8,21 +8,11 @@ BRANCH := $(shell git branch --show-current)
 all: chart
 
 clean:
-ifeq ($(OS), Windows_NT)
-	del /f /q gpts*.tgz
-else
-	rm -f gpts*.tgz
-endif
+	rm -f gpts*.tgz gpts/Chart.yaml
 
-chart: clean
-ifeq ($(OS), Windows_NT)
-	type gpts\Chart.template | sed "/^version/! s/\[\[GPTS_VERSION\]\]/${COMMIT}/" | sed "s/\[\[GPTS_VERSION\]\]/${TAG}-${BRANCH}/" >gpts\Chart.yaml
-else
-	cat gpts/Chart.template | sed "/^version/! s/\[\[GPTS_VERSION\]\]/${COMMIT}/" | sed "s/\[\[GPTS_VERSION\]\]/${TAG}-${BRANCH}/" >gpts/Chart.yaml
-endif
+build: clean
+	cp gpts/Chart.template gpts/Chart.yaml
+	sed -i "/^version/! s/\[\[GPTS_VERSION\]\]/${COMMIT}/" gpts/Chart.yaml 
+	sed -i "s/\[\[GPTS_VERSION\]\]/${TAG}-dev/" gpts/Chart.yaml
 	helm package gpts
-ifeq ($(OS), Windows_NT)
-	del /f /q gpts\Chart.yaml
-else
-	rm -f gpts/Chart.yaml
-endif
+	echo "Built Helm chart \"${TAG}-dev\" for GPTS image with tag \"${COMMIT}\""
