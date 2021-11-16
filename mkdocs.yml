@@ -19,7 +19,7 @@ nav:
     - Kubernetes (via Helm): installation/k8s.md
   - User guide:
     - usage/index.md
-    - Application flags: usage/flags.md
+    - Flags & environment variables: usage/flags.md
     - Configuring endpoints: usage/config.md
     - Liveness & readiness probes: usage/health.md
   - Examples:

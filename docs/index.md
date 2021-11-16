@@ -22,7 +22,7 @@ Simple & easy to configure test service for serving content through HTTP.
     - [X] Support default response definition (for unconfigured methods)
     - [X] Support subpaths handling
 - [X] Docker support
-    - [X] Based on latest Alpine image
+    - [X] Based on latest [Google's "distroless"](https://github.com/GoogleContainerTools/distroless) image
     - [X] Small size (< 20MB)
     - [X] Running in rootless mode
 - [X] Kubernetes support
