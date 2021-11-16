@@ -99,7 +99,7 @@ jobs:
         working-directory: application
         env:
           GPTS_VERSION: ${{ steps.version.outputs.version }}
-          GPTS_COMMIT_ID: ${{ steps.versions.outputs.commitId }}
+          GPTS_COMMIT_ID: ${{ steps.version.outputs.commitId }}
         run: |
           CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-X 'main.version=${GPTS_VERSION}' -X 'main.gitCommit=${GPTS_COMMIT_ID}' -X 'main.binaryType=static' -w -extldflags '-static'" -o bin/gpts-${GPTS_VERSION}-linux-amd64 .
           CGO_ENABLED=0 GOOS=linux GOARCH=386 go build -ldflags "-X 'main.version=${GPTS_VERSION}' -X 'main.gitCommit=${GPTS_COMMIT_ID}' -X 'main.binaryType=static' -w -extldflags '-static'" -o bin/gpts-${GPTS_VERSION}-linux-i386 .
