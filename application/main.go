@@ -12,11 +12,11 @@ import (
 )
 
 func init() {
-	flag.IntVar(&common.ServicePort, "service-port", 80, "Port on which the service will be running")
-	flag.IntVar(&common.HealthchecksPort, "health-port", 8081, "Port on which the healthchecks will be running")
-	flag.BoolVar(&common.DefaultConfigOnStartup, "default-config", false, "Enables loading the default configuration on startup")
-	flag.BoolVar(&common.PrettyLog, "pretty-log", false, "Enables the pretty logger")
-	flag.StringVar(&common.LogLevel, "log-level", "info", "Global log level; one of [debug, info, warn, error, fatal, panic, trace]")
+	flag.IntVar(&common.ServicePort, "service-port", common.ServicePort, "Port on which the service will be running")
+	flag.IntVar(&common.HealthchecksPort, "health-port", common.HealthchecksPort, "Port on which the healthchecks will be running")
+	flag.BoolVar(&common.DefaultConfigOnStartup, "default-config", common.DefaultConfigOnStartup, "Enables loading the default configuration on startup")
+	flag.BoolVar(&common.PrettyLog, "pretty-log", common.PrettyLog, "Enables the pretty logger")
+	flag.StringVar(&common.LogLevel, "log-level", common.LogLevel, "Global log level; one of [debug, info, warn, error, fatal, panic, trace]")
 	flag.Parse()
 
 	logger.InitializeLog(common.PrettyLog, common.LogLevel)
