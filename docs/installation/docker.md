@@ -12,6 +12,26 @@
 !!! info "Changing default settings"
     **GPTS** settings are configured with environment variables. [Read more](../usage/flags.md) about those variables and change configuration according to your needs by using `-e`/`--env` flag in `docker` command or using `environment` section of `docker-compose.yml` file.
 
+## Verifying the image signature
+
+Starting from version `0.7.2`, container images are signed using the [`cosign`](https://github.com/sigstore/cosign) tool. The public key is can be downloaded from following address: [`https://icikowski.github.io/GPTS/gpts.pub`](../gpts.pub).
+
+In order to verify the digital signature of an image, [install the mentioned application](https://docs.sigstore.dev/cosign/installation/) and perform the following commands:
+
+```bash
+# Replace ${TAG} with desired image tag
+curl -s https://icikowski.github.io/GPTS/gpts.pub -o /tmp/gpts.pub
+cosign verify --public-key /tmp/gpts.pub ghcr.io/icikowski/gpts:${TAG}
+```
+???- summary "Example command execution and output"
+    ```bash
+    curl -s https://icikowski.github.io/GPTS/gpts.pub -o /tmp/gpts.pub
+    cosign verify --public-key /tmp/gpts.pub ghcr.io/icikowski/gpts:0.7.2
+    ```
+    ```
+    To be added
+    ```    
+
 ## Using **docker run** command
 
 You can use one of following commands in order to get the application up and running:
