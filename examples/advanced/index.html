@@ -9,14 +9,13 @@
         <meta name="description" content="Project documentation">
       
       
-      
         <meta name="author" content="Piotr Icikowski">
       
       
         <link rel="canonical" href="https://icikowski.github.io/GPTS/examples/advanced/">
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.6">
     
     
       
@@ -24,10 +23,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.a57b2b03.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.cd566b2a.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
         
       
     
@@ -37,16 +36,15 @@
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CFira+Code&display=fallback">
-        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Fira Code"}</style>
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Fira Code"}</style>
       
-    
     
     
       <link rel="stylesheet" href="../../assets/extra.css">
     
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
-
 
     
     
@@ -63,9 +61,8 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
   
     
-    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
-      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -81,6 +78,7 @@
     <div data-md-component="announce">
       
     </div>
+    
     
       
 
@@ -140,8 +138,7 @@
       <label class="md-header__button md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
       </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
+      <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -179,8 +176,7 @@
     
     
       <div class="md-header__source">
-        
-<a href="https://github.com/Icikowski/GPTS" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/Icikowski/GPTS" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
@@ -303,8 +299,7 @@
   </label>
   
     <div class="md-nav__source">
-      
-<a href="https://github.com/Icikowski/GPTS" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/Icikowski/GPTS" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
@@ -361,7 +356,6 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
-            
             
           
             
@@ -444,7 +438,6 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
-            
             
           
             
@@ -542,7 +535,6 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
-            
           
             
               
@@ -639,7 +631,6 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
-            
           
             
               
@@ -680,7 +671,6 @@
       </a>
       
         
-
 
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
@@ -743,319 +733,311 @@
             <article class="md-content__inner md-typeset">
               
                 
-                
-                <h1 id="advanced-gpts-configuration-examples">Advanced <strong>GPTS</strong> configuration examples<a class="headerlink" href="#advanced-gpts-configuration-examples" title="Permanent link">&para;</a></h1>
+
+<h1 id="advanced-gpts-configuration-examples">Advanced <strong>GPTS</strong> configuration examples<a class="headerlink" href="#advanced-gpts-configuration-examples" title="Permanent link">&para;</a></h1>
 <h2 id="html-page-with-images">HTML page with images<a class="headerlink" href="#html-page-with-images" title="Permanent link">&para;</a></h2>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1"><code>application/json</code></label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;/&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;allowSubpaths&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&quot;contentType&quot;</span><span class="p">:</span> <span class="s2">&quot;text/html&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;!DOCTYPE html&gt;&lt;html lang=\&quot;en\&quot;&gt;&lt;head&gt;&lt;meta charset=\&quot;utf-8\&quot; /&gt;&lt;link rel=\&quot;icon\&quot; href=\&quot;/favicon.png\&quot; /&gt;&lt;title&gt;Hello, World&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Hello, world!&lt;/h1&gt;&lt;img src=\&quot;/smile.jpg\&quot; /&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;/favicon.png&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;allowSubpaths&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&quot;contentType&quot;</span><span class="p">:</span> <span class="s2">&quot;image/png&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACJSURBVDhP7ZPbDcAgCACdi4GYx2lYhl202mCrrc9omn54P4oxFxBUdhFb1OZbkTFGdmWKIiatiVmiNmWRBiUAYFtaEyG5xWeGEKT+KE9LFEO4RQl/ErFvt2/4lMglIiMzKXKXA6DDLBOOD+SV0f1CkXtAdMLxv6oVG5EVPZDKXl1M6BF1sUhk7QEtmishFSnrxwAAAABJRU5ErkJggg==&quot;</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;/smile.jpg&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;allowSubpaths&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&quot;contentType&quot;</span><span class="p">:</span> <span class="s2">&quot;image/jpeg&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;base64,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&quot;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;/&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;allowSubpaths&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;contentType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/html&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;!DOCTYPE html&gt;&lt;html lang=\&quot;en\&quot;&gt;&lt;head&gt;&lt;meta charset=\&quot;utf-8\&quot; /&gt;&lt;link rel=\&quot;icon\&quot; href=\&quot;/favicon.png\&quot; /&gt;&lt;title&gt;Hello, World&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Hello, world!&lt;/h1&gt;&lt;img src=\&quot;/smile.jpg\&quot; /&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;/favicon.png&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;allowSubpaths&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;contentType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;image/png&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACJSURBVDhP7ZPbDcAgCACdi4GYx2lYhl202mCrrc9omn54P4oxFxBUdhFb1OZbkTFGdmWKIiatiVmiNmWRBiUAYFtaEyG5xWeGEKT+KE9LFEO4RQl/ErFvt2/4lMglIiMzKXKXA6DDLBOOD+SV0f1CkXtAdMLxv6oVG5EVPZDKXl1M6BF1sUhk7QEtmishFSnrxwAAAABJRU5ErkJggg==&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;/smile.jpg&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;allowSubpaths&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;contentType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;image/jpeg&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;base64,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&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2"><code>text/yaml</code></label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="nt">/</span><span class="p">:</span>
-  <span class="nt">allowSubpaths</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="nt">default</span><span class="p">:</span>
-    <span class="nt">contentType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">text/html</span>
-    <span class="nt">content</span><span class="p">:</span> <span class="p p-Indicator">|-</span>
-      <span class="no">&lt;!DOCTYPE html&gt;</span>
-      <span class="no">&lt;html lang=&quot;en&quot;&gt;</span>
-      <span class="no">&lt;head&gt;</span>
-        <span class="no">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
-        <span class="no">&lt;link rel=&quot;icon&quot; href=&quot;/favicon.png&quot; /&gt;</span>
-        <span class="no">&lt;title&gt;Hello, World&lt;/title&gt;</span>
-      <span class="no">&lt;/head&gt;</span>
-      <span class="no">&lt;body&gt;</span>
-        <span class="no">&lt;h1&gt;Hello, world!&lt;/h1&gt;</span>
-        <span class="no">&lt;img src=&quot;/smile.jpg&quot; /&gt;</span>
-      <span class="no">&lt;/body&gt;</span>
-      <span class="no">&lt;/html&gt;</span>
-<span class="nt">/favicon.png</span><span class="p">:</span>
-  <span class="nt">allowSubpaths</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-  <span class="nt">default</span><span class="p">:</span>
-    <span class="nt">contentType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">image/png</span>
-    <span class="nt">content</span><span class="p">:</span> <span class="p p-Indicator">|-</span>
-      <span class="no">base64,</span>
-      <span class="no">iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAAAXNSR0IArs4c6QAAAARnQU1BAACx</span>
-      <span class="no">jwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACJSURBVDhP7ZPbDcAgCACdi4GYx2lYhl202mCr</span>
-      <span class="no">rc9omn54P4oxFxBUdhFb1OZbkTFGdmWKIiatiVmiNmWRBiUAYFtaEyG5xWeGEKT+KE9LFEO4RQl/</span>
-      <span class="no">ErFvt2/4lMglIiMzKXKXA6DDLBOOD+SV0f1CkXtAdMLxv6oVG5EVPZDKXl1M6BF1sUhk7QEtmish</span>
-      <span class="no">FSnrxwAAAABJRU5ErkJggg==</span>
-<span class="nt">/smile.jpg</span><span class="p">:</span>
-  <span class="nt">allowSubpaths</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-  <span class="nt">default</span><span class="p">:</span>
-    <span class="nt">contentType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">image/jpeg</span>
-    <span class="nt">content</span><span class="p">:</span> <span class="p p-Indicator">|-</span>
-      <span class="no">base64,</span>
-      <span class="no">iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAACBjSFJN</span>
-      <span class="no">AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QA/wD/AP+gvaeTAAAM</span>
-      <span class="no">P0lEQVRo3u2ZeZBV1Z3HP+fc+7bu95oGmr2BFmiRTWXAYCq4BmMCYoIaEqPluE3IEGecMSlrNHGS</span>
-      <span class="no">SioZHYlURWOiiToSLDPM1CgyBcngCgpklEWCQEtDGmi6G3pf3naX85s/7n3N67YZu9HMTNV4qn51</span>
-      <span class="no">7rt17+9+v7/zO7/lPPhkfDL+fw/1cStc+9MRZTkve57yqTJKlaOwMCqHlpNK+e/Xd+WPfP/7mP9T</span>
-      <span class="no">BJ56KDXdsrldRezro7HhE0ePme2Uj5xsJRIprbAs10u76a5m03LqkGprrQX8N10n90yZlV2//B6y</span>
-      <span class="no">/2sEnlqVWBiJxh9KDauaO3vuVyLjKi+2Y/EkmHbEdIPkQDxQGlQMpVIYSdLVVsvhms2Z2prNxnUz</span>
-      <span class="no">qx038pMVf9fe+T9G4OcPJ0eXxuwnho2YfvWnL/tWfPjIKUq844h3ApE0iAAG8EF8RFwQFxEHMFiM</span>
-      <span class="no">RUem4EsFhw5scPbsfi7jOumVt387+/yfnMCvVsUvjceGvfDpK+4tmzTlclu8Q4jbCEoBOnwqJCA+</span>
-      <span class="no">Ih4QEjB5EAeRPMpx0H4Cq+Qi8n45b255ONvUtHtDQnpuHYpbDYnA0z9JfiWZGv/M1cseS5QkwDgH</span>
-      <span class="no">AhUqglJWXwJiELzAhcQJrC95xOQRyYOfC0g4ebQehxq2iP371zu7dz+33xU+e+c9XW0fK4GnVydu</span>
-      <span class="no">KCuvXrP4uscTNvWI3xD6dRRUBLBQSocqDSImBO8GgEPLi8mB5BDJodw8Kp9HOXmUZ2NXfIkjx/Z4</span>
-      <span class="no">23b89P3uSNeCb36Tng/DpQcF/uHEgmRp5bNfWPZYwuYI4p0IwcdAxVEqjtIJUCUQzkonUDoOOobS</span>
-      <span class="no">MVBRlIqgVCRYMWzEshDLAssCcviNzzNlwiz7U/PuqE45yQ0iH25g68MeeGZ1ebkViW9bfN3j5fFI</span>
-      <span class="no">C8ZrQKlYAE7FA3A6xv6DTbz2xn6qp52DHYmi0IAOEQgKoaW1hxc3/IGKEQlSSRvwUeKDMShjUL4L</span>
-      <span class="no">nfupmLjU6kp3jH19U4O8+B/O1o+0AkrLqgULV5YnkxGMewSFFbhMrzWjvLPzGAsu+RtuuvVBbr5t</span>
-      <span class="no">Fag46HjoXlGUitLV47Fo6ePcvnIdly3+J0615EBZYYjViNJBIDA55MS/cvH8r8fjiRHfeeIfY1PP</span>
-      <span class="no">msCTjyRnJcsqvzbl3C9EveyuYMGUFW5YKyQR5f7v/ZpczgHghfWv8+b2mtC9oihlAxZPrdnBgYMN</span>
-      <span class="no">AByvb+exJ/ei0IjWoBVohSgVkMifxO54m0sXrIglIrGfnTWBuLZ+sGDhN2LiHUSRDzdo6Bqh5do7</span>
-      <span class="no">cryxZWef99a/9Fa4SlYv6Zf+fU/fZzbWhBFMhXrDa6WCn81bGTtqli5NTbzsyUeSs4ZM4Nkfp0ba</span>
-      <span class="no">0WFLxoybp41zKPxA/wCmOHa8DWP6ljZ1R5sAheoFCHVHT/Z55uix1iDfnSkWGhfVsp2L5twQjaHu</span>
-      <span class="no">HjIBP+Yvn3n+tYJfB+KEsb2QpKQ31nveB+sy13UBH8GAGEDwPL+vft9gjARZu1dv0SwCbTsZO26+</span>
-      <span class="no">1jr61XXrBg44ZyQQsaPXV066OG6cPwISxHVCEYOID/hUThj+gXcrK8eAcUE8JCwnKitH9Xlm/Ljh</span>
-      <span class="no">aEtQUiBRRKYQP90eIs4pRo+Zo7vrS+YOiYARvSBVVoVxG0KwRbVNb4Z1GT0qyoUXTO/z7uevugiR</span>
-      <span class="no">XLBy4iLi8blFfb9/9aLZoTGClUQKZMxpMgDdh6macGEUXxYOmsATq1IVJamxUUsyKM8JgQegJQTe</span>
-      <span class="no">W5yZDN+97xZU6Ovz583k6kUzEMmFGTjIwitu+wyjR5UDkEomuGvFfBAfzOk8gDFg5PQ1QLaJ8rLK</span>
-      <span class="no">SMSy/2wgrPaA7mP8ScPLJzp47dHgAx5oDxEXhQ1iIWhUuOJfXFLNb9b+kD3v1nLXXy7GttJgwkIu</span>
-      <span class="no">rIPGjTH8dv19rP3NNpZdO4fqqjT4Hso3KL8A3vQFD+C0UVIxCq04d9AEfKXLYtHSoODyfLB8RLso</span>
-      <span class="no">sRAskCDCiAGlDCIey66ZyLKlU4I6x0hgXbyiUjrPzOo8P35gPmI6EeMEun0PfB8VSmFFToPJYdkJ</span>
-      <span class="no">EFKDJgBohQ4Ve+BZiNYYrdFag6gwVpjT7qWcsHwIIomE5XQA3u0t5pCgGlW+i/I9lBd+w/f7EikM</span>
-      <span class="no">MShlIWoIUUiU6XadtChs8DzwXJTr8u7eJnL5DGJyQVVpcojJIpIFk0EkFJOF8H6wmXPhnA/2je+C</span>
-      <span class="no">66FcLyDheygvmA/XZ8m7UlStxfG9LED3oAnEtDR0djfa6CTKDcArz2XOuaN4+tc1+H4BVLYvWJMJ</span>
-      <span class="no">CWUQkwnum2xYQhf6gDzKdVCuC54LrtsLfk9NmtpGm1ikCFa0nFy2DYSjgyZwy99mG7o667VYZcEm</span>
-      <span class="no">c12U4xLxulh85Qy+9w+7yeVCS/cCD8EXrsP7SLaXqHLzKCfQddowHrgeew9leP5N4fPzkkVJDYiP</span>
-      <span class="no">pqvruO8Yf9egCSiFKMnvTXc1ovTI8GMOynU4p6KTRQtn8xd3v0NdXVuvCwUrkQklW0Qii/KC7ivo</span>
-      <span class="no">wJxeXQUS2/ameWBthu/cWAVuV18wySkcP7kvi9Lbh7KJcQwvNjXuurB61NSIaT/Rm1yUMVw5V9Od</span>
-      <span class="no">nsdtf72Dm68bz1e/NIZkMhJUkwUjiBSFxnCDeoGv43kozyXd5fLs79L821t5fvXtCynnYD/zRvFL</span>
-      <span class="no">JnO8cZetu3u2D6mhWbpI13en21bOmHmjTeuO3lpIiYDvMP0cm6op5/GLtYfYsLmLU80OpRFheIkQ</span>
-      <span class="no">Eb93Y+oQrA7dxc851Na5vLAlz0P/4vB+g+KRlbOYkXw/jGpFY8RcWhxPag9v3njrfc7aIffEa1an</span>
-      <span class="no">dixe9OCCEfkDSM97YNuIZSO2DZaF2KXUtk7iwV/uo+FUFtu2iUUjVE2IMnKYIlWiiNlCJgfZnKG5</span>
-      <span class="no">Q6hv9sk7Pp7nMaEiygM3jqcqsj+onfpDO+9ufrft0cyJpnevueNbPa8NuaW85nPRw109J788bcZN</span>
-      <span class="no">Ed38+yDJiEGZwD2Un2dEoo0ll0+jtGwEDc15XF+Rzlm0dtk0ttocb7Zparc51WnRk9OIKFIlNssv</span>
-      <span class="no">H8e918YY6R8Ik16/MXI+7SrF7r1ra267p+fesz6VWLM6+dpnL7n/0vERV9OwKWzCg4YcXeioNESS</span>
-      <span class="no">eNGJ7P5jnD8c7qGuMU9P1tCT9UkmLEpjiqoxUWZMivGpiWliuTpwz3AYF0lhpv8VG17+bral+dBV</span>
-      <span class="no">d96bfeusCfzy4fg5JYnh+65f8mhJrGEDdNWEG0wjOiDR2w6iQNsQGQ6RYSgdAbHAd1B+HnJt4LSD</span>
-      <span class="no">cf67Jhym3cF7dW87u/Y+98+33NN9y0c6ldiw2etYfIVfd6qldsnUC75h6/QRcLt7I5IqRJdCGeA5</span>
-      <span class="no">qHwXKnMS1dOASp9AZZsg1wJeemB3Kbbn5Bs4lc2ZLb9/tP69fd1L39qN81EIKCD20mbv8Gcu6kim</span>
-      <span class="no">Mw1zJ81ZYetsPTgdA9Qg0reWH9Ihp4bJy2kzcTa9+oPOrW+nr3l0jekIc5Xpm90GR8AC4gXZ+Kr7</span>
-      <span class="no">9rzZTSM7uw/PmHz+120LgUz9x3PIHy2HqbdyMtNhNr36w85NW9M3r1nn1IUYVJGr+4MloIAYEA3n</span>
-      <span class="no">GBD77evuf06pasm3tm6bX1m9zI6Png/ZRvC6z/Jw34bRC/En3cC7Bze6r297suHpdd13bnzZPda3</span>
-      <span class="no">Qaa4GTeDIWCFWTrSX7Zs92qM9Oxy868s8JSOVky/0bLLpoGfB6ftTCv9QYtXXIxMXk5zLiebXvuR</span>
-      <span class="no">+87uHZv+fnXP/YeOSMfp5ntA8QcThfRAK1AspaWU3PXn8S9Pn5q4aUb1VZHzpl4ZKxs2EZ0+GriW</span>
-      <span class="no">0wZeJuhxdRQiZRAfDckqHCtJQ/0Os/PAeq/heN3Bl15xfvHyVrcGyIfinOE6H5zVDy6M2kUkov0I</span>
-      <span class="no">Fe5Fy8oo/doXY1ecf25kadmwVPX4sRd4Yyuq7fKyMbYdKcXSNp6XJZttl5b2evfYyX20tx7JnWh0</span>
-      <span class="no">tryyzdv4xg63NgTpFoF1iqQ/kSHlAd0fcOhK0QHcyx41nNIrLrFnjhtjVVWU60mJqC6zLBXLu9LT</span>
-      <span class="no">mTanmlv94/sO+gd37PTrAa9I3H7iFJHKF12f9f8DBSJ9ABfNdrhvCqKLoocq2hiFcOgXiRfO7gBk</span>
-      <span class="no">zgj8o/xHZvUDbxXd00XgdT/90i+SmAGIeCFof3DR4OP5m7UYrNUvdvfXX0ygANwMFuwn45PxJxj/</span>
-      <span class="no">BXfcuL7altp7AAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE5LTAzLTA3VDAwOjQ5OjE5KzAwOjAwn0N+</span>
-      <span class="no">1gAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxOS0wMy0wN1QwMDo0OToxOSswMDowMO4exmoAAAAASUVO</span>
-      <span class="no">RK5CYII=</span>
+<div class="highlight"><pre><span></span><code><span class="nt">/</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">allowSubpaths</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">  </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">contentType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">text/html</span><span class="w"></span>
+<span class="w">    </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span><span class="w"></span>
+<span class="w">      </span><span class="no">&lt;!DOCTYPE html&gt;</span><span class="w"></span>
+<span class="w">      </span><span class="no">&lt;html lang=&quot;en&quot;&gt;</span><span class="w"></span>
+<span class="w">      </span><span class="no">&lt;head&gt;</span><span class="w"></span>
+<span class="w">        </span><span class="no">&lt;meta charset=&quot;utf-8&quot; /&gt;</span><span class="w"></span>
+<span class="w">        </span><span class="no">&lt;link rel=&quot;icon&quot; href=&quot;/favicon.png&quot; /&gt;</span><span class="w"></span>
+<span class="w">        </span><span class="no">&lt;title&gt;Hello, World&lt;/title&gt;</span><span class="w"></span>
+<span class="w">      </span><span class="no">&lt;/head&gt;</span><span class="w"></span>
+<span class="w">      </span><span class="no">&lt;body&gt;</span><span class="w"></span>
+<span class="w">        </span><span class="no">&lt;h1&gt;Hello, world!&lt;/h1&gt;</span><span class="w"></span>
+<span class="w">        </span><span class="no">&lt;img src=&quot;/smile.jpg&quot; /&gt;</span><span class="w"></span>
+<span class="w">      </span><span class="no">&lt;/body&gt;</span><span class="w"></span>
+<span class="w">      </span><span class="no">&lt;/html&gt;</span><span class="w"></span>
+<span class="nt">/favicon.png</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">allowSubpaths</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">  </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">contentType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">image/png</span><span class="w"></span>
+<span class="w">    </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span><span class="w"></span>
+<span class="w">      </span><span class="no">base64,</span><span class="w"></span>
+<span class="w">      </span><span class="no">iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAAAXNSR0IArs4c6QAAAARnQU1BAACx</span><span class="w"></span>
+<span class="w">      </span><span class="no">jwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACJSURBVDhP7ZPbDcAgCACdi4GYx2lYhl202mCr</span><span class="w"></span>
+<span class="w">      </span><span class="no">rc9omn54P4oxFxBUdhFb1OZbkTFGdmWKIiatiVmiNmWRBiUAYFtaEyG5xWeGEKT+KE9LFEO4RQl/</span><span class="w"></span>
+<span class="w">      </span><span class="no">ErFvt2/4lMglIiMzKXKXA6DDLBOOD+SV0f1CkXtAdMLxv6oVG5EVPZDKXl1M6BF1sUhk7QEtmish</span><span class="w"></span>
+<span class="w">      </span><span class="no">FSnrxwAAAABJRU5ErkJggg==</span><span class="w"></span>
+<span class="nt">/smile.jpg</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">allowSubpaths</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">  </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">contentType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">image/jpeg</span><span class="w"></span>
+<span class="w">    </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span><span class="w"></span>
+<span class="w">      </span><span class="no">base64,</span><span class="w"></span>
+<span class="w">      </span><span class="no">iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAACBjSFJN</span><span class="w"></span>
+<span class="w">      </span><span class="no">AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QA/wD/AP+gvaeTAAAM</span><span class="w"></span>
+<span class="w">      </span><span class="no">P0lEQVRo3u2ZeZBV1Z3HP+fc+7bu95oGmr2BFmiRTWXAYCq4BmMCYoIaEqPluE3IEGecMSlrNHGS</span><span class="w"></span>
+<span class="w">      </span><span class="no">SioZHYlURWOiiToSLDPM1CgyBcngCgpklEWCQEtDGmi6G3pf3naX85s/7n3N67YZu9HMTNV4qn51</span><span class="w"></span>
+<span class="w">      </span><span class="no">7rt17+9+v7/zO7/lPPhkfDL+fw/1cStc+9MRZTkve57yqTJKlaOwMCqHlpNK+e/Xd+WPfP/7mP9T</span><span class="w"></span>
+<span class="w">      </span><span class="no">BJ56KDXdsrldRezro7HhE0ePme2Uj5xsJRIprbAs10u76a5m03LqkGprrQX8N10n90yZlV2//B6y</span><span class="w"></span>
+<span class="w">      </span><span class="no">/2sEnlqVWBiJxh9KDauaO3vuVyLjKi+2Y/EkmHbEdIPkQDxQGlQMpVIYSdLVVsvhms2Z2prNxnUz</span><span class="w"></span>
+<span class="w">      </span><span class="no">qx038pMVf9fe+T9G4OcPJ0eXxuwnho2YfvWnL/tWfPjIKUq844h3ApE0iAAG8EF8RFwQFxEHMFiM</span><span class="w"></span>
+<span class="w">      </span><span class="no">RUem4EsFhw5scPbsfi7jOumVt387+/yfnMCvVsUvjceGvfDpK+4tmzTlclu8Q4jbCEoBOnwqJCA+</span><span class="w"></span>
+<span class="w">      </span><span class="no">Ih4QEjB5EAeRPMpx0H4Cq+Qi8n45b255ONvUtHtDQnpuHYpbDYnA0z9JfiWZGv/M1cseS5QkwDgH</span><span class="w"></span>
+<span class="w">      </span><span class="no">AhUqglJWXwJiELzAhcQJrC95xOQRyYOfC0g4ebQehxq2iP371zu7dz+33xU+e+c9XW0fK4GnVydu</span><span class="w"></span>
+<span class="w">      </span><span class="no">KCuvXrP4uscTNvWI3xD6dRRUBLBQSocqDSImBO8GgEPLi8mB5BDJodw8Kp9HOXmUZ2NXfIkjx/Z4</span><span class="w"></span>
+<span class="w">      </span><span class="no">23b89P3uSNeCb36Tng/DpQcF/uHEgmRp5bNfWPZYwuYI4p0IwcdAxVEqjtIJUCUQzkonUDoOOobS</span><span class="w"></span>
+<span class="w">      </span><span class="no">MVBRlIqgVCRYMWzEshDLAssCcviNzzNlwiz7U/PuqE45yQ0iH25g68MeeGZ1ebkViW9bfN3j5fFI</span><span class="w"></span>
+<span class="w">      </span><span class="no">C8ZrQKlYAE7FA3A6xv6DTbz2xn6qp52DHYmi0IAOEQgKoaW1hxc3/IGKEQlSSRvwUeKDMShjUL4L</span><span class="w"></span>
+<span class="w">      </span><span class="no">nfupmLjU6kp3jH19U4O8+B/O1o+0AkrLqgULV5YnkxGMewSFFbhMrzWjvLPzGAsu+RtuuvVBbr5t</span><span class="w"></span>
+<span class="w">      </span><span class="no">Fag46HjoXlGUitLV47Fo6ePcvnIdly3+J0615EBZYYjViNJBIDA55MS/cvH8r8fjiRHfeeIfY1PP</span><span class="w"></span>
+<span class="w">      </span><span class="no">msCTjyRnJcsqvzbl3C9EveyuYMGUFW5YKyQR5f7v/ZpczgHghfWv8+b2mtC9oihlAxZPrdnBgYMN</span><span class="w"></span>
+<span class="w">      </span><span class="no">AByvb+exJ/ei0IjWoBVohSgVkMifxO54m0sXrIglIrGfnTWBuLZ+sGDhN2LiHUSRDzdo6Bqh5do7</span><span class="w"></span>
+<span class="w">      </span><span class="no">cryxZWef99a/9Fa4SlYv6Zf+fU/fZzbWhBFMhXrDa6WCn81bGTtqli5NTbzsyUeSs4ZM4Nkfp0ba</span><span class="w"></span>
+<span class="w">      </span><span class="no">0WFLxoybp41zKPxA/wCmOHa8DWP6ljZ1R5sAheoFCHVHT/Z55uix1iDfnSkWGhfVsp2L5twQjaHu</span><span class="w"></span>
+<span class="w">      </span><span class="no">HjIBP+Yvn3n+tYJfB+KEsb2QpKQ31nveB+sy13UBH8GAGEDwPL+vft9gjARZu1dv0SwCbTsZO26+</span><span class="w"></span>
+<span class="w">      </span><span class="no">1jr61XXrBg44ZyQQsaPXV066OG6cPwISxHVCEYOID/hUThj+gXcrK8eAcUE8JCwnKitH9Xlm/Ljh</span><span class="w"></span>
+<span class="w">      </span><span class="no">aEtQUiBRRKYQP90eIs4pRo+Zo7vrS+YOiYARvSBVVoVxG0KwRbVNb4Z1GT0qyoUXTO/z7uevugiR</span><span class="w"></span>
+<span class="w">      </span><span class="no">XLBy4iLi8blFfb9/9aLZoTGClUQKZMxpMgDdh6macGEUXxYOmsATq1IVJamxUUsyKM8JgQegJQTe</span><span class="w"></span>
+<span class="w">      </span><span class="no">W5yZDN+97xZU6Ovz583k6kUzEMmFGTjIwitu+wyjR5UDkEomuGvFfBAfzOk8gDFg5PQ1QLaJ8rLK</span><span class="w"></span>
+<span class="w">      </span><span class="no">SMSy/2wgrPaA7mP8ScPLJzp47dHgAx5oDxEXhQ1iIWhUuOJfXFLNb9b+kD3v1nLXXy7GttJgwkIu</span><span class="w"></span>
+<span class="w">      </span><span class="no">rIPGjTH8dv19rP3NNpZdO4fqqjT4Hso3KL8A3vQFD+C0UVIxCq04d9AEfKXLYtHSoODyfLB8RLso</span><span class="w"></span>
+<span class="w">      </span><span class="no">sRAskCDCiAGlDCIey66ZyLKlU4I6x0hgXbyiUjrPzOo8P35gPmI6EeMEun0PfB8VSmFFToPJYdkJ</span><span class="w"></span>
+<span class="w">      </span><span class="no">EFKDJgBohQ4Ve+BZiNYYrdFag6gwVpjT7qWcsHwIIomE5XQA3u0t5pCgGlW+i/I9lBd+w/f7EikM</span><span class="w"></span>
+<span class="w">      </span><span class="no">MShlIWoIUUiU6XadtChs8DzwXJTr8u7eJnL5DGJyQVVpcojJIpIFk0EkFJOF8H6wmXPhnA/2je+C</span><span class="w"></span>
+<span class="w">      </span><span class="no">66FcLyDheygvmA/XZ8m7UlStxfG9LED3oAnEtDR0djfa6CTKDcArz2XOuaN4+tc1+H4BVLYvWJMJ</span><span class="w"></span>
+<span class="w">      </span><span class="no">CWUQkwnum2xYQhf6gDzKdVCuC54LrtsLfk9NmtpGm1ikCFa0nFy2DYSjgyZwy99mG7o667VYZcEm</span><span class="w"></span>
+<span class="w">      </span><span class="no">c12U4xLxulh85Qy+9w+7yeVCS/cCD8EXrsP7SLaXqHLzKCfQddowHrgeew9leP5N4fPzkkVJDYiP</span><span class="w"></span>
+<span class="w">      </span><span class="no">pqvruO8Yf9egCSiFKMnvTXc1ovTI8GMOynU4p6KTRQtn8xd3v0NdXVuvCwUrkQklW0Qii/KC7ivo</span><span class="w"></span>
+<span class="w">      </span><span class="no">wJxeXQUS2/ameWBthu/cWAVuV18wySkcP7kvi9Lbh7KJcQwvNjXuurB61NSIaT/Rm1yUMVw5V9Od</span><span class="w"></span>
+<span class="w">      </span><span class="no">nsdtf72Dm68bz1e/NIZkMhJUkwUjiBSFxnCDeoGv43kozyXd5fLs79L821t5fvXtCynnYD/zRvFL</span><span class="w"></span>
+<span class="w">      </span><span class="no">JnO8cZetu3u2D6mhWbpI13en21bOmHmjTeuO3lpIiYDvMP0cm6op5/GLtYfYsLmLU80OpRFheIkQ</span><span class="w"></span>
+<span class="w">      </span><span class="no">Eb93Y+oQrA7dxc851Na5vLAlz0P/4vB+g+KRlbOYkXw/jGpFY8RcWhxPag9v3njrfc7aIffEa1an</span><span class="w"></span>
+<span class="w">      </span><span class="no">dixe9OCCEfkDSM97YNuIZSO2DZaF2KXUtk7iwV/uo+FUFtu2iUUjVE2IMnKYIlWiiNlCJgfZnKG5</span><span class="w"></span>
+<span class="w">      </span><span class="no">Q6hv9sk7Pp7nMaEiygM3jqcqsj+onfpDO+9ufrft0cyJpnevueNbPa8NuaW85nPRw109J788bcZN</span><span class="w"></span>
+<span class="w">      </span><span class="no">Ed38+yDJiEGZwD2Un2dEoo0ll0+jtGwEDc15XF+Rzlm0dtk0ttocb7Zparc51WnRk9OIKFIlNssv</span><span class="w"></span>
+<span class="w">      </span><span class="no">H8e918YY6R8Ik16/MXI+7SrF7r1ra267p+fesz6VWLM6+dpnL7n/0vERV9OwKWzCg4YcXeioNESS</span><span class="w"></span>
+<span class="w">      </span><span class="no">eNGJ7P5jnD8c7qGuMU9P1tCT9UkmLEpjiqoxUWZMivGpiWliuTpwz3AYF0lhpv8VG17+bral+dBV</span><span class="w"></span>
+<span class="w">      </span><span class="no">d96bfeusCfzy4fg5JYnh+65f8mhJrGEDdNWEG0wjOiDR2w6iQNsQGQ6RYSgdAbHAd1B+HnJt4LSD</span><span class="w"></span>
+<span class="w">      </span><span class="no">cf67Jhym3cF7dW87u/Y+98+33NN9y0c6ldiw2etYfIVfd6qldsnUC75h6/QRcLt7I5IqRJdCGeA5</span><span class="w"></span>
+<span class="w">      </span><span class="no">qHwXKnMS1dOASp9AZZsg1wJeemB3Kbbn5Bs4lc2ZLb9/tP69fd1L39qN81EIKCD20mbv8Gcu6kim</span><span class="w"></span>
+<span class="w">      </span><span class="no">Mw1zJ81ZYetsPTgdA9Qg0reWH9Ihp4bJy2kzcTa9+oPOrW+nr3l0jekIc5Xpm90GR8AC4gXZ+Kr7</span><span class="w"></span>
+<span class="w">      </span><span class="no">9rzZTSM7uw/PmHz+120LgUz9x3PIHy2HqbdyMtNhNr36w85NW9M3r1nn1IUYVJGr+4MloIAYEA3n</span><span class="w"></span>
+<span class="w">      </span><span class="no">GBD77evuf06pasm3tm6bX1m9zI6Png/ZRvC6z/Jw34bRC/En3cC7Bze6r297suHpdd13bnzZPda3</span><span class="w"></span>
+<span class="w">      </span><span class="no">Qaa4GTeDIWCFWTrSX7Zs92qM9Oxy868s8JSOVky/0bLLpoGfB6ftTCv9QYtXXIxMXk5zLiebXvuR</span><span class="w"></span>
+<span class="w">      </span><span class="no">+87uHZv+fnXP/YeOSMfp5ntA8QcThfRAK1AspaWU3PXn8S9Pn5q4aUb1VZHzpl4ZKxs2EZ0+GriW</span><span class="w"></span>
+<span class="w">      </span><span class="no">0wZeJuhxdRQiZRAfDckqHCtJQ/0Os/PAeq/heN3Bl15xfvHyVrcGyIfinOE6H5zVDy6M2kUkov0I</span><span class="w"></span>
+<span class="w">      </span><span class="no">Fe5Fy8oo/doXY1ecf25kadmwVPX4sRd4Yyuq7fKyMbYdKcXSNp6XJZttl5b2evfYyX20tx7JnWh0</span><span class="w"></span>
+<span class="w">      </span><span class="no">tryyzdv4xg63NgTpFoF1iqQ/kSHlAd0fcOhK0QHcyx41nNIrLrFnjhtjVVWU60mJqC6zLBXLu9LT</span><span class="w"></span>
+<span class="w">      </span><span class="no">mTanmlv94/sO+gd37PTrAa9I3H7iFJHKF12f9f8DBSJ9ABfNdrhvCqKLoocq2hiFcOgXiRfO7gBk</span><span class="w"></span>
+<span class="w">      </span><span class="no">zgj8o/xHZvUDbxXd00XgdT/90i+SmAGIeCFof3DR4OP5m7UYrNUvdvfXX0ygANwMFuwn45PxJxj/</span><span class="w"></span>
+<span class="w">      </span><span class="no">BXfcuL7altp7AAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE5LTAzLTA3VDAwOjQ5OjE5KzAwOjAwn0N+</span><span class="w"></span>
+<span class="w">      </span><span class="no">1gAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxOS0wMy0wN1QwMDo0OToxOSswMDowMO4exmoAAAAASUVO</span><span class="w"></span>
+<span class="w">      </span><span class="no">RK5CYII=</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
 <h2 id="custom-statuses-and-headers">Custom statuses and headers<a class="headerlink" href="#custom-statuses-and-headers" title="Permanent link">&para;</a></h2>
 <div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1"><code>application/json</code></label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;/error&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;allowSubpaths&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
-          <span class="nt">&quot;contentType&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;{\&quot;message\&quot;: \&quot;Bad Request!\&quot;}&quot;</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;/error/403&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;allowSubpaths&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="mi">403</span><span class="p">,</span>
-          <span class="nt">&quot;contentType&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;{\&quot;message\&quot;: \&quot;Unauthorized!\&quot;}&quot;</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;/error/404&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;allowSubpaths&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span>
-          <span class="nt">&quot;contentType&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;{\&quot;message\&quot;: \&quot;Not found!\&quot;}&quot;</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;/error/500&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;allowSubpaths&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
-          <span class="nt">&quot;contentType&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;{\&quot;message\&quot;: \&quot;Internal Server Error!\&quot;}&quot;</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;/redirect-to-google&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;allowSubpaths&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="mi">307</span><span class="p">,</span>
-          <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;Location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://google.com&quot;</span>
-          <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;/error&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;allowSubpaths&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;contentType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\&quot;message\&quot;: \&quot;Bad Request!\&quot;}&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;/error/403&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;allowSubpaths&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">403</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;contentType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\&quot;message\&quot;: \&quot;Unauthorized!\&quot;}&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;/error/404&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;allowSubpaths&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">404</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;contentType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\&quot;message\&quot;: \&quot;Not found!\&quot;}&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;/error/500&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;allowSubpaths&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;contentType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\&quot;message\&quot;: \&quot;Internal Server Error!\&quot;}&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;/redirect-to-google&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;allowSubpaths&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">307</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;Location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://google.com&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </div>
 <input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2"><code>text/yaml</code></label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="nt">/error</span><span class="p">:</span>
-  <span class="nt">allowSubpaths</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="nt">default</span><span class="p">:</span>
-    <span class="nt">status</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">400</span>
-    <span class="nt">contentType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">application/json</span>
-    <span class="nt">content</span><span class="p">:</span> <span class="p p-Indicator">|-</span>
-      <span class="no">{</span>
-        <span class="no">&quot;message&quot;: &quot;Bad Request!&quot;</span>
-      <span class="no">}</span>
-<span class="nt">/error/403</span><span class="p">:</span>
-  <span class="nt">allowSubpaths</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="nt">default</span><span class="p">:</span>
-    <span class="nt">status</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">403</span>
-    <span class="nt">contentType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">application/json</span>
-    <span class="nt">content</span><span class="p">:</span> <span class="p p-Indicator">|-</span>
-      <span class="no">{</span>
-        <span class="no">&quot;message&quot;: &quot;Unauthorized!&quot;</span>
-      <span class="no">}</span>
-<span class="nt">/error/404</span><span class="p">:</span>
-  <span class="nt">allowSubpaths</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="nt">default</span><span class="p">:</span>
-    <span class="nt">status</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">404</span>
-    <span class="nt">contentType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">application/json</span>
-    <span class="nt">content</span><span class="p">:</span> <span class="p p-Indicator">|-</span>
-      <span class="no">{</span>
-        <span class="no">&quot;message&quot;: &quot;Not found!&quot;</span>
-      <span class="no">}</span>
-<span class="nt">/error/500</span><span class="p">:</span>
-  <span class="nt">allowSubpaths</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="nt">default</span><span class="p">:</span>
-    <span class="nt">status</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">500</span>
-    <span class="nt">contentType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">application/json</span>
-    <span class="nt">content</span><span class="p">:</span> <span class="p p-Indicator">|-</span>
-      <span class="no">{</span>
-        <span class="no">&quot;message&quot;: &quot;Internal Server Error!&quot;</span>
-      <span class="no">}</span>
-<span class="nt">/redirect-to-google</span><span class="p">:</span>
-  <span class="nt">allowSubpaths</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="nt">default</span><span class="p">:</span>
-    <span class="nt">status</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">307</span>
-    <span class="nt">headers</span><span class="p">:</span>
-      <span class="nt">Location</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://google.com</span>
+<div class="highlight"><pre><span></span><code><span class="nt">/error</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">allowSubpaths</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">  </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span><span class="w"></span>
+<span class="w">    </span><span class="nt">contentType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application/json</span><span class="w"></span>
+<span class="w">    </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span><span class="w"></span>
+<span class="w">      </span><span class="no">{</span><span class="w"></span>
+<span class="w">        </span><span class="no">&quot;message&quot;: &quot;Bad Request!&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="no">}</span><span class="w"></span>
+<span class="nt">/error/403</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">allowSubpaths</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">  </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">403</span><span class="w"></span>
+<span class="w">    </span><span class="nt">contentType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application/json</span><span class="w"></span>
+<span class="w">    </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span><span class="w"></span>
+<span class="w">      </span><span class="no">{</span><span class="w"></span>
+<span class="w">        </span><span class="no">&quot;message&quot;: &quot;Unauthorized!&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="no">}</span><span class="w"></span>
+<span class="nt">/error/404</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">allowSubpaths</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">  </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">404</span><span class="w"></span>
+<span class="w">    </span><span class="nt">contentType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application/json</span><span class="w"></span>
+<span class="w">    </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span><span class="w"></span>
+<span class="w">      </span><span class="no">{</span><span class="w"></span>
+<span class="w">        </span><span class="no">&quot;message&quot;: &quot;Not found!&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="no">}</span><span class="w"></span>
+<span class="nt">/error/500</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">allowSubpaths</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">  </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500</span><span class="w"></span>
+<span class="w">    </span><span class="nt">contentType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application/json</span><span class="w"></span>
+<span class="w">    </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span><span class="w"></span>
+<span class="w">      </span><span class="no">{</span><span class="w"></span>
+<span class="w">        </span><span class="no">&quot;message&quot;: &quot;Internal Server Error!&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="no">}</span><span class="w"></span>
+<span class="nt">/redirect-to-google</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">allowSubpaths</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">  </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">307</span><span class="w"></span>
+<span class="w">    </span><span class="nt">headers</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">Location</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://google.com</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
 <h2 id="method-specific-responses">Method-specific responses<a class="headerlink" href="#method-specific-responses" title="Permanent link">&para;</a></h2>
 <div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1"><code>application/json</code></label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;/endpoint&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;allowSubpaths&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;get&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
-      <span class="nt">&quot;contentType&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;{\&quot;message\&quot;: \&quot;OK\&quot;}&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;post&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="mi">201</span><span class="p">,</span>
-      <span class="nt">&quot;contentType&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;{\&quot;message\&quot;: \&quot;Created\&quot;}&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;put&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="mi">409</span><span class="p">,</span>
-      <span class="nt">&quot;contentType&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;{\&quot;message\&quot;: \&quot;Conflict\&quot;}&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;patch&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="mi">202</span><span class="p">,</span>
-      <span class="nt">&quot;contentType&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;{\&quot;message\&quot;: \&quot;Accepted\&quot;}&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;delete&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="mi">204</span><span class="p">,</span>
-      <span class="nt">&quot;contentType&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;{\&quot;message\&quot;: \&quot;No Content\&quot;}&quot;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;/endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;allowSubpaths&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;get&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;contentType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\&quot;message\&quot;: \&quot;OK\&quot;}&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;post&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">201</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;contentType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\&quot;message\&quot;: \&quot;Created\&quot;}&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;put&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">409</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;contentType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\&quot;message\&quot;: \&quot;Conflict\&quot;}&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;patch&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">202</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;contentType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\&quot;message\&quot;: \&quot;Accepted\&quot;}&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;delete&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">204</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;contentType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\&quot;message\&quot;: \&quot;No Content\&quot;}&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </div>
 <input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2"><code>text/yaml</code></label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="nt">/endpoint</span><span class="p">:</span>
-  <span class="nt">allowSubpaths</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="nt">get</span><span class="p">:</span>
-    <span class="nt">status</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">200</span>
-    <span class="nt">contentType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">application/json</span>
-    <span class="nt">content</span><span class="p">:</span> <span class="p p-Indicator">|-</span>
-      <span class="no">{</span>
-        <span class="no">&quot;message&quot;: &quot;OK&quot;</span>
-      <span class="no">}</span>
-  <span class="nt">post</span><span class="p">:</span>
-    <span class="nt">status</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">201</span>
-    <span class="nt">contentType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">application/json</span>
-    <span class="nt">content</span><span class="p">:</span> <span class="p p-Indicator">|-</span>
-      <span class="no">{</span>
-        <span class="no">&quot;message&quot;: &quot;Created&quot;</span>
-      <span class="no">}</span>
-  <span class="nt">put</span><span class="p">:</span>
-    <span class="nt">status</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">409</span>
-    <span class="nt">contentType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">application/json</span>
-    <span class="nt">content</span><span class="p">:</span> <span class="p p-Indicator">|-</span>
-      <span class="no">{</span>
-        <span class="no">&quot;message&quot;: &quot;Conflict&quot;</span>
-      <span class="no">}</span>
-  <span class="nt">patch</span><span class="p">:</span>
-    <span class="nt">status</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">202</span>
-    <span class="nt">contentType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">application/json</span>
-    <span class="nt">content</span><span class="p">:</span> <span class="p p-Indicator">|-</span>
-      <span class="no">{</span>
-        <span class="no">&quot;message&quot;: &quot;Accepted&quot;</span>
-      <span class="no">}</span>
-  <span class="nt">delete</span><span class="p">:</span>
-    <span class="nt">status</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">204</span>
-    <span class="nt">contentType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">application/json</span>
-    <span class="nt">content</span><span class="p">:</span> <span class="p p-Indicator">|-</span> 
-      <span class="no">{</span>
-        <span class="no">&quot;message&quot;: &quot;No Content&quot;</span>
-      <span class="no">}</span>
+<div class="highlight"><pre><span></span><code><span class="nt">/endpoint</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">allowSubpaths</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">  </span><span class="nt">get</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200</span><span class="w"></span>
+<span class="w">    </span><span class="nt">contentType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application/json</span><span class="w"></span>
+<span class="w">    </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span><span class="w"></span>
+<span class="w">      </span><span class="no">{</span><span class="w"></span>
+<span class="w">        </span><span class="no">&quot;message&quot;: &quot;OK&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="no">}</span><span class="w"></span>
+<span class="w">  </span><span class="nt">post</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">201</span><span class="w"></span>
+<span class="w">    </span><span class="nt">contentType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application/json</span><span class="w"></span>
+<span class="w">    </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span><span class="w"></span>
+<span class="w">      </span><span class="no">{</span><span class="w"></span>
+<span class="w">        </span><span class="no">&quot;message&quot;: &quot;Created&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="no">}</span><span class="w"></span>
+<span class="w">  </span><span class="nt">put</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">409</span><span class="w"></span>
+<span class="w">    </span><span class="nt">contentType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application/json</span><span class="w"></span>
+<span class="w">    </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span><span class="w"></span>
+<span class="w">      </span><span class="no">{</span><span class="w"></span>
+<span class="w">        </span><span class="no">&quot;message&quot;: &quot;Conflict&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="no">}</span><span class="w"></span>
+<span class="w">  </span><span class="nt">patch</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">202</span><span class="w"></span>
+<span class="w">    </span><span class="nt">contentType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application/json</span><span class="w"></span>
+<span class="w">    </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span><span class="w"></span>
+<span class="w">      </span><span class="no">{</span><span class="w"></span>
+<span class="w">        </span><span class="no">&quot;message&quot;: &quot;Accepted&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="no">}</span><span class="w"></span>
+<span class="w">  </span><span class="nt">delete</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">204</span><span class="w"></span>
+<span class="w">    </span><span class="nt">contentType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application/json</span><span class="w"></span>
+<span class="w">    </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span><span class="w"> </span>
+<span class="w">      </span><span class="no">{</span><span class="w"></span>
+<span class="w">        </span><span class="no">&quot;message&quot;: &quot;No Content&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="no">}</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
-                
-                  
-                    
 
-<hr>
-<div class="md-source-date">
+  <hr>
+<div class="md-source-file">
   <small>
     
-      Last update: 2021-10-01
+      Last update:
+      2021-10-01
     
   </small>
 </div>
-                  
-                
-              
-              
-                
-
 
               
             </article>
@@ -1069,8 +1051,7 @@
         
       </main>
       
-        
-<footer class="md-footer">
+        <footer class="md-footer">
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
@@ -1094,44 +1075,43 @@
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-          <div class="md-footer-copyright__highlight">
-            &copy; Copyright by Piotr Icikowski
-          </div>
-        
-        
-        
-      </div>
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; Copyright by Piotr Icikowski
+    </div>
+  
+  
+</div>
       
-  <div class="md-footer-social">
+        <div class="md-social">
+  
     
-      
-      
-      <a href="https://facebook.com/Icikowski" target="_blank" rel="noopener" title="Facebook" class="md-footer-social__link">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
-      </a>
     
-      
-      
-      <a href="https://linkedin.com/in/piotr-icikowski" target="_blank" rel="noopener" title="LinkedIn" class="md-footer-social__link">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
-      </a>
+    <a href="https://facebook.com/Icikowski" target="_blank" rel="noopener" title="Facebook" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+    </a>
+  
     
-      
-      
-      <a href="https://github.com/Icikowski" target="_blank" rel="noopener" title="GitHub" class="md-footer-social__link">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
-      </a>
     
-      
-      
-      <a href="mailto:piotrekicikowski@gmail.com?subject=%5BGPTS%5D%20Subject%20goes%20here..." target="_blank" rel="noopener" title="E-mail" class="md-footer-social__link">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/></svg>
-      </a>
+    <a href="https://linkedin.com/in/piotr-icikowski" target="_blank" rel="noopener" title="LinkedIn" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
     
-  </div>
-
+    
+    <a href="https://github.com/Icikowski" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    <a href="mailto:piotrekicikowski@gmail.com?subject=%5BGPTS%5D%20Subject%20goes%20here..." target="_blank" rel="noopener" title="E-mail" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/></svg>
+    </a>
+  
+</div>
+      
     </div>
   </div>
 </footer>
@@ -1140,10 +1120,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
     
     
-      <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>
+      <script src="../../assets/javascripts/bundle.1514a9a0.min.js"></script>
       
     
   </body>
