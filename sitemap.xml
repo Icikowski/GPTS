@@ -2,72 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://icikowski.github.io/GPTS/</loc>
-         <lastmod>2022-01-11</lastmod>
+         <lastmod>2022-01-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://icikowski.github.io/GPTS/changelog/</loc>
-         <lastmod>2022-01-11</lastmod>
+         <lastmod>2022-01-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://icikowski.github.io/GPTS/devplans/</loc>
-         <lastmod>2022-01-11</lastmod>
+         <lastmod>2022-01-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://icikowski.github.io/GPTS/examples/</loc>
-         <lastmod>2022-01-11</lastmod>
+         <lastmod>2022-01-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://icikowski.github.io/GPTS/examples/advanced/</loc>
-         <lastmod>2022-01-11</lastmod>
+         <lastmod>2022-01-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://icikowski.github.io/GPTS/examples/simple/</loc>
-         <lastmod>2022-01-11</lastmod>
+         <lastmod>2022-01-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://icikowski.github.io/GPTS/installation/</loc>
-         <lastmod>2022-01-11</lastmod>
+         <lastmod>2022-01-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://icikowski.github.io/GPTS/installation/docker/</loc>
-         <lastmod>2022-01-11</lastmod>
+         <lastmod>2022-01-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://icikowski.github.io/GPTS/installation/executables/</loc>
-         <lastmod>2022-01-11</lastmod>
+         <lastmod>2022-01-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://icikowski.github.io/GPTS/installation/k8s/</loc>
-         <lastmod>2022-01-11</lastmod>
+         <lastmod>2022-01-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://icikowski.github.io/GPTS/usage/</loc>
-         <lastmod>2022-01-11</lastmod>
+         <lastmod>2022-01-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://icikowski.github.io/GPTS/usage/config/</loc>
-         <lastmod>2022-01-11</lastmod>
+         <lastmod>2022-01-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://icikowski.github.io/GPTS/usage/flags/</loc>
-         <lastmod>2022-01-11</lastmod>
+         <lastmod>2022-01-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://icikowski.github.io/GPTS/usage/health/</loc>
-         <lastmod>2022-01-11</lastmod>
+         <lastmod>2022-01-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

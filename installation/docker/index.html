@@ -496,13 +496,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#verifying-the-image-signature" class="md-nav__link">
-    Verifying the image signature
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#using-docker-run-command" class="md-nav__link">
     Using docker run command
   </a>
@@ -751,21 +744,6 @@
 <p class="admonition-title">Changing default settings</p>
 <p><strong>GPTS</strong> settings are configured with environment variables. <a href="../../usage/flags/">Read more</a> about those variables and change configuration according to your needs by using <code>-e</code>/<code>--env</code> flag in <code>docker</code> command or using <code>environment</code> section of <code>docker-compose.yml</code> file.</p>
 </div>
-<h2 id="verifying-the-image-signature">Verifying the image signature<a class="headerlink" href="#verifying-the-image-signature" title="Permanent link">&para;</a></h2>
-<p>Starting from version <code>0.7.2</code>, container images are signed using the <a href="https://github.com/sigstore/cosign"><code>cosign</code></a> tool. The public key is can be downloaded from following address: <a href="../../gpts.pub"><code>https://icikowski.github.io/GPTS/gpts.pub</code></a>.</p>
-<p>In order to verify the digital signature of an image, <a href="https://docs.sigstore.dev/cosign/installation/">install the mentioned application</a> and perform the following commands:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Replace ${TAG} with desired image tag</span>
-curl -s https://icikowski.github.io/GPTS/gpts.pub -o /tmp/gpts.pub
-cosign verify --public-key /tmp/gpts.pub ghcr.io/icikowski/gpts:<span class="si">${</span><span class="nv">TAG</span><span class="si">}</span>
-</code></pre></div>
-<details class="- summary">
-<summary>Example command execution and output</summary>
-<p><div class="highlight"><pre><span></span><code>curl -s https://icikowski.github.io/GPTS/gpts.pub -o /tmp/gpts.pub
-cosign verify --public-key /tmp/gpts.pub ghcr.io/icikowski/gpts:0.7.2
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>To be added
-</code></pre></div></p>
-</details>
 <h2 id="using-docker-run-command">Using <strong>docker run</strong> command<a class="headerlink" href="#using-docker-run-command" title="Permanent link">&para;</a></h2>
 <p>You can use one of following commands in order to get the application up and running:</p>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Expose only test service</label><div class="tabbed-content">
@@ -878,7 +856,7 @@ Status: Downloaded newer image for ghcr.io/icikowski/gpts:0.6.2
   <small>
     
       Last update:
-      2022-01-11
+      2021-11-09
     
   </small>
 </div>
