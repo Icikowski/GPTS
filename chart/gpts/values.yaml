@@ -1,24 +1,27 @@
-image:
-  repository: ghcr.io/icikowski/gpts
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
+overrides:
+  name: ""
+  fullname: ""
+
+  # Overrides the image repository whose default is "ghcr.io"
+  repository: ""
+  # Overrides the image name whose default is "icikowski/gpts"
+  image: ""
+  # Overrides the image tag whose default is the chart appVersion
   tag: ""
 
-imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
-
+# This section allows to configure the GPTS application. Please refer to the
+# documentation for more information about available values:
+# https://icikowski.github.io/GPTS/installation/k8s/#changing-configuration-values-in-chart
 gpts:
   servicePort: 8080
   healthchecksPort: 8081
   defaultConfigOnStartup: false
   logLevel: info
-  # Available log levels: 
-  # debug, info, warn, error, fatal, panic, trace
-  
-  # Enabling pretty log can make the logs more user-friendly
-  # but is NOT RECOMMENDED as it impacts the performance a lot
   prettyLog: false
+
+image:
+  pullPolicy: IfNotPresent
+  pullSecrets: []
 
 service:
   type: ClusterIP
