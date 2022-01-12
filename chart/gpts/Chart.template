@@ -1,7 +1,17 @@
 apiVersion: v2
 name: gpts
 description: GPTS - General Purpose Test Service
+keywords:
+  - golang
+  - testing tools
+  - test service
 type: application
 version: [[GPTS_VERSION]]
 appVersion: "[[GPTS_VERSION]]"
+home: https://icikowski.github.io/GPTS
 icon: https://github.com/Icikowski/GPTS/raw/master/.assets/helm_icon.png
+sources:
+  - http://github.com/Icikowski/GPTS
+maintainers:
+  - name: Piotr Icikowski
+    url: https://icikowski.pl
