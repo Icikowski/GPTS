@@ -50,13 +50,13 @@ func TestPrepareServer(t *testing.T) {
 			method:         http.MethodGet,
 			path:           "/",
 			expectedStatus: http.StatusOK,
-			expectedKeys:   &[]string{"host", "path", "method", "headers"},
+			expectedKeys:   &[]string{"host", "path", "method", "headers", "queries"},
 		},
 		"get default endpoint on other path": {
 			method:         http.MethodGet,
 			path:           "/a/b/c",
 			expectedStatus: http.StatusOK,
-			expectedKeys:   &[]string{"host", "path", "method", "headers"},
+			expectedKeys:   &[]string{"host", "path", "method", "headers", "queries"},
 		},
 		"get on multiple-methods route": {
 			method:         http.MethodGet,
