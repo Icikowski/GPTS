@@ -6,7 +6,8 @@ There are four configurable **GPTS** settings which can be controlled using list
 |-|-|-|
 | [Service port](#service-port) | `--service-port` | `GPTS_SERVICE_PORT` |
 | [Healthchecks port](#healthchecks-port) | `--healthchecks-port` | `GPTS_HEALTHCHECKS_PORT` |
-| [Default configuration on startup](#default-configuration-on-startup)  | `--default-config` | `GPTS_DEFAULT_CONFIG_ON_STARTUP` |
+| [Configuration endpoint](#configuration-endpoint) | `--config-endpoint` | `GPTS_CONFIG_ENDPOINT` |
+| [Default configuration on startup](#default-configuration-on-startup) | `--default-config` | `GPTS_DEFAULT_CONFIG_ON_STARTUP` |
 | [Log level](#log-level) | `--log-level` | `GPTS_LOG_LEVEL` |
 | [Pretty logging](#pretty-logging) | `--pretty-log` | `GPTS_PRETTY_LOG` |
 
@@ -28,6 +29,14 @@ There are four configurable **GPTS** settings which can be controlled using list
 **Allowed values**: valid port number
 
 **Default value**: `8081`
+
+## Configuration endpoint
+
+**Description**: Defines the address of the configuration endpoint.
+
+**Allowed values**: valid path, must start with `/`
+
+**Default value**: `/config`
 
 ## Default configuration on startup
 
@@ -76,7 +85,7 @@ There are four configurable **GPTS** settings which can be controlled using list
 
 ## Pretty logging
 
-**Description**: Enables/Disables pretty log format (may impact performance)
+**Description**: Enables/Disables pretty log format. When enabled, log is printed in a human-readable, colored format instead of JSON. This is useful for debugging purposes, but it is not recommended for production as it can impact performance.
 
 **Allowed values**: `false` or `true`
 

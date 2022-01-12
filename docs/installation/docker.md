@@ -51,7 +51,7 @@ You can use one of following commands in order to get the application up and run
     
     ???- summary "Example command execution & output"
         ```bash
-        docker run --rm -it -p 80:80 -p 8000:8000 ghcr.io/icikowski/gpts:0.1.0
+        docker run --rm -it -p 80:80 -p 8000:8000 ghcr.io/icikowski/gpts:0.6.2
         ```
         ```
         Unable to find image 'ghcr.io/icikowski/gpts:0.6.2' locally
@@ -89,6 +89,7 @@ services:
     # environment:
     #  - GPTS_SERVICE_PORT=80
     #  - GPTS_HEALTHCHECKS_PORT=8081
+    #  - GPTS_CONFIG_ENDPOINT=/config
     #  - GPTS_DEFAULT_CONFIG_ON_STARTUP=false
     #  - GPTS_LOG_LEVEL=info
     #  - GPTS_PRETTY_LOG=false
