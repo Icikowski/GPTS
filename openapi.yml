@@ -3,7 +3,7 @@ openapi: "3.0.3"
 info:
   title: GPTS - General Purpose Test Service
   description: Description of available endpoints in application
-  version: "0.5.0"
+  version: "0.7.2"
 
 externalDocs:
   description: GPTS documentation
@@ -92,9 +92,12 @@ components:
           description: Headers of incoming requests
           type: object
           additionalProperties:
-            type: array
-            items:
-              type: string
+            type: string
+        queries:
+          description: Queries of incoming request
+          type: object
+          additionalProperties:
+            type: string
       required:
         - host
         - path
@@ -261,8 +264,9 @@ paths:
                 method: GET
                 headers:
                   "X-Some-Sent-Header": "some value"
+                queries: {}
 tags:
   - name: Configuration
-    description: Always available configuration management endpoints
+    description: Always available configuration management endpoints; path may be changed to something different than "/config" using GPTS' configuration values
   - name: Defaults
     description: Responses for routes without configuration
