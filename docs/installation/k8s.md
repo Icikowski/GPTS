@@ -28,7 +28,7 @@ After repository is successfully added, you can check for available versions of 
     ???- summary "Example command output"
         ```
         NAME            CHART VERSION   APP VERSION     DESCRIPTION
-        icikowski/gpts  0.6.2           0.6.2           GPTS - General Purpose Test Service
+        icikowski/gpts  0.7.2           0.7.2           GPTS - General Purpose Test Service
         ```
 === "All versions"
     ```bash
@@ -37,11 +37,9 @@ After repository is successfully added, you can check for available versions of 
     ???- summary "Example command output"
         ```
         NAME            CHART VERSION   APP VERSION     DESCRIPTION
-        icikowski/gpts  0.6.2           0.6.2           GPTS - General Purpose Test Service
-        icikowski/gpts  0.6.1           0.6.1           GPTS - General Purpose Test Service
-        icikowski/gpts  0.6.0           0.6.0           GPTS - General Purpose Test Service
-        icikowski/gpts  0.5.1           0.5.1           GPTS - General Purpose Test Service
-        icikowski/gpts  0.5.0           0.5.0           GPTS - General Purpose Test Service
+        icikowski/gpts  0.7.2           0.7.2           GPTS - General Purpose Test Service
+        icikowski/gpts  0.7.1           0.7.1           GPTS - General Purpose Test Service
+        icikowski/gpts  0.7.0           0.7.0           GPTS - General Purpose Test Service
         ```
 
 In order to fetch chart, execute one of following commands:
@@ -56,13 +54,13 @@ In order to fetch chart, execute one of following commands:
     ```
 === "Fetch particular version as .tgz"
     ```bash
-    # For example: chart version 0.6.0
-    helm fetch icikowski/gpts --version 0.6.0
+    # For example: chart version 0.7.2
+    helm fetch icikowski/gpts --version 0.7.2
     ```
 === "Fetch particular version and unpack it"
     ```bash
-    # For example: chart version 0.6.0
-    helm fetch icikowski/gpts --version 0.6.0 --untar
+    # For example: chart version 0.7.2
+    helm fetch icikowski/gpts --version 0.7.2 --untar
     ```
 
 !!! info "Downloading chart directly"
@@ -72,26 +70,23 @@ In order to fetch chart, execute one of following commands:
 
 **GPTS** settings are configured with environment variables [described here](../usage/flags.md) and can be set using following values:
 
-| Chart value | Environment variable | Default value |
-|-|-|-|
-| `gpts.servicePort` | `GPTS_SERVICE_PORT` | `8080` |
-| `gpts.healthchecksPort` | `GPTS_HEALTHCHECKS_PORT` | `8081` |
-| `gpts.defaultConfigOnStartup` | `GPTS_DEFAULT_CONFIG_ON_STARTUP` | `false` |
-| `gpts.logLevel` | `GPTS_LOG_LEVEL` | `info` |
-| `gpts.prettyLog` | `GPTS_PRETTY_LOG` | `false` |
+| Option name | Chart value | Environment variable | Default value |
+|-|-|-|-|
+| [Service port](../usage/flags.md#service-port) | `gpts.servicePort` | `GPTS_SERVICE_PORT` | `8080` |
+| [Healthchecks port](../usage/flags.md#healthchecks-port) | `gpts.healthchecksPort` | `GPTS_HEALTHCHECKS_PORT` | `8081` |
+| [Configuration endpoint](../usage/flags.md#configuration-endpoint) | `gpts.configEndpoint` | `GPTS_CONFIG_ENDPOINT` | `/config` |
+| [Default configuration on startup](../usage/flags.md#default-configuration-on-startup) | `gpts.defaultConfigOnStartup` | `GPTS_DEFAULT_CONFIG_ON_STARTUP` | `false` |
+| [Log level](../usage/flags.md#log-level) | `gpts.logLevel` | `GPTS_LOG_LEVEL` | `info` |
+| [Pretty logging](../usage/flags.md#pretty-logging) | `gpts.prettyLog` | `GPTS_PRETTY_LOG` | `false` |
 
 ???- example "Example contents of _gpts_ section in values.yaml"
-    ```yaml linenums="11"
+    ```yaml linenums="15"
     gpts:
       servicePort: 8080
       healthchecksPort: 8081
+      configEndpoint: /config
       defaultConfigOnStartup: false
       logLevel: info
-      # Available log levels: 
-      # debug, info, warn, error, fatal, panic, trace
-
-      # Enabling pretty log can make the logs more user-friendly
-      # but is NOT RECOMMENDED as it impacts the performance a lot
       prettyLog: false
     ```
 
@@ -99,7 +94,7 @@ In order to configure chart before deployment (eg. enable ingress, change servic
 
 ???- example "Example: enabling ingress for NGINX ingress class"
     === "Default values"
-        ```yaml linenums="23" hl_lines="2 3 4 7"
+        ```yaml linenums="31" hl_lines="2 3 4 7"
         ingress:
           enabled: false
           annotations: {}
@@ -115,7 +110,7 @@ In order to configure chart before deployment (eg. enable ingress, change servic
           #    - example.com
         ```
     === "Modified values"
-        ```yaml linenums="23" hl_lines="2 3 4 7"
+        ```yaml linenums="31" hl_lines="2 3 4 7"
         ingress:
           enabled: true
           annotations:
@@ -184,37 +179,18 @@ Application is up and running now! You can check it by cURLing the ingress addre
         "path": "/",
         "method": "GET",
         "headers": {
-            "Accept": [
-                "*/*"
-            ],
-            "User-Agent": [
-                "curl/7.79.1"
-            ],
-            "X-Forwarded-For": [
-                "192.168.65.3"
-            ],
-            "X-Forwarded-Host": [
-                "test0.host.net"
-            ],
-            "X-Forwarded-Port": [
-                "80"
-            ],
-            "X-Forwarded-Proto": [
-                "http"
-            ],
-            "X-Forwarded-Scheme": [
-                "http"
-            ],
-            "X-Real-Ip": [
-                "192.168.65.3"
-            ],
-            "X-Request-Id": [
-                "b08e79506d17797a0f890fea0579978e"
-            ],
-            "X-Scheme": [
-                "http"
-            ]
-        }
+            "Accept": "*/*",
+            "User-Agent": "curl/7.79.1",
+            "X-Forwarded-For": "192.168.65.3",
+            "X-Forwarded-Host": "test0.host.net",
+            "X-Forwarded-Port": "80",
+            "X-Forwarded-Proto": "http",
+            "X-Forwarded-Scheme": "http",
+            "X-Real-Ip": "192.168.65.3",
+            "X-Request-Id": "b08e79506d17797a0f890fea0579978e",
+            "X-Scheme": "http"
+        },
+        "queries": {}
     }
     ```
 
@@ -227,24 +203,15 @@ Application is up and running now! You can check it by cURLing the ingress addre
     path: /
     method: GET
     headers:
-      Accept:
-        - text/yaml
-      User-Agent:
-        - curl/7.79.1
-      X-Forwarded-For:
-        - 192.168.65.3
-      X-Forwarded-Host:
-        - test0.host.net
-      X-Forwarded-Port:
-        - "80"
-      X-Forwarded-Proto:
-        - http
-      X-Forwarded-Scheme:
-        - http
-      X-Real-Ip:
-        - 192.168.65.3
-      X-Request-Id:
-        - be588ef84375e7207cdf8c1c9acfe731
-      X-Scheme:
-        - http
+      Accept: text/yaml
+      User-Agent: curl/7.79.1
+      X-Forwarded-For: 192.168.65.3
+      X-Forwarded-Host: test0.host.net
+      X-Forwarded-Port: "80"
+      X-Forwarded-Proto: http
+      X-Forwarded-Scheme: http
+      X-Real-Ip: 192.168.65.3
+      X-Request-Id: be588ef84375e7207cdf8c1c9acfe731
+      X-Scheme: http
+    queries: {}
     ```

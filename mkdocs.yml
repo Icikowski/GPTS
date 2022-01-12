@@ -21,6 +21,7 @@ nav:
     - usage/index.md
     - Flags & environment variables: usage/flags.md
     - Configuring endpoints: usage/config.md
+    - Default response: usage/default.md
     - Liveness & readiness probes: usage/health.md
   - Examples:
     - examples/index.md
@@ -98,6 +99,8 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tabbed
