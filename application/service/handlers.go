@@ -121,11 +121,22 @@ func getDefaultHandler(log zerolog.Logger) http.Handler {
 			).
 			Logger()
 
+		headers := map[string]string{}
+		for key, value := range r.Header {
+			headers[key] = strings.Join(value, ",")
+		}
+
+		queries := map[string]string{}
+		for key, value := range r.URL.Query() {
+			queries[key] = strings.Join(value, ",")
+		}
+
 		response := defaultResponse{
 			Host:    r.Host,
 			Path:    r.URL.Path,
 			Method:  r.Method,
-			Headers: r.Header,
+			Headers: headers,
+			Queries: queries,
 		}
 
 		mediaType := r.Header.Get("Accept")
