@@ -516,6 +516,8 @@
         
           
         
+          
+        
       
       
         
@@ -592,6 +594,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configuration-endpoint" class="md-nav__link">
+    Configuration endpoint
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#default-configuration-on-startup" class="md-nav__link">
     Default configuration on startup
   </a>
@@ -629,6 +638,20 @@
     <li class="md-nav__item">
       <a href="../config/" class="md-nav__link">
         Configuring endpoints
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../default/" class="md-nav__link">
+        Default response
       </a>
     </li>
   
@@ -770,6 +793,11 @@
 <td><code>GPTS_HEALTHCHECKS_PORT</code></td>
 </tr>
 <tr>
+<td><a href="#configuration-endpoint">Configuration endpoint</a></td>
+<td><code>--config-endpoint</code></td>
+<td><code>GPTS_CONFIG_ENDPOINT</code></td>
+</tr>
+<tr>
 <td><a href="#default-configuration-on-startup">Default configuration on startup</a></td>
 <td><code>--default-config</code></td>
 <td><code>GPTS_DEFAULT_CONFIG_ON_STARTUP</code></td>
@@ -794,13 +822,19 @@
 <p><strong>Description</strong>: Defines the port on which health endpoints will be exposed.</p>
 <p><strong>Allowed values</strong>: valid port number</p>
 <p><strong>Default value</strong>: <code>8081</code></p>
+<h2 id="configuration-endpoint">Configuration endpoint<a class="headerlink" href="#configuration-endpoint" title="Permanent link">&para;</a></h2>
+<p><strong>Description</strong>: Defines the address of the configuration endpoint.</p>
+<p><strong>Allowed values</strong>: valid path, must start with <code>/</code></p>
+<p><strong>Default value</strong>: <code>/config</code></p>
 <h2 id="default-configuration-on-startup">Default configuration on startup<a class="headerlink" href="#default-configuration-on-startup" title="Permanent link">&para;</a></h2>
 <p><strong>Description</strong>: Determines whether the default configuration (see below) should be loaded or not on application start.</p>
 <p><strong>Allowed values</strong>: <code>false</code> or <code>true</code></p>
 <p><strong>Default value</strong>: <code>false</code></p>
 <details class="- example">
 <summary>Default configuration contents</summary>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">JSON</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">JSON</label><label for="__tabbed_1_2">YAML</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;/hello&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;allowSubpaths&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
@@ -816,7 +850,7 @@
 <span class="p">}</span><span class="w">    </span>
 </code></pre></div>
 </div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">YAML</label><div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nt">/hello</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">allowSubpaths</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 <span class="w">  </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
@@ -828,13 +862,14 @@
 </code></pre></div>
 </div>
 </div>
+</div>
 </details>
 <h2 id="log-level">Log level<a class="headerlink" href="#log-level" title="Permanent link">&para;</a></h2>
 <p><strong>Description</strong>: Defines the desired log level in accordance to <a href="https://github.com/rs/zerolog#leveled-logging"><code>zerolog</code>'s log levels</a>.</p>
 <p><strong>Allowed values</strong>: <code>debug</code>, <code>info</code>, <code>warn</code>, <code>error</code>, <code>fatal</code>, <code>panic</code>, <code>trace</code></p>
 <p><strong>Default value</strong>: <code>info</code></p>
 <h2 id="pretty-logging">Pretty logging<a class="headerlink" href="#pretty-logging" title="Permanent link">&para;</a></h2>
-<p><strong>Description</strong>: Enables/Disables pretty log format (may impact performance)</p>
+<p><strong>Description</strong>: Enables/Disables pretty log format. When enabled, log is printed in a human-readable, colored format instead of JSON. This is useful for debugging purposes, but it is not recommended for production as it can impact performance.</p>
 <p><strong>Allowed values</strong>: <code>false</code> or <code>true</code></p>
 <p><strong>Default value</strong>: <code>false</code></p>
 <div class="footnote">
@@ -851,7 +886,7 @@
   <small>
     
       Last update:
-      2021-11-17
+      2022-01-12
     
   </small>
 </div>

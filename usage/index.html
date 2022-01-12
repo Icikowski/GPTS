@@ -516,6 +516,8 @@
         
           
         
+          
+        
       
       
         
@@ -560,6 +562,20 @@
     <li class="md-nav__item">
       <a href="config/" class="md-nav__link">
         Configuring endpoints
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="default/" class="md-nav__link">
+        Default response
       </a>
     </li>
   
@@ -681,7 +697,7 @@
 
 <h1 id="user-guide">User guide<a class="headerlink" href="#user-guide" title="Permanent link">&para;</a></h1>
 <p><strong>GPTS</strong> has relatively simple configuration, which can be controlled using <a href="flags/">flags and environment variables</a>.</p>
-<p>The process of <a href="config/">fetching and applying new configuration</a> consists of sending proper <code>GET</code> and <code>POST</code> requests to always available <code>/config</code> endpoint.</p>
+<p>The process of <a href="config/">fetching and applying new configuration</a> consists of sending proper <code>GET</code> and <code>POST</code> requests to always available <code>/config</code> endpoint. In case of sending request for unconfigured route, the <a href="default/">default response</a> will be used.</p>
 <p>Moreover, it is possible to access <a href="health/">liveness &amp; readiness probes</a> in order to check whether the application is working correctly.</p>
 
   <hr>
@@ -689,7 +705,7 @@
   <small>
     
       Last update:
-      2021-11-09
+      2022-01-12
     
   </small>
 </div>

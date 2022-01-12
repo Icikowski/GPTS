@@ -516,6 +516,8 @@
         
           
         
+          
+        
       
       
         
@@ -616,6 +618,20 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../default/" class="md-nav__link">
+        Default response
+      </a>
     </li>
   
 
@@ -860,7 +876,9 @@
 </div>
 <h2 id="fetching-current-configuration">Fetching current configuration<a class="headerlink" href="#fetching-current-configuration" title="Permanent link">&para;</a></h2>
 <p>In order to fetch current running configuration, <code>GET</code> request has to be made for <code>/config</code> endpoint.</p>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">JSON</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">JSON</label><label for="__tabbed_1_2">YAML</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Change ${GPTS} to proper GPTS service URL</span>
 curl <span class="si">${</span><span class="nv">GPTS</span><span class="si">}</span>/config
 </code></pre></div>
@@ -884,7 +902,7 @@ curl <span class="si">${</span><span class="nv">GPTS</span><span class="si">}</s
 </code></pre></div></p>
 </details>
 </div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">YAML</label><div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Change ${GPTS} to proper GPTS service URL</span>
 curl <span class="si">${</span><span class="nv">GPTS</span><span class="si">}</span>/config -H <span class="s2">&quot;Accept: text/yaml&quot;</span>
 </code></pre></div>
@@ -904,9 +922,12 @@ curl <span class="si">${</span><span class="nv">GPTS</span><span class="si">}</s
 </details>
 </div>
 </div>
+</div>
 <h2 id="applying-new-configuration">Applying new configuration<a class="headerlink" href="#applying-new-configuration" title="Permanent link">&para;</a></h2>
 <p>In order to apply new configuration, <code>POST</code> request has to be made for <code>/config</code> endpoint with proper request body.</p>
-<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">JSON</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">JSON</label><label for="__tabbed_2_2">YAML</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X POST http://localhost/config -H <span class="s1">&#39;Content-Type: application/json&#39;</span> --data-binary @- <span class="s">&lt;&lt;EOF</span>
 <span class="s">{</span>
 <span class="s">    // Content goes here...</span>
@@ -929,7 +950,7 @@ curl <span class="si">${</span><span class="nv">GPTS</span><span class="si">}</s
 </code></pre></div></p>
 </details>
 </div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">YAML</label><div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X POST http://localhost/config -H <span class="s1">&#39;Content-Type: text/yaml&#39;</span> --data-binary @- <span class="s">&lt;&lt;EOF</span>
 <span class="s"># Content goes here</span>
 <span class="s">EOF</span>
@@ -945,6 +966,7 @@ curl <span class="si">${</span><span class="nv">GPTS</span><span class="si">}</s
 <div class="highlight"><pre><span></span><code>202
 </code></pre></div></p>
 </details>
+</div>
 </div>
 </div>
 
@@ -991,13 +1013,13 @@ curl <span class="si">${</span><span class="nv">GPTS</span><span class="si">}</s
       
       
         
-        <a href="../health/" class="md-footer__link md-footer__link--next" aria-label="Next: Liveness &amp; readiness probes" rel="next">
+        <a href="../default/" class="md-footer__link md-footer__link--next" aria-label="Next: Default response" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Liveness & readiness probes
+              Default response
             </div>
           </div>
           <div class="md-footer__button md-icon">

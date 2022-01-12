@@ -514,6 +514,8 @@
         
           
         
+          
+        
       
       
         
@@ -558,6 +560,20 @@
     <li class="md-nav__item">
       <a href="../../usage/config/" class="md-nav__link">
         Configuring endpoints
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/default/" class="md-nav__link">
+        Default response
       </a>
     </li>
   
@@ -729,7 +745,9 @@
 
 <h1 id="simple-gpts-configuration-examples">Simple <strong>GPTS</strong> configuration examples<a class="headerlink" href="#simple-gpts-configuration-examples" title="Permanent link">&para;</a></h1>
 <h2 id="single-json-response-on-every-uri">Single JSON response on every URI<a class="headerlink" href="#single-json-response-on-every-uri" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1"><code>application/json</code></label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><code>application/json</code></label><label for="__tabbed_1_2"><code>text/yaml</code></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;/&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;allowSubpaths&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
@@ -741,7 +759,7 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2"><code>text/yaml</code></label><div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nt">/</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">allowSubpaths</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 <span class="w">  </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
@@ -750,8 +768,11 @@
 </code></pre></div>
 </div>
 </div>
+</div>
 <h2 id="simple-html-page">Simple HTML page<a class="headerlink" href="#simple-html-page" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1"><code>application/json</code></label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1"><code>application/json</code></label><label for="__tabbed_2_2"><code>text/yaml</code></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;/&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;allowSubpaths&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
@@ -777,7 +798,7 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2"><code>text/yaml</code></label><div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nt">/</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">allowSubpaths</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 <span class="w">  </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
@@ -837,6 +858,7 @@
 <span class="w">        </span><span class="no">&lt;/body&gt;</span><span class="w"></span>
 <span class="w">      </span><span class="no">&lt;/html&gt;</span><span class="w"></span>
 </code></pre></div>
+</div>
 </div>
 </div>
 

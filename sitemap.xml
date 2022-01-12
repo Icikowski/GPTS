@@ -61,6 +61,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://icikowski.github.io/GPTS/usage/default/</loc>
+         <lastmod>2022-01-12</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://icikowski.github.io/GPTS/usage/flags/</loc>
          <lastmod>2022-01-12</lastmod>
          <changefreq>daily</changefreq>

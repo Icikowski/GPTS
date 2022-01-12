@@ -578,6 +578,8 @@
         
           
         
+          
+        
       
       
         
@@ -622,6 +624,20 @@
     <li class="md-nav__item">
       <a href="../../usage/config/" class="md-nav__link">
         Configuring endpoints
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/default/" class="md-nav__link">
+        Default response
       </a>
     </li>
   
@@ -759,49 +775,53 @@ helm repo update
 </code></pre></div>
 <h2 id="fetching-chart-from-repository">Fetching chart from repository<a class="headerlink" href="#fetching-chart-from-repository" title="Permanent link">&para;</a></h2>
 <p>After repository is successfully added, you can check for available versions of <code>gpts</code> chart:</p>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Latest version</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Latest version</label><label for="__tabbed_1_2">All versions</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>helm search repo gpts
 </code></pre></div>
 <details class="- summary">
 <summary>Example command output</summary>
 <div class="highlight"><pre><span></span><code>NAME            CHART VERSION   APP VERSION     DESCRIPTION
-icikowski/gpts  0.6.2           0.6.2           GPTS - General Purpose Test Service
+icikowski/gpts  0.7.2           0.7.2           GPTS - General Purpose Test Service
 </code></pre></div>
 </details>
 </div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">All versions</label><div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>helm search repo gpts -l
 </code></pre></div>
 <details class="- summary">
 <summary>Example command output</summary>
 <div class="highlight"><pre><span></span><code>NAME            CHART VERSION   APP VERSION     DESCRIPTION
-icikowski/gpts  0.6.2           0.6.2           GPTS - General Purpose Test Service
-icikowski/gpts  0.6.1           0.6.1           GPTS - General Purpose Test Service
-icikowski/gpts  0.6.0           0.6.0           GPTS - General Purpose Test Service
-icikowski/gpts  0.5.1           0.5.1           GPTS - General Purpose Test Service
-icikowski/gpts  0.5.0           0.5.0           GPTS - General Purpose Test Service
+icikowski/gpts  0.7.2           0.7.2           GPTS - General Purpose Test Service
+icikowski/gpts  0.7.1           0.7.1           GPTS - General Purpose Test Service
+icikowski/gpts  0.7.0           0.7.0           GPTS - General Purpose Test Service
 </code></pre></div>
 </details>
 </div>
 </div>
+</div>
 <p>In order to fetch chart, execute one of following commands:</p>
-<div class="tabbed-set" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Fetch latest as .tgz</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Fetch latest as .tgz</label><label for="__tabbed_2_2">Fetch latest and unpack it</label><label for="__tabbed_2_3">Fetch particular version as .tgz</label><label for="__tabbed_2_4">Fetch particular version and unpack it</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>helm fetch icikowski/gpts
 </code></pre></div>
 </div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Fetch latest and unpack it</label><div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>helm fetch icikowski/gpts --untar
 </code></pre></div>
 </div>
-<input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><label for="__tabbed_2_3">Fetch particular version as .tgz</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="c1"># For example: chart version 0.6.0</span>
-helm fetch icikowski/gpts --version <span class="m">0</span>.6.0
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># For example: chart version 0.7.2</span>
+helm fetch icikowski/gpts --version <span class="m">0</span>.7.2
 </code></pre></div>
 </div>
-<input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><label for="__tabbed_2_4">Fetch particular version and unpack it</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="c1"># For example: chart version 0.6.0</span>
-helm fetch icikowski/gpts --version <span class="m">0</span>.6.0 --untar
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># For example: chart version 0.7.2</span>
+helm fetch icikowski/gpts --version <span class="m">0</span>.7.2 --untar
 </code></pre></div>
+</div>
 </div>
 </div>
 <div class="admonition info">
@@ -813,6 +833,7 @@ helm fetch icikowski/gpts --version <span class="m">0</span>.6.0 --untar
 <table>
 <thead>
 <tr>
+<th>Option name</th>
 <th>Chart value</th>
 <th>Environment variable</th>
 <th>Default value</th>
@@ -820,26 +841,37 @@ helm fetch icikowski/gpts --version <span class="m">0</span>.6.0 --untar
 </thead>
 <tbody>
 <tr>
+<td><a href="../../usage/flags/#service-port">Service port</a></td>
 <td><code>gpts.servicePort</code></td>
 <td><code>GPTS_SERVICE_PORT</code></td>
 <td><code>8080</code></td>
 </tr>
 <tr>
+<td><a href="../../usage/flags/#healthchecks-port">Healthchecks port</a></td>
 <td><code>gpts.healthchecksPort</code></td>
 <td><code>GPTS_HEALTHCHECKS_PORT</code></td>
 <td><code>8081</code></td>
 </tr>
 <tr>
+<td><a href="../../usage/flags/#configuration-endpoint">Configuration endpoint</a></td>
+<td><code>gpts.configEndpoint</code></td>
+<td><code>GPTS_CONFIG_ENDPOINT</code></td>
+<td><code>/config</code></td>
+</tr>
+<tr>
+<td><a href="../../usage/flags/#default-configuration-on-startup">Default configuration on startup</a></td>
 <td><code>gpts.defaultConfigOnStartup</code></td>
 <td><code>GPTS_DEFAULT_CONFIG_ON_STARTUP</code></td>
 <td><code>false</code></td>
 </tr>
 <tr>
+<td><a href="../../usage/flags/#log-level">Log level</a></td>
 <td><code>gpts.logLevel</code></td>
 <td><code>GPTS_LOG_LEVEL</code></td>
 <td><code>info</code></td>
 </tr>
 <tr>
+<td><a href="../../usage/flags/#pretty-logging">Pretty logging</a></td>
 <td><code>gpts.prettyLog</code></td>
 <td><code>GPTS_PRETTY_LOG</code></td>
 <td><code>false</code></td>
@@ -848,11 +880,7 @@ helm fetch icikowski/gpts --version <span class="m">0</span>.6.0 --untar
 </table>
 <details class="- example">
 <summary>Example contents of <em>gpts</em> section in values.yaml</summary>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
@@ -861,13 +889,9 @@ helm fetch icikowski/gpts --version <span class="m">0</span>.6.0 --untar
 <span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">gpts</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">servicePort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span><span class="w"></span>
 <span class="w">  </span><span class="nt">healthchecksPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8081</span><span class="w"></span>
+<span class="w">  </span><span class="nt">configEndpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/config</span><span class="w"></span>
 <span class="w">  </span><span class="nt">defaultConfigOnStartup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
 <span class="w">  </span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">info</span><span class="w"></span>
-<span class="w">  </span><span class="c1"># Available log levels: </span><span class="w"></span>
-<span class="w">  </span><span class="c1"># debug, info, warn, error, fatal, panic, trace</span><span class="w"></span>
-
-<span class="w">  </span><span class="c1"># Enabling pretty log can make the logs more user-friendly</span><span class="w"></span>
-<span class="w">  </span><span class="c1"># but is NOT RECOMMENDED as it impacts the performance a lot</span><span class="w"></span>
 <span class="w">  </span><span class="nt">prettyLog</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
@@ -875,20 +899,22 @@ helm fetch icikowski/gpts --version <span class="m">0</span>.6.0 --untar
 <p>In order to configure chart before deployment (eg. enable ingress, change service type), you need to change values in <code>values.yaml</code> file inside chart's directory.</p>
 <details class="- example">
 <summary>Example: enabling ingress for NGINX ingress class</summary>
-<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Default values</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Default values</label><label for="__tabbed_3_2">Modified values</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span>
 <span class="normal">34</span>
-<span class="normal">35</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">ingress</span><span class="p">:</span><span class="w"></span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">ingress</span><span class="p">:</span><span class="w"></span>
 <span class="hll"><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
 </span><span class="hll"><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w"></span>
 </span><span class="hll"><span class="w">    </span><span class="c1"># kubernetes.io/ingress.class: nginx</span><span class="w"></span>
@@ -904,20 +930,20 @@ helm fetch icikowski/gpts --version <span class="m">0</span>.6.0 --untar
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Modified values</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
+<div class="tabbed-block">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span>
 <span class="normal">34</span>
-<span class="normal">35</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">ingress</span><span class="p">:</span><span class="w"></span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">ingress</span><span class="p">:</span><span class="w"></span>
 <span class="hll"><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 </span><span class="hll"><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span><span class="w"></span>
 </span><span class="hll"><span class="w">    </span><span class="nt">kubernetes.io/ingress.class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span><span class="w"></span>
@@ -932,6 +958,7 @@ helm fetch icikowski/gpts --version <span class="m">0</span>.6.0 --untar
 <span class="w">  </span><span class="c1">#    - chart-example.local</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
+</div>
 </div>
 </div>
 </details>
@@ -977,37 +1004,18 @@ Get the application URL by running these commands:
 <span class="w">    </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GET&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;Accept&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;*/*&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">],</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;User-Agent&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;curl/7.79.1&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">],</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;X-Forwarded-For&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;192.168.65.3&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">],</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;X-Forwarded-Host&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;test0.host.net&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">],</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;X-Forwarded-Port&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;80&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">],</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;X-Forwarded-Proto&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;http&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">],</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;X-Forwarded-Scheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;http&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">],</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;X-Real-Ip&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;192.168.65.3&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">],</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;X-Request-Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;b08e79506d17797a0f890fea0579978e&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">],</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;X-Scheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;http&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Accept&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*/*&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;User-Agent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;curl/7.79.1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;X-Forwarded-For&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192.168.65.3&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;X-Forwarded-Host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test0.host.net&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;X-Forwarded-Port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;80&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;X-Forwarded-Proto&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;X-Forwarded-Scheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;X-Real-Ip&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192.168.65.3&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;X-Request-Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b08e79506d17797a0f890fea0579978e&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;X-Scheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;queries&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></p>
 </details>
@@ -1019,26 +1027,17 @@ Get the application URL by running these commands:
 <span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span><span class="w"></span>
 <span class="nt">method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET</span><span class="w"></span>
 <span class="nt">headers</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">Accept</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">text/yaml</span><span class="w"></span>
-<span class="w">  </span><span class="nt">User-Agent</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">curl/7.79.1</span><span class="w"></span>
-<span class="w">  </span><span class="nt">X-Forwarded-For</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.65.3</span><span class="w"></span>
-<span class="w">  </span><span class="nt">X-Forwarded-Host</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test0.host.net</span><span class="w"></span>
-<span class="w">  </span><span class="nt">X-Forwarded-Port</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;80&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">X-Forwarded-Proto</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span><span class="w"></span>
-<span class="w">  </span><span class="nt">X-Forwarded-Scheme</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span><span class="w"></span>
-<span class="w">  </span><span class="nt">X-Real-Ip</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.65.3</span><span class="w"></span>
-<span class="w">  </span><span class="nt">X-Request-Id</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">be588ef84375e7207cdf8c1c9acfe731</span><span class="w"></span>
-<span class="w">  </span><span class="nt">X-Scheme</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span><span class="w"></span>
+<span class="w">  </span><span class="nt">Accept</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">text/yaml</span><span class="w"></span>
+<span class="w">  </span><span class="nt">User-Agent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">curl/7.79.1</span><span class="w"></span>
+<span class="w">  </span><span class="nt">X-Forwarded-For</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.65.3</span><span class="w"></span>
+<span class="w">  </span><span class="nt">X-Forwarded-Host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test0.host.net</span><span class="w"></span>
+<span class="w">  </span><span class="nt">X-Forwarded-Port</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;80&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">X-Forwarded-Proto</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span><span class="w"></span>
+<span class="w">  </span><span class="nt">X-Forwarded-Scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span><span class="w"></span>
+<span class="w">  </span><span class="nt">X-Real-Ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.65.3</span><span class="w"></span>
+<span class="w">  </span><span class="nt">X-Request-Id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">be588ef84375e7207cdf8c1c9acfe731</span><span class="w"></span>
+<span class="w">  </span><span class="nt">X-Scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span><span class="w"></span>
+<span class="nt">queries</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w"></span>
 </code></pre></div></p>
 </details>
 
@@ -1047,7 +1046,7 @@ Get the application URL by running these commands:
   <small>
     
       Last update:
-      2021-11-09
+      2022-01-12
     
   </small>
 </div>

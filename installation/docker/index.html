@@ -564,6 +564,8 @@
         
           
         
+          
+        
       
       
         
@@ -608,6 +610,20 @@
     <li class="md-nav__item">
       <a href="../../usage/config/" class="md-nav__link">
         Configuring endpoints
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/default/" class="md-nav__link">
+        Default response
       </a>
     </li>
   
@@ -746,7 +762,9 @@
 </div>
 <h2 id="using-docker-run-command">Using <strong>docker run</strong> command<a class="headerlink" href="#using-docker-run-command" title="Permanent link">&para;</a></h2>
 <p>You can use one of following commands in order to get the application up and running:</p>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Expose only test service</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Expose only test service</label><label for="__tabbed_1_2">Expose both test service and liveness &amp; readiness probes</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Replace ${SERVICE_PORT} with port you want the service to be exposed on </span>
 <span class="c1"># Replace ${TAG} with desired image tag</span>
 docker run --rm -it -p <span class="si">${</span><span class="nv">SERVICE_PORT</span><span class="si">}</span>:80 ghcr.io/icikowski/gpts:<span class="si">${</span><span class="nv">TAG</span><span class="si">}</span>
@@ -770,7 +788,7 @@ Status: Downloaded newer image for ghcr.io/icikowski/gpts:0.6.2
 </code></pre></div></p>
 </details>
 </div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Expose both test service and liveness &amp; readiness probes</label><div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Replace ${SERVICE_PORT} with port you want the service to be exposed on </span>
 <span class="c1"># Replace ${HEALTHCHECKS_PORT} with port you want the application&#39;s health endpoints to be exposed on</span>
 <span class="c1"># Replace ${TAG} with desired image tag</span>
@@ -778,7 +796,7 @@ docker run --rm -it -p <span class="si">${</span><span class="nv">SERVICE_PORT</
 </code></pre></div>
 <details class="- summary">
 <summary>Example command execution &amp; output</summary>
-<p><div class="highlight"><pre><span></span><code>docker run --rm -it -p <span class="m">80</span>:80 -p <span class="m">8000</span>:8000 ghcr.io/icikowski/gpts:0.1.0
+<p><div class="highlight"><pre><span></span><code>docker run --rm -it -p <span class="m">80</span>:80 -p <span class="m">8000</span>:8000 ghcr.io/icikowski/gpts:0.6.2
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Unable to find image &#39;ghcr.io/icikowski/gpts:0.6.2&#39; locally
 0.6.2: Pulling from icikowski/gpts
@@ -795,6 +813,7 @@ Status: Downloaded newer image for ghcr.io/icikowski/gpts:0.6.2
 {&quot;level&quot;:&quot;info&quot;,&quot;component&quot;:&quot;service&quot;,&quot;time&quot;:&quot;2021-10-01T15:35:57Z&quot;,&quot;message&quot;:&quot;server prepared&quot;}
 </code></pre></div></p>
 </details>
+</div>
 </div>
 </div>
 <h2 id="using-docker-compose-command">Using <strong>docker compose</strong> command<a class="headerlink" href="#using-docker-compose-command" title="Permanent link">&para;</a></h2>
@@ -814,6 +833,7 @@ Status: Downloaded newer image for ghcr.io/icikowski/gpts:0.6.2
 <span class="w">    </span><span class="c1"># environment:</span><span class="w"></span>
 <span class="w">    </span><span class="c1">#  - GPTS_SERVICE_PORT=80</span><span class="w"></span>
 <span class="w">    </span><span class="c1">#  - GPTS_HEALTHCHECKS_PORT=8081</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#  - GPTS_CONFIG_ENDPOINT=/config</span><span class="w"></span>
 <span class="w">    </span><span class="c1">#  - GPTS_DEFAULT_CONFIG_ON_STARTUP=false</span><span class="w"></span>
 <span class="w">    </span><span class="c1">#  - GPTS_LOG_LEVEL=info</span><span class="w"></span>
 <span class="w">    </span><span class="c1">#  - GPTS_PRETTY_LOG=false</span><span class="w"></span>
@@ -856,7 +876,7 @@ Status: Downloaded newer image for ghcr.io/icikowski/gpts:0.6.2
   <small>
     
       Last update:
-      2021-11-09
+      2022-01-12
     
   </small>
 </div>
