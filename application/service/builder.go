@@ -24,7 +24,7 @@ func PrepareServer(log zerolog.Logger, port int) *http.Server {
 		Addr:    fmt.Sprintf(":%d", port),
 	}
 
-	r.HandleFunc("/config", getConfigHandlerFunction(l, server))
+	r.HandleFunc(common.ConfigurationEndpoint, getConfigHandlerFunction(l, server))
 
 	entries := config.CurrentConfiguration.GetConfiguration()
 	sortedRoutes := getSortedRoutes(entries)

@@ -14,6 +14,7 @@ import (
 func init() {
 	flag.IntVar(&common.ServicePort, "service-port", common.ServicePort, "Port on which the service will be running")
 	flag.IntVar(&common.HealthchecksPort, "health-port", common.HealthchecksPort, "Port on which the healthchecks will be running")
+	flag.StringVar(&common.ConfigurationEndpoint, "config-endpoint", common.ConfigurationEndpoint, "Path of the configuration endpoint")
 	flag.BoolVar(&common.DefaultConfigOnStartup, "default-config", common.DefaultConfigOnStartup, "Enables loading the default configuration on startup")
 	flag.BoolVar(&common.PrettyLog, "pretty-log", common.PrettyLog, "Enables the pretty logger")
 	flag.StringVar(&common.LogLevel, "log-level", common.LogLevel, "Global log level; one of [debug, info, warn, error, fatal, panic, trace]")
@@ -39,7 +40,8 @@ func main() {
 	l.Info().
 		Int("servicePort", common.ServicePort).
 		Int("healthchecksPort", common.HealthchecksPort).
-		Msg("starting application")
+		Str("configurationEndpoint", common.ConfigurationEndpoint).
+		Msg("starting application with provided configuration")
 
 	healthServer := health.PrepareHealthEndpoints(log, common.HealthchecksPort)
 	go func() {
@@ -62,7 +64,7 @@ func main() {
 		health.ServiceStatus.SetStatus(true)
 		if err := server.ListenAndServe(); err != nil {
 			if service.ExpectingShutdown && err == http.ErrServerClosed {
-				l.Info().Msg("service has been shut down for planned maintenance")
+				l.Info().Msg("service has been shut down for configuration change")
 			} else {
 				l.Fatal().Err(err).Msg("service has been shut down unexpectedly")
 			}

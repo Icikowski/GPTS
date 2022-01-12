@@ -26,7 +26,7 @@ func getConfigHandlerFunction(log zerolog.Logger, server *http.Server) func(w ht
 			Dict(
 				"endpoint",
 				zerolog.Dict().
-					Str("path", "/config").
+					Str("path", common.ConfigurationEndpoint).
 					Str("type", "builtin"),
 			).
 			Logger()

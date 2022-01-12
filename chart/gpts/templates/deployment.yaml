@@ -34,6 +34,8 @@ spec:
               value: {{ .Values.gpts.servicePort | default 8080 | quote }}
             - name: GPTS_HEALTHCHECKS_PORT
               value: {{ .Values.gpts.healthchecksPort | default 8081 | quote }}
+            - name: GPTS_CONFIG_ENDPOINT
+              value: {{ .Values.gpts.configEndpoint | default "/config" | quote }}
             - name: GPTS_DEFAULT_CONFIG_ON_STARTUP
               value: {{ .Values.gpts.defaultConfigOnStartup | default "false" | quote }}
             - name: GPTS_LOG_LEVEL
