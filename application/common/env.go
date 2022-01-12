@@ -43,12 +43,15 @@ var (
 	// HealthchecksPort determines the port number on which liveness & readiness endpoints will be running (defaults to 8081)
 	HealthchecksPort = getIntegerFromEnvironment("GPTS_HEALTHCHECKS_PORT", 8081)
 
-	// DefaultConfigOnStartup determines if default config should be loaded when application starts
+	// ConfigurationEndpoint determines the path of the configuration endpoint (defaults to /config)
+	ConfigurationEndpoint = getStringFromEnvironment("GPTS_CONFIG_ENDPOINT", "/config")
+
+	// DefaultConfigOnStartup determines if default config should be loaded when application starts (defaults to false)
 	DefaultConfigOnStartup = getBooleanFromEnvironment("GPTS_DEFAULT_CONFIG_ON_STARTUP", false)
 
-	// PrettyLog determines if pretty logging should be enabled
+	// PrettyLog determines if pretty logging should be enabled (defaults to false)
 	PrettyLog = getBooleanFromEnvironment("GPTS_PRETTY_LOG", false)
 
-	// LogLevel determines the level of application log
+	// LogLevel determines the level of application log (defaults to "info")
 	LogLevel = getStringFromEnvironment("GPTS_LOG_LEVEL", "info")
 )
