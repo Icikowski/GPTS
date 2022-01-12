@@ -48,20 +48,21 @@ spec:
               protocol: TCP
           startupProbe:
             httpGet:
-              path: /health
-              port: {{ .Values.gpts.healthcheckPort | default 8081 }}
+              path: /live
+              port: {{ .Values.gpts.healthchecksPort | default 8081 }}
             failureThreshold: 6
             periodSeconds: 5
+            initialDelaySeconds: 5
           livenessProbe:
             httpGet:
               path: /live
-              port: {{ .Values.gpts.healthcheckPort | default 8081 }}
+              port: {{ .Values.gpts.healthchecksPort | default 8081 }}
             failureThreshold: 3
             periodSeconds: 5
           readinessProbe:
             httpGet:
               path: /ready
-              port: {{ .Values.gpts.healthcheckPort | default 8081 }}
+              port: {{ .Values.gpts.healthchecksPort | default 8081 }}
             failureThreshold: 3
             periodSeconds: 5
           resources:

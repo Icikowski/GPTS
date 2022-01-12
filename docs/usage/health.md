@@ -11,7 +11,7 @@ Liveness endpoint indicates whether application itself (not the exposed service)
 
 === "Standard output"
     ```bash
-    # Change ${GPTS} to proper GPTS healtchecks URL (usually exposed on port 8081)
+    # Change ${GPTS} to proper GPTS healthchecks URL (usually exposed on port 8081)
     curl ${GPTS}/live
     ```
 
@@ -25,7 +25,7 @@ Liveness endpoint indicates whether application itself (not the exposed service)
         ```
 === "Full output"
     ```bash
-    # Change ${GPTS} to proper GPTS healtchecks URL (usually exposed on port 8081)
+    # Change ${GPTS} to proper GPTS healthchecks URL (usually exposed on port 8081)
     curl ${GPTS}/live?full=1
     ```
 
