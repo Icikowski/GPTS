@@ -1,8 +1,12 @@
 # Project changelog
 
+## GPTS 0.7.1
+
+- Upgraded project's dependencies
+
 ## GPTS 0.7.0
 
-- Change base image to [Google's "distroless"](https://github.com/GoogleContainerTools/distroless)
+- Changed base image to [Google's "distroless"](https://github.com/GoogleContainerTools/distroless)
 
 ## GPTS 0.6.6
 
