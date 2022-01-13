@@ -1,4 +1,4 @@
-.PHONY: chart
+.PHONY: clean fill build
 .SILENT: ${.PHONY}
 
 COMMIT := $(shell git rev-parse --short HEAD)
@@ -10,9 +10,14 @@ all: chart
 clean:
 	rm -f gpts*.tgz gpts/Chart.yaml
 
-build: clean
+fill: clean
 	cp gpts/Chart.template gpts/Chart.yaml
 	sed -i "/^version/! s/\[\[GPTS_VERSION\]\]/${COMMIT}/" gpts/Chart.yaml 
 	sed -i "s/\[\[GPTS_VERSION\]\]/${TAG}-dev/" gpts/Chart.yaml
+
+build: clean fill
 	helm package gpts
 	echo "Built Helm chart \"${TAG}-dev\" for GPTS image with tag \"${COMMIT}\""
+
+lint: clean fill
+	helm lint gpts
