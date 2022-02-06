@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"net/http"
+	"runtime"
 
 	"icikowski.pl/gpts/common"
 	"icikowski.pl/gpts/config"
@@ -35,6 +36,7 @@ func main() {
 		Str("version", version).
 		Str("gitCommit", gitCommit).
 		Str("binaryType", binaryType).
+		Str("goVersion", runtime.Version()).
 		Msg("version information")
 
 	l.Info().
