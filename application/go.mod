@@ -3,7 +3,7 @@ module icikowski.pl/gpts
 go 1.17
 
 require (
-	github.com/Icikowski/kubeprobes v1.0.0
+	github.com/Icikowski/kubeprobes v1.1.0
 	github.com/gorilla/mux v1.8.0
 	github.com/rs/zerolog v1.26.1
 	github.com/stretchr/testify v1.7.0

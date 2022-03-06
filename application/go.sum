@@ -1,5 +1,5 @@
-github.com/Icikowski/kubeprobes v1.0.0 h1:VyqIwYS+dnTS5Ps27G5bmzmGUqnxHOKYqAI1I8XtziA=
-github.com/Icikowski/kubeprobes v1.0.0/go.mod h1:ZGFCGfxe+CKXEkam+xtxqQgMiWw9NThbik7bSpbcGx0=
+github.com/Icikowski/kubeprobes v1.1.0 h1:4Q3HdKOW78w97AXG3xulQh9/RiPhdPyKPDn6cxY9guY=
+github.com/Icikowski/kubeprobes v1.1.0/go.mod h1:ZGFCGfxe+CKXEkam+xtxqQgMiWw9NThbik7bSpbcGx0=
 github.com/coreos/go-systemd/v22 v22.3.2/go.mod h1:Y58oyj3AT4RCenI/lSvhwexgC+NSVTIJ3seZv2GcEnc=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

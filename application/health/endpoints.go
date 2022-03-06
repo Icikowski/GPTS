@@ -16,7 +16,7 @@ func PrepareHealthEndpoints(log zerolog.Logger, port int) *http.Server {
 		Int("port", port).
 		Msg("preparing readiness & liveness endpoints")
 
-	health := kubeprobes.NewKubeprobes(
+	health := kubeprobes.New(
 		kubeprobes.WithLivenessProbes(ApplicationStatus.GetProbeFunction()),
 		kubeprobes.WithReadinessProbes(ServiceStatus.GetProbeFunction()),
 	)
