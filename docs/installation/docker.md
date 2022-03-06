@@ -1,3 +1,7 @@
+---
+title: Docker
+---
+
 # Deploying **GPTS** in Docker
 
 !!! important "Prerequisites"

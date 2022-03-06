@@ -1,5 +1,5 @@
 ---
-title: 'About project'
+title: About project
 ---
 
 # **GPTS** / General Purpose Test Service

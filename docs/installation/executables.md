@@ -1,3 +1,7 @@
+---
+title: Executable files
+---
+
 # Running **GPTS** directly from executables
 
 ## Using prebuilt binaries

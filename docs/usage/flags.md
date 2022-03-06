@@ -1,3 +1,7 @@
+---
+title: Flags & environment variables
+---
+
 # Controlling **GPTS** setting with CLI flags/environment variables
 
 There are four configurable **GPTS** settings which can be controlled using listed flags and/or environment variables:

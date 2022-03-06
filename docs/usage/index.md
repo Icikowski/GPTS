@@ -1,3 +1,7 @@
+---
+title: User guide
+---
+
 # User guide
 
 **GPTS** has relatively simple configuration, which can be controlled using [flags and environment variables](flags.md).

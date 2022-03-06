@@ -1,3 +1,7 @@
+---
+title: Installation guide
+---
+
 # Installation guide
 
 **GPTS** can be deployed in various environments, therefore multiple deployment methods have been prepared.

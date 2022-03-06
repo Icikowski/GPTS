@@ -1,3 +1,7 @@
+---
+title: Changelog
+---
+
 # Project changelog
 
 ## GPTS 0.7.2
@@ -7,7 +11,7 @@
     - Changed default values of `failureThreshold` and `periodSeconds` of all probes
     - Added `overrides` section to override name, fullname, image repository, image name & image tag
     - Added reference for GPTS' documentation for charts' values
-    - Added metadata to Chart.yaml
+    - Added metadata to `Chart.yaml`
 - Added support for configurable configuration endpoint's address
 - Upgraded project's dependencies
 - Changed default handler's response structure

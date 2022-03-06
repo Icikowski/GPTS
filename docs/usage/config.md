@@ -1,3 +1,7 @@
+---
+title: Configuring endpoints
+---
+
 # Configuring **GPTS** endpoints
 
 **GPTS** uses declarative configuration which can be fetched or applied using `/config` endpoint.

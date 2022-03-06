@@ -1,3 +1,7 @@
+---
+title: Kubernetes (via Helm)
+---
+
 # Deploying **GPTS** on Kubernetes cluster via Helm
 
 !!! important "Prerequisites"

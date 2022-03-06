@@ -1,3 +1,7 @@
+---
+title: Simple usages
+---
+
 # Simple **GPTS** configuration examples
 
 ## Single JSON response on every URI

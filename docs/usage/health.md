@@ -1,3 +1,7 @@
+---
+title: Liveness & readiness probes
+---
+
 # Accessing **GPTS** liveness & readiness endpoints
 
 Liveness and readiness probe are the way that **GPTS** uses to inform other components about its health. Those are primarily used by Kubernetes, but can be also checked manually.

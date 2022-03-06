@@ -1,3 +1,7 @@
+---
+title: Development plans
+---
+
 # Development plans
 
 | Goal | Importance |

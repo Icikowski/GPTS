@@ -1,3 +1,7 @@
+---
+title: Advanced usages
+---
+
 # Advanced **GPTS** configuration examples
 
 ## HTML page with images

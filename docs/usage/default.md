@@ -1,3 +1,7 @@
+---
+title: Default response
+---
+
 # **GPTS**' default response for unconfigured routes
 
 If user is attempting to send a request for unconfigured route, the application will respond with a predefined response, which consists of following fields:
