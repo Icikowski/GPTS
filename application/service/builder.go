@@ -144,7 +144,7 @@ func PrepareServer(log zerolog.Logger, port int) *http.Server {
 
 	l.Debug().Msg("registering shutdown hooks")
 	server.RegisterOnShutdown(func() {
-		health.ServiceStatus.SetStatus(false)
+		health.ServiceStatus.MarkAsDown()
 	})
 
 	l.Info().Msg("server prepared")

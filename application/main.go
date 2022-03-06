@@ -58,12 +58,12 @@ func main() {
 	}
 
 	l.Debug().Msg("marking application liveness as UP")
-	health.ApplicationStatus.SetStatus(true)
+	health.ApplicationStatus.MarkAsUp()
 
 	for {
 		service.ExpectingShutdown = false
 		server := service.PrepareServer(log, common.ServicePort)
-		health.ServiceStatus.SetStatus(true)
+		health.ServiceStatus.MarkAsUp()
 		if err := server.ListenAndServe(); err != nil {
 			if service.ExpectingShutdown && err == http.ErrServerClosed {
 				l.Info().Msg("service has been shut down for configuration change")

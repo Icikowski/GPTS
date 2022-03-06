@@ -50,8 +50,17 @@ func TestPrepareHealthEndpoints(t *testing.T) {
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			ApplicationStatus.SetStatus(tc.applicationStatus)
-			ServiceStatus.SetStatus(tc.serviceStatus)
+			if tc.applicationStatus {
+				ApplicationStatus.MarkAsUp()
+			} else {
+				ApplicationStatus.MarkAsDown()
+			}
+
+			if tc.serviceStatus {
+				ServiceStatus.MarkAsUp()
+			} else {
+				ServiceStatus.MarkAsDown()
+			}
 
 			liveness, _ := client.Get(testServer.URL + "/live")
 			readiness, _ := client.Get(testServer.URL + "/ready")
