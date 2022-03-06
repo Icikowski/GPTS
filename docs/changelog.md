@@ -4,6 +4,12 @@ title: Changelog
 
 # Project changelog
 
+## GPTS 0.7.3
+
+- Changed liveness and readiness endpoints provider to `github.com/Icikowski/kubeprobes`
+- Upgraded project's dependencies
+- Updated documentation
+
 ## GPTS 0.7.2
 
 - Updated chart definition
