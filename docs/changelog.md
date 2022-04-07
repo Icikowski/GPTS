@@ -4,6 +4,25 @@ title: Changelog
 
 # Project changelog
 
+## GPTS 0.7.4
+
+- Updated Go version to `1.18`
+- Upgraded project's dependencies
+- Major refactoring of code
+    - Renamed package `logging` to `logs`
+    - Changed log level resolver
+    - Changed log writer selection logic
+    - Replaced general log instance fetcher with component-specific one
+    - Changed log preparation logic across all packages
+    - Changed environment variables getters to use generics
+    - Changed `interface{}` notation wit `any`
+    - Changed pointer-related tools to use generics
+    - Changed `CurrentConfiguration` object creation logic
+    - Removed unused constants
+    - Rephrased some log messages
+    - Added missing EOL at the end of the `Dockerfile`
+- Updated `Makefile` targets
+
 ## GPTS 0.7.3
 
 - Changed liveness and readiness endpoints provider to `github.com/Icikowski/kubeprobes`
