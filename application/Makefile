@@ -1,4 +1,4 @@
-.PHONY: clean build test coverage image
+.PHONY: clean build build-static test coverage image
 .SILENT: ${.PHONY}
 
 GO_TEST := go test ./... -race -p 1

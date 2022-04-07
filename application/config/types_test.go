@@ -45,24 +45,24 @@ func TestResponseMarshalZerologObject(t *testing.T) {
 	testLog := zerolog.New(buffer)
 
 	response := Response{
-		Status:      utils.IntToPointer(http.StatusCreated),
-		ContentType: utils.StringToPointer(common.ContentTypeJSON),
+		Status:      utils.PointerTo(http.StatusCreated),
+		ContentType: utils.PointerTo(common.ContentTypeJSON),
 		Headers:     &map[string]string{"a": "b"},
 	}
 
 	testLog.Info().Object("response", &response).Send()
 
-	var contents map[string]interface{}
+	var contents map[string]any
 	err := json.Unmarshal(buffer.Bytes(), &contents)
 	require.NoError(t, err, "no error expected during reading logged Response")
 
-	require.EqualValues(t, map[string]interface{}{
+	require.EqualValues(t, map[string]any{
 		"level": "info",
-		"response": map[string]interface{}{
+		"response": map[string]any{
 			"configured":  true,
 			"status":      float64(http.StatusCreated),
 			"contentType": common.ContentTypeJSON,
-			"headers": map[string]interface{}{
+			"headers": map[string]any{
 				"a": "b",
 			},
 		},
@@ -82,21 +82,21 @@ func TestRouteMarshalZerologObject(t *testing.T) {
 
 	testLog.Info().Object("route", route).Send()
 
-	var contents map[string]interface{}
+	var contents map[string]any
 	err := json.Unmarshal(buffer.Bytes(), &contents)
 	require.NoError(t, err, "no error expected during reading logged Route")
 
-	require.EqualValues(t, map[string]interface{}{
+	require.EqualValues(t, map[string]any{
 		"level": "info",
-		"route": map[string]interface{}{
+		"route": map[string]any{
 			"allowSubpaths": true,
-			"methods": map[string]interface{}{
-				"default": map[string]interface{}{"configured": true},
-				"get":     map[string]interface{}{"configured": true},
-				"post":    map[string]interface{}{"configured": true},
-				"put":     map[string]interface{}{"configured": false},
-				"patch":   map[string]interface{}{"configured": false},
-				"delete":  map[string]interface{}{"configured": false},
+			"methods": map[string]any{
+				"default": map[string]any{"configured": true},
+				"get":     map[string]any{"configured": true},
+				"post":    map[string]any{"configured": true},
+				"put":     map[string]any{"configured": false},
+				"patch":   map[string]any{"configured": false},
+				"delete":  map[string]any{"configured": false},
 			},
 		},
 	}, contents, "log contains unexpected Route properties")

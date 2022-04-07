@@ -6,13 +6,11 @@ import (
 
 	"github.com/Icikowski/kubeprobes"
 	"github.com/rs/zerolog"
-	"icikowski.pl/gpts/common"
 )
 
 // PrepareHealthEndpoints prepares and configures health endpoints
 func PrepareHealthEndpoints(log zerolog.Logger, port int) *http.Server {
-	l := log.With().Str(common.ComponentField, common.ComponentHealth).Logger()
-	l.Debug().
+	log.Debug().
 		Int("port", port).
 		Msg("preparing readiness & liveness endpoints")
 

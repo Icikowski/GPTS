@@ -8,7 +8,7 @@ import (
 	"icikowski.pl/gpts/common"
 )
 
-func getEncoder(contentType string, writer io.Writer) func(v interface{}) error {
+func getEncoder(contentType string, writer io.Writer) func(v any) error {
 	switch contentType {
 	case common.ContentTypeJSON:
 		return json.NewEncoder(writer).Encode
@@ -18,7 +18,7 @@ func getEncoder(contentType string, writer io.Writer) func(v interface{}) error 
 	return nil
 }
 
-func getDecoder(contentType string, reader io.Reader) func(v interface{}) error {
+func getDecoder(contentType string, reader io.Reader) func(v any) error {
 	switch contentType {
 	case common.ContentTypeJSON:
 		return json.NewDecoder(reader).Decode

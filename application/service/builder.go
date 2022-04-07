@@ -15,8 +15,7 @@ import (
 
 // PrepareServer prepares, configures and runs test service server
 func PrepareServer(log zerolog.Logger, port int) *http.Server {
-	l := log.With().Str(common.ComponentField, common.ComponentService).Logger()
-	l.Info().Msg("preparing test service's router & server")
+	log.Info().Msg("preparing test service's router & server")
 
 	r := mux.NewRouter().StrictSlash(true)
 	server := &http.Server{
@@ -24,22 +23,22 @@ func PrepareServer(log zerolog.Logger, port int) *http.Server {
 		Addr:    fmt.Sprintf(":%d", port),
 	}
 
-	r.HandleFunc(common.ConfigurationEndpoint, getConfigHandlerFunction(l, server))
+	r.HandleFunc(common.ConfigurationEndpoint, getConfigHandlerFunction(log, server))
 
 	entries := config.CurrentConfiguration.GetConfiguration()
 	sortedRoutes := getSortedRoutes(entries)
-	l.Debug().Msg("paths registration order determined")
+	log.Debug().Msg("paths registration order determined")
 	for _, path := range sortedRoutes {
 		path := path
 		route := entries[path]
 
-		l.Info().
+		log.Info().
 			Str("path", path).
 			Object("route", route).
 			Msg("preparing handler")
 
 		var handler = func(w http.ResponseWriter, r *http.Request) {
-			innerLog := l.With().
+			innerLog := log.With().
 				Dict(
 					"request",
 					zerolog.Dict().
@@ -140,13 +139,13 @@ func PrepareServer(log zerolog.Logger, port int) *http.Server {
 		}
 	}
 
-	r.NotFoundHandler = getDefaultHandler(l)
+	r.NotFoundHandler = getDefaultHandler(log)
 
-	l.Debug().Msg("registering shutdown hooks")
+	log.Debug().Msg("registering shutdown hooks")
 	server.RegisterOnShutdown(func() {
 		health.ServiceStatus.MarkAsDown()
 	})
 
-	l.Info().Msg("server prepared")
+	log.Info().Msg("server prepared")
 	return server
 }

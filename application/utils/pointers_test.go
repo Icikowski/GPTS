@@ -6,16 +6,18 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestStringToPointer(t *testing.T) {
-	original := "The quick brown fox jumped over the lazy dog"
-	pointer := StringToPointer(original)
+func TestPointerTo(t *testing.T) {
+	tests := map[string]any{
+		"pointer to integer": 50,
+		"pointer to string":  "Lorem ipsum",
+		"pointer to bool":    true,
+	}
 
-	require.EqualValues(t, original, *pointer, "values of input string and produced pointer should be equal")
-}
-
-func TestIntToPointer(t *testing.T) {
-	original := int(12345)
-	pointer := IntToPointer(original)
-
-	require.EqualValues(t, original, *pointer, "values of input integer and produced pointer should be equal")
+	for name, tc := range tests {
+		name, tc := name, tc
+		t.Run(name, func(t *testing.T) {
+			actual := PointerTo(tc)
+			require.Equal(t, tc, *actual, "got value different than expected")
+		})
+	}
 }

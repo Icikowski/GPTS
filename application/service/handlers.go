@@ -31,7 +31,7 @@ func getConfigHandlerFunction(log zerolog.Logger, server *http.Server) func(w ht
 			).
 			Logger()
 
-		resolveContent := func(target interface{}) error {
+		resolveContent := func(target any) error {
 			var resolverError error
 			switch r.Header.Get(common.HeaderContentType) {
 			case common.ContentTypeJSON:

@@ -60,16 +60,14 @@ func (c *configuration) SetConfiguration(routes map[string]Route) {
 
 // SetDefaultConfiguration sets up startup configuration with one prepared route
 func (c *configuration) SetDefaultConfiguration(log zerolog.Logger) {
-	l := log.With().Str(common.ComponentField, common.ComponentConfig).Logger()
-
 	c.mutex.Lock()
 	c.routes = map[string]Route{
 		"/hello": {
 			AllowSubpaths: true,
 			Default: &Response{
-				Status:      utils.IntToPointer(http.StatusOK),
-				ContentType: utils.StringToPointer(common.ContentTypeJSON),
-				Content:     utils.StringToPointer(`{"message":"Hello World!"}`),
+				Status:      utils.PointerTo(http.StatusOK),
+				ContentType: utils.PointerTo(common.ContentTypeJSON),
+				Content:     utils.PointerTo(`{"message":"Hello World!"}`),
 				Headers: &map[string]string{
 					"X-SentBy": "GPTS - General Purpose Test Service",
 				},
@@ -77,7 +75,7 @@ func (c *configuration) SetDefaultConfiguration(log zerolog.Logger) {
 		},
 	}
 	c.mutex.Unlock()
-	l.Info().Msg("loaded default config as current")
+	log.Info().Msg("loaded default config as current")
 }
 
 var _ zerolog.LogObjectMarshaler = &Response{}

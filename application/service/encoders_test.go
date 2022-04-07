@@ -9,7 +9,7 @@ import (
 	"icikowski.pl/gpts/common"
 )
 
-var testSubject = map[string]interface{}{
+var testSubject = map[string]any{
 	"hello": "world",
 	"test":  true,
 }
@@ -85,7 +85,7 @@ func TestGetDecoder(t *testing.T) {
 				return
 			}
 
-			var actualOutput map[string]interface{}
+			var actualOutput map[string]any
 			function(&actualOutput)
 
 			require.Equal(t, testSubject, actualOutput, "output different than expected")

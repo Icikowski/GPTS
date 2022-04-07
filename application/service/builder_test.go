@@ -118,32 +118,32 @@ func TestPrepareServer(t *testing.T) {
 
 	extendedConfig["/multiple-methods"] = config.Route{
 		GET: &config.Response{
-			Content:     utils.StringToPointer(`{"get": true}`),
-			ContentType: utils.StringToPointer("application/json"),
+			Content:     utils.PointerTo(`{"get": true}`),
+			ContentType: utils.PointerTo("application/json"),
 		},
 		POST: &config.Response{
-			Content:     utils.StringToPointer(`{"post": true}`),
-			ContentType: utils.StringToPointer("application/json"),
+			Content:     utils.PointerTo(`{"post": true}`),
+			ContentType: utils.PointerTo("application/json"),
 		},
 		PUT: &config.Response{
-			Content:     utils.StringToPointer(`{"put": true}`),
-			ContentType: utils.StringToPointer("application/json"),
+			Content:     utils.PointerTo(`{"put": true}`),
+			ContentType: utils.PointerTo("application/json"),
 		},
 		PATCH: &config.Response{
-			Content:     utils.StringToPointer(`{"patch": true}`),
-			ContentType: utils.StringToPointer("application/json"),
+			Content:     utils.PointerTo(`{"patch": true}`),
+			ContentType: utils.PointerTo("application/json"),
 		},
 		DELETE: &config.Response{
-			Content:     utils.StringToPointer(`{"delete": true}`),
-			ContentType: utils.StringToPointer("application/json"),
+			Content:     utils.PointerTo(`{"delete": true}`),
+			ContentType: utils.PointerTo("application/json"),
 		},
 	}
 
 	extendedConfig["/sub"] = config.Route{
 		AllowSubpaths: true,
 		Default: &config.Response{
-			Status:  utils.IntToPointer(http.StatusTeapot),
-			Content: utils.StringToPointer("I'm a teapot and I'm everywhere"),
+			Status:  utils.PointerTo(http.StatusTeapot),
+			Content: utils.PointerTo("I'm a teapot and I'm everywhere"),
 		},
 	}
 
@@ -164,7 +164,7 @@ func TestPrepareServer(t *testing.T) {
 			require.Equal(t, tc.expectedStatus, response.StatusCode, "status code is different than expected")
 
 			if tc.expectedKeys != nil {
-				var output map[string]interface{}
+				var output map[string]any
 				err = json.NewDecoder(response.Body).Decode(&output)
 				require.NoError(t, err, "response should be decoded properly")
 

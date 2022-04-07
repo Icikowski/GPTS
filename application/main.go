@@ -8,7 +8,7 @@ import (
 	"icikowski.pl/gpts/common"
 	"icikowski.pl/gpts/config"
 	"icikowski.pl/gpts/health"
-	"icikowski.pl/gpts/logger"
+	"icikowski.pl/gpts/logs"
 	"icikowski.pl/gpts/service"
 )
 
@@ -21,7 +21,7 @@ func init() {
 	flag.StringVar(&common.LogLevel, "log-level", common.LogLevel, "Global log level; one of [debug, info, warn, error, fatal, panic, trace]")
 	flag.Parse()
 
-	logger.InitializeLog(common.PrettyLog, common.LogLevel)
+	logs.Initialize(common.PrettyLog, common.LogLevel)
 }
 
 var version = common.BuildValueUnknown
@@ -29,46 +29,49 @@ var gitCommit = common.BuildValueUnknown
 var binaryType = common.BuildValueUnknown
 
 func main() {
-	log := logger.GetLogger()
-	l := log.With().Str(common.ComponentField, common.ComponentCLI).Logger()
+	log := logs.For(common.ComponentCLI)
 
-	l.Info().
+	log.Info().
 		Str("version", version).
 		Str("gitCommit", gitCommit).
 		Str("binaryType", binaryType).
 		Str("goVersion", runtime.Version()).
 		Msg("version information")
 
-	l.Info().
+	log.Info().
 		Int("servicePort", common.ServicePort).
 		Int("healthchecksPort", common.HealthchecksPort).
 		Str("configurationEndpoint", common.ConfigurationEndpoint).
-		Msg("starting application with provided configuration")
+		Msg("configuration applied")
 
-	healthServer := health.PrepareHealthEndpoints(log, common.HealthchecksPort)
+	healthServer := health.PrepareHealthEndpoints(
+		logs.For(common.ComponentHealth),
+		common.HealthchecksPort,
+	)
 	go func() {
-		l.Debug().Msg("health endpoints starting")
+		log.Debug().Msg("health endpoints starting")
 		if err := healthServer.ListenAndServe(); err != nil {
-			l.Fatal().Err(err).Msg("health endpoints have been shut down unexpectedly")
+			log.Fatal().Err(err).Msg("health endpoints have been shut down unexpectedly")
 		}
 	}()
 
 	if common.DefaultConfigOnStartup {
-		config.CurrentConfiguration.SetDefaultConfiguration(log)
+		log.Info().Msg("loading default configuration")
+		config.CurrentConfiguration.SetDefaultConfiguration(logs.For(common.ComponentConfig))
 	}
 
-	l.Debug().Msg("marking application liveness as UP")
+	log.Debug().Msg("marking application liveness as UP")
 	health.ApplicationStatus.MarkAsUp()
 
 	for {
 		service.ExpectingShutdown = false
-		server := service.PrepareServer(log, common.ServicePort)
+		server := service.PrepareServer(logs.For(common.ComponentService), common.ServicePort)
 		health.ServiceStatus.MarkAsUp()
 		if err := server.ListenAndServe(); err != nil {
 			if service.ExpectingShutdown && err == http.ErrServerClosed {
-				l.Info().Msg("service has been shut down for configuration change")
+				log.Info().Msg("service has been shut down for configuration change")
 			} else {
-				l.Fatal().Err(err).Msg("service has been shut down unexpectedly")
+				log.Fatal().Err(err).Msg("service has been shut down unexpectedly")
 			}
 		}
 	}
