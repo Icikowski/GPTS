@@ -4,6 +4,12 @@ title: Changelog
 
 # Project changelog
 
+## GPTS 0.7.5
+
+- Improved logging code in handlers
+- Upgraded project's dependencies
+    - `CVE-2022-28948` vulnerability in `gopkg.in/yaml.v3` package was fixed
+
 ## GPTS 0.7.4
 
 - Updated Go version to `1.18`
