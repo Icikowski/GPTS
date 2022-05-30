@@ -15,21 +15,7 @@ import (
 func getConfigHandlerFunction(log zerolog.Logger, server *http.Server) func(w http.ResponseWriter, r *http.Request) {
 	log.Info().Msg("preparing configuration handler")
 	return func(w http.ResponseWriter, r *http.Request) {
-		innerLog := log.With().
-			Dict(
-				"request",
-				zerolog.Dict().
-					Str("remote", r.RemoteAddr).
-					Str("path", r.URL.Path).
-					Str("method", r.Method),
-			).
-			Dict(
-				"endpoint",
-				zerolog.Dict().
-					Str("path", common.ConfigurationEndpoint).
-					Str("type", "builtin"),
-			).
-			Logger()
+		innerLog := getLoggerForRouteAndRequest(log, common.ConfigurationEndpoint, "builtin", r)
 
 		resolveContent := func(target any) error {
 			var resolverError error
@@ -105,21 +91,7 @@ func getConfigHandlerFunction(log zerolog.Logger, server *http.Server) func(w ht
 func getDefaultHandler(log zerolog.Logger) http.Handler {
 	log.Info().Msg("preparing default handler")
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		innerLog := log.With().
-			Dict(
-				"request",
-				zerolog.Dict().
-					Str("remote", r.RemoteAddr).
-					Str("path", r.URL.Path).
-					Str("method", r.Method),
-			).
-			Dict(
-				"endpoint",
-				zerolog.Dict().
-					Str("path", "*").
-					Str("type", "builtin"),
-			).
-			Logger()
+		innerLog := getLoggerForRouteAndRequest(log, "*", "builtin", r)
 
 		headers := map[string]string{}
 		for key, value := range r.Header {

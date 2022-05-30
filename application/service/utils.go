@@ -6,9 +6,28 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/rs/zerolog"
 	"icikowski.pl/gpts/common"
 	"icikowski.pl/gpts/config"
 )
+
+func getLoggerForRouteAndRequest(log zerolog.Logger, routePath, routeType string, request *http.Request) zerolog.Logger {
+	return log.With().
+		Dict(
+			"route",
+			zerolog.Dict().
+				Str("path", routePath).
+				Str("type", routeType),
+		).
+		Dict(
+			"request",
+			zerolog.Dict().
+				Str("remote", request.RemoteAddr).
+				Str("method", request.Method).
+				Str("path", request.URL.Path),
+		).
+		Logger()
+}
 
 func getResponseForError(err error) (int, []byte) {
 	var details struct {
