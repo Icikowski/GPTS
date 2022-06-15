@@ -52,6 +52,12 @@ func TestPrepareServer(t *testing.T) {
 			expectedStatus: http.StatusOK,
 			expectedKeys:   &[]string{"host", "path", "method", "headers", "queries"},
 		},
+		"get default endpoint with some queries": {
+			method:         http.MethodGet,
+			path:           "/?hello=world",
+			expectedStatus: http.StatusOK,
+			expectedKeys:   &[]string{"host", "path", "method", "headers", "queries"},
+		},
 		"get default endpoint on other path": {
 			method:         http.MethodGet,
 			path:           "/a/b/c",

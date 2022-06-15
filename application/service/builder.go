@@ -142,9 +142,7 @@ func PrepareServer(log zerolog.Logger, port int) *http.Server {
 	r.NotFoundHandler = getDefaultHandler(log)
 
 	log.Debug().Msg("registering shutdown hooks")
-	server.RegisterOnShutdown(func() {
-		health.ServiceStatus.MarkAsDown()
-	})
+	server.RegisterOnShutdown(health.ServiceStatus.MarkAsDown)
 
 	log.Info().Msg("server prepared")
 	return server
