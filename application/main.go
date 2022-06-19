@@ -12,6 +12,12 @@ import (
 	"icikowski.pl/gpts/service"
 )
 
+var version = common.BuildValueUnknown
+var gitCommit = common.BuildValueUnknown
+var binaryType = common.BuildValueUnknown
+
+var logFactory *logs.LoggerFactory
+
 func init() {
 	flag.IntVar(&common.ServicePort, "service-port", common.ServicePort, "Port on which the service will be running")
 	flag.IntVar(&common.HealthchecksPort, "health-port", common.HealthchecksPort, "Port on which the healthchecks will be running")
@@ -21,15 +27,11 @@ func init() {
 	flag.StringVar(&common.LogLevel, "log-level", common.LogLevel, "Global log level; one of [debug, info, warn, error, fatal, panic, trace]")
 	flag.Parse()
 
-	logs.Initialize(common.PrettyLog, common.LogLevel)
+	logFactory = logs.NewFactory(common.PrettyLog, common.LogLevel)
 }
 
-var version = common.BuildValueUnknown
-var gitCommit = common.BuildValueUnknown
-var binaryType = common.BuildValueUnknown
-
 func main() {
-	log := logs.For(common.ComponentCLI)
+	log := logFactory.For(common.ComponentCLI)
 
 	log.Info().
 		Str("version", version).
@@ -45,7 +47,7 @@ func main() {
 		Msg("configuration applied")
 
 	healthServer := health.PrepareHealthEndpoints(
-		logs.For(common.ComponentHealth),
+		logFactory.For(common.ComponentHealth),
 		common.HealthchecksPort,
 	)
 	go func() {
@@ -57,7 +59,7 @@ func main() {
 
 	if common.DefaultConfigOnStartup {
 		log.Info().Msg("loading default configuration")
-		config.CurrentConfiguration.SetDefaultConfiguration(logs.For(common.ComponentConfig))
+		config.CurrentConfiguration.SetDefaultConfiguration(logFactory.For(common.ComponentConfig))
 	}
 
 	log.Debug().Msg("marking application liveness as UP")
@@ -65,7 +67,7 @@ func main() {
 
 	for {
 		service.ExpectingShutdown = false
-		server := service.PrepareServer(logs.For(common.ComponentService), common.ServicePort)
+		server := service.PrepareServer(logFactory.For(common.ComponentService), common.ServicePort)
 		health.ServiceStatus.MarkAsUp()
 		if err := server.ListenAndServe(); err != nil {
 			if service.ExpectingShutdown && err == http.ErrServerClosed {

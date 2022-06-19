@@ -7,15 +7,19 @@ import (
 	"github.com/rs/zerolog"
 )
 
-var logger zerolog.Logger
+// LoggerFactory is a factory capable of preparing Logger objects
+type LoggerFactory struct {
+	log zerolog.Logger
+}
 
-// Initialize prepares logger for first use
-func Initialize(pretty bool, level string) {
+// NewFactory prepares the logger factory for first use
+func NewFactory(pretty bool, level string) *LoggerFactory {
+	var log zerolog.Logger
 	desiredLevel, err := zerolog.ParseLevel(level)
 	if err != nil {
 		desiredLevel = zerolog.InfoLevel
 		defer func() {
-			logger.Warn().Str("levelName", level).Msg("unknown log level selected, falling back to INFO")
+			log.Warn().Str("levelName", level).Msg("unknown log level selected, falling back to INFO")
 		}()
 	}
 	zerolog.SetGlobalLevel(desiredLevel)
@@ -29,10 +33,14 @@ func Initialize(pretty bool, level string) {
 		}
 	}
 
-	logger = zerolog.New(writer).With().Timestamp().Logger()
+	log = zerolog.New(writer).Level(desiredLevel).With().Timestamp().Logger()
+
+	return &LoggerFactory{
+		log: log,
+	}
 }
 
 // For returns a logger instance for given component
-func For(component string) zerolog.Logger {
-	return logger.With().Str("component", component).Logger()
+func (lf *LoggerFactory) For(component string) zerolog.Logger {
+	return lf.log.With().Str("component", component).Logger()
 }
