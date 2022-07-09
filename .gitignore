@@ -29,8 +29,6 @@ application/**/*.html
 **/charts/*.tgz
 # Generated charts
 chart/**.tgz
-# Final Chart.yaml
-chart/**/Chart.yaml
 
 ### VisualStudioCode ###
 .vscode/*
