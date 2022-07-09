@@ -55,15 +55,11 @@ func getHandlerForRoute(path string, route config.Route, log zerolog.Logger) fun
 				w.Header().Set(headerName, headerValue)
 			}
 		}
-		if status == nil {
-			status = utils.PointerTo(http.StatusOK)
-		}
-		if contentType == nil {
-			contentType = utils.PointerTo("text/plain")
-		}
-		if content == nil {
-			content = new(string)
-		}
+
+		status = utils.GetOptionalOrFallback(status, utils.PointerTo(http.StatusOK))
+		contentType = utils.GetOptionalOrFallback(contentType, utils.PointerTo("text/plain"))
+		content = utils.GetOptionalOrFallback(content, new(string))
+
 		if strings.HasPrefix(strings.TrimSpace(*content), "base64,") {
 			var err error
 			finalContent, err = base64.StdEncoding.DecodeString(strings.TrimPrefix(strings.TrimSpace(*content), "base64,"))
