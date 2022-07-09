@@ -4,6 +4,12 @@ title: Changelog
 
 # Project changelog
 
+## GPTS 0.7.6
+
+- Applied code improvements
+- Added changelog for Helm chart
+- Added chart signing for Helm chart
+
 ## GPTS 0.7.5
 
 - Improved logging code in handlers
