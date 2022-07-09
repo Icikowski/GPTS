@@ -101,3 +101,70 @@ func TestRouteMarshalZerologObject(t *testing.T) {
 		},
 	}, contents, "log contains unexpected Route properties")
 }
+
+func TestGetResponseForMethod(t *testing.T) {
+	emptyResponse := &Response{}
+	fullRoute := Route{
+		GET:    emptyResponse,
+		PATCH:  emptyResponse,
+		POST:   emptyResponse,
+		PUT:    emptyResponse,
+		DELETE: emptyResponse,
+	}
+	strippedRoute := Route{
+		GET:     emptyResponse,
+		Default: emptyResponse,
+	}
+	singleMethodRoute := Route{
+		GET: emptyResponse,
+	}
+
+	tests := map[string]struct {
+		examinedRoute    Route
+		method           string
+		expectedResponse *Response
+	}{
+		"get GET response with match": {
+			examinedRoute:    fullRoute,
+			method:           http.MethodGet,
+			expectedResponse: emptyResponse,
+		},
+		"get POST response with match": {
+			examinedRoute:    fullRoute,
+			method:           http.MethodPost,
+			expectedResponse: emptyResponse,
+		},
+		"get PUT response with match": {
+			examinedRoute:    fullRoute,
+			method:           http.MethodPatch,
+			expectedResponse: emptyResponse,
+		},
+		"get PATCH response with match": {
+			examinedRoute:    fullRoute,
+			method:           http.MethodPut,
+			expectedResponse: emptyResponse,
+		},
+		"get DELETE response with match": {
+			examinedRoute:    fullRoute,
+			method:           http.MethodDelete,
+			expectedResponse: emptyResponse,
+		},
+		"get POST response with default fallback": {
+			examinedRoute:    strippedRoute,
+			method:           http.MethodPost,
+			expectedResponse: emptyResponse,
+		},
+		"get POST response with no default fallback": {
+			examinedRoute:    singleMethodRoute,
+			method:           http.MethodPost,
+			expectedResponse: nil,
+		},
+	}
+
+	for name, tc := range tests {
+		name, tc := name, tc
+		t.Run(name, func(t *testing.T) {
+			require.Equal(t, tc.expectedResponse, tc.examinedRoute.GetResponseForMethod(tc.method))
+		})
+	}
+}

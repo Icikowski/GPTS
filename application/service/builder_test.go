@@ -34,7 +34,7 @@ func TestPrepareServer(t *testing.T) {
 		"get route with no details": {
 			method:         http.MethodGet,
 			path:           "/no-details",
-			expectedStatus: http.StatusServiceUnavailable,
+			expectedStatus: http.StatusMethodNotAllowed,
 		},
 		"get route with base64-encoded body": {
 			method:         http.MethodGet,

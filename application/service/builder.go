@@ -11,7 +11,76 @@ import (
 	"icikowski.pl/gpts/common"
 	"icikowski.pl/gpts/config"
 	"icikowski.pl/gpts/health"
+	"icikowski.pl/gpts/utils"
 )
+
+func getHandlerForRoute(path string, route config.Route, log zerolog.Logger) func(http.ResponseWriter, *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		innerLog := log.With().
+			Dict(
+				"request",
+				zerolog.Dict().
+					Str("remote", r.RemoteAddr).
+					Str("path", r.URL.Path).
+					Str("method", r.Method),
+			).
+			Dict(
+				"endpoint",
+				zerolog.Dict().
+					Str("path", path).
+					Str("type", "user"),
+			).
+			Logger()
+
+		var (
+			status      *int
+			contentType *string
+			content     *string
+			headers     *map[string]string
+		)
+
+		if response := route.GetResponseForMethod(r.Method); response != nil {
+			status = response.Status
+			contentType = response.ContentType
+			content = response.Content
+			headers = response.Headers
+		} else {
+			status = utils.PointerTo(http.StatusMethodNotAllowed)
+		}
+
+		var finalContent []byte
+
+		if headers != nil {
+			for headerName, headerValue := range *headers {
+				w.Header().Set(headerName, headerValue)
+			}
+		}
+		if status == nil {
+			status = utils.PointerTo(http.StatusOK)
+		}
+		if contentType == nil {
+			contentType = utils.PointerTo("text/plain")
+		}
+		if content == nil {
+			content = new(string)
+		}
+		if strings.HasPrefix(strings.TrimSpace(*content), "base64,") {
+			var err error
+			finalContent, err = base64.StdEncoding.DecodeString(strings.TrimPrefix(strings.TrimSpace(*content), "base64,"))
+			if err != nil {
+				innerLog.Warn().Err(err).Msg("cannot decode base64 content")
+				*status = http.StatusInternalServerError
+			}
+		} else {
+			finalContent = []byte(*content)
+		}
+
+		w.Header().Set(common.HeaderContentType, *contentType)
+		w.WriteHeader(*status)
+		_, _ = w.Write(finalContent)
+		innerLog.Info().Msg("request served")
+	}
+}
 
 // PrepareServer prepares, configures and runs test service server
 func PrepareServer(log zerolog.Logger, port int) *http.Server {
@@ -37,100 +106,7 @@ func PrepareServer(log zerolog.Logger, port int) *http.Server {
 			Object("route", route).
 			Msg("preparing handler")
 
-		var handler = func(w http.ResponseWriter, r *http.Request) {
-			innerLog := log.With().
-				Dict(
-					"request",
-					zerolog.Dict().
-						Str("remote", r.RemoteAddr).
-						Str("path", r.URL.Path).
-						Str("method", r.Method),
-				).
-				Dict(
-					"endpoint",
-					zerolog.Dict().
-						Str("path", path).
-						Str("type", "user"),
-				).
-				Logger()
-
-			var (
-				status      *int
-				contentType *string
-				content     *string
-				headers     *map[string]string
-			)
-
-			switch {
-			case r.Method == http.MethodGet && route.GET != nil:
-				status = route.GET.Status
-				contentType = route.GET.ContentType
-				content = route.GET.Content
-				headers = route.GET.Headers
-			case r.Method == http.MethodPost && route.POST != nil:
-				status = route.POST.Status
-				contentType = route.POST.ContentType
-				content = route.POST.Content
-				headers = route.POST.Headers
-			case r.Method == http.MethodPut && route.PUT != nil:
-				status = route.PUT.Status
-				contentType = route.PUT.ContentType
-				content = route.PUT.Content
-				headers = route.PUT.Headers
-			case r.Method == http.MethodPatch && route.PATCH != nil:
-				status = route.PATCH.Status
-				contentType = route.PATCH.ContentType
-				content = route.PATCH.Content
-				headers = route.PATCH.Headers
-			case r.Method == http.MethodDelete && route.DELETE != nil:
-				status = route.DELETE.Status
-				contentType = route.DELETE.ContentType
-				content = route.DELETE.Content
-				headers = route.DELETE.Headers
-			case route.Default != nil:
-				status = route.Default.Status
-				contentType = route.Default.ContentType
-				content = route.Default.Content
-				headers = route.Default.Headers
-			default:
-				status = new(int)
-				*status = http.StatusServiceUnavailable
-			}
-
-			var finalContent []byte
-
-			if headers != nil {
-				for headerName, headerValue := range *headers {
-					w.Header().Set(headerName, headerValue)
-				}
-			}
-			if status == nil {
-				status = new(int)
-				*status = 200
-			}
-			if contentType == nil {
-				contentType = new(string)
-				*contentType = "text/plain"
-			}
-			if content == nil {
-				content = new(string)
-			}
-			if strings.HasPrefix(strings.TrimSpace(*content), "base64,") {
-				var err error
-				finalContent, err = base64.StdEncoding.DecodeString(strings.TrimPrefix(strings.TrimSpace(*content), "base64,"))
-				if err != nil {
-					innerLog.Warn().Err(err).Msg("cannot decode base64 content")
-					*status = http.StatusInternalServerError
-				}
-			} else {
-				finalContent = []byte(*content)
-			}
-
-			w.Header().Set(common.HeaderContentType, *contentType)
-			w.WriteHeader(*status)
-			_, _ = w.Write(finalContent)
-			innerLog.Info().Msg("request served")
-		}
+		handler := getHandlerForRoute(path, route, log)
 
 		if route.AllowSubpaths {
 			r.PathPrefix(path).HandlerFunc(handler)

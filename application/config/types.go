@@ -28,6 +28,25 @@ type Route struct {
 	Default       *Response `json:"default,omitempty" yaml:"default,omitempty"`
 }
 
+// GetResponseForMethod return the preferred response for given HTTP method
+func (r *Route) GetResponseForMethod(method string) *Response {
+	methodsMap := map[string]*Response{
+		http.MethodGet:    r.GET,
+		http.MethodPost:   r.POST,
+		http.MethodPut:    r.PUT,
+		http.MethodPatch:  r.PATCH,
+		http.MethodDelete: r.DELETE,
+	}
+
+	if response, ok := methodsMap[method]; ok && response != nil {
+		return response
+	} else if r.Default != nil {
+		return r.Default
+	}
+
+	return nil
+}
+
 type configuration struct {
 	routes map[string]Route
 	mutex  sync.Mutex
