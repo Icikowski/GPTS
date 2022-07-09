@@ -154,16 +154,22 @@ jobs:
           fetch-depth: 0
       - name: Install Helm
         uses: Azure/setup-helm@v1
-      - name: Replace values in chart
-        working-directory: chart
-        run: cat gpts/Chart.template | sed "s/\[\[GPTS_VERSION\]\]/${GPTS_VERSION}/" | tee gpts/Chart.yaml
+      - name: Import GPG key
+        uses: crazy-max/ghaction-import-gpg@v5
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ""
+      - name: Convert GPG keys for Helm
+        run: |
+          gpg --export >~/.gnupg/pubring.gpg
+          gpg --export-secret-keys >~/.gnupg/secring.gpg
       - name: Lint chart
         working-directory: chart
         run: helm lint gpts
         continue-on-error: false
       - name: Package chart
         working-directory: chart
-        run: helm package gpts
+        run: helm package --version "${GPTS_VERSION}" --app-version "${GPTS_VERSION}" --sign --key "piotrekicikowski@gmail.com" --keyring ~/.gnupg/secring.gpg gpts
       - name: Prepare SSH connection
         uses: kielabokkie/ssh-key-and-known-hosts-action@v1.2.0
         with:
@@ -177,7 +183,9 @@ jobs:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_USER: ${{ secrets.SSH_USER }}
           SSH_PATH: ${{ secrets.SSH_PATH }}
-        run: scp -P $SSH_PORT gpts-*.tgz $SSH_USER@$SSH_HOST:$SSH_PATH
+        run: |
+          scp -P $SSH_PORT gpts-*.tgz $SSH_USER@$SSH_HOST:$SSH_PATH
+          scp -P $SSH_PORT gpts-*.tgz.prov $SSH_USER@$SSH_HOST:$SSH_PATH
       - name: Trigger repository update
         env:
           SSH_PORT: ${{ secrets.SSH_PORT }}
