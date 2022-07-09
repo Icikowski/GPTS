@@ -6,8 +6,8 @@ keywords:
   - testing tools
   - test service
 type: application
-version: [[GPTS_VERSION]]
-appVersion: "[[GPTS_VERSION]]"
+version: 0.1.0
+appVersion: "0.1.0"
 home: https://icikowski.github.io/GPTS
 icon: https://github.com/Icikowski/GPTS/raw/master/.assets/helm_icon.png
 sources:
