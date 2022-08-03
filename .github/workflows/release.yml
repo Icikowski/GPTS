@@ -16,7 +16,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.18
+          go-version: 1.19
       - name: Perform tests
         working-directory: application
         run: make test
@@ -94,7 +94,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.18
+          go-version: 1.19
       - name: Build binaries
         working-directory: application
         env:
