@@ -4,6 +4,11 @@ title: Changelog
 
 # Project changelog
 
+## GPTS 0.7.7
+
+- Updated Go version to `1.19`
+- Upgraded project's dependencies
+
 ## GPTS 0.7.6
 
 - Applied code improvements

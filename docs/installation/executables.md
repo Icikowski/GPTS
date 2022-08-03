@@ -13,7 +13,7 @@ title: Executable files
 !!! important "Prerequisites"
     In order to proceed, you must prepare following prerequisites:
 
-    - **Go** language, version **1.18** or later.
+    - **Go** language, version **1.19** or later.
 
 ### Cloning the repository
 
