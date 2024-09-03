@@ -47,7 +47,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Download coverage report
-        uses: actions/download-artifact@v2.0.10
+        uses: actions/download-artifact@v4.1.7
       - name: Prepare coverage report
         run: cp artifact/cover.out application/coverage.txt
       - name: Upload coverage report to Codecov
@@ -64,7 +64,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Download coverage report
-        uses: actions/download-artifact@v2.0.10
+        uses: actions/download-artifact@v4.1.7
       - name: Prepare adjusted coverage report
         run: cat artifact/cover.out | sed 's/icikowski.pl\/gpts/application/' | tee application/cover.out
       - name: Perform SonarCloud scan
