@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"io"
 
+	"git.sr.ht/~icikowski/gpts/common"
 	"gopkg.in/yaml.v2"
-	"icikowski.pl/gpts/common"
 )
 
 func getEncoder(contentType string, writer io.Writer) func(v any) error {

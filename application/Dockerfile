@@ -15,8 +15,8 @@ LABEL org.opencontainers.image.title "GPTS - General Purpose Test Service"
 LABEL org.opencontainers.image.description "Simple & easy to configure test service for serving content through HTTP"
 LABEL org.opencontainers.image.authors "Piotr Icikowski"
 LABEL org.opencontainers.image.vendor "Piotr Icikowski"
-LABEL org.opencontainers.image.url "https://github.com/Icikowski/GPTS"
-LABEL org.opencontainers.image.source "https://github.com/Icikowski/GPTS"
+LABEL org.opencontainers.image.url "https://git.sr.ht/~icikowski/gpts"
+LABEL org.opencontainers.image.source "https://git.sr.ht/~icikowski/gpts"
 LABEL org.opencontainers.image.licenses "GPL-3.0-or-later"
 WORKDIR /
 COPY --from=builder /app/gpts .

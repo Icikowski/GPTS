@@ -6,10 +6,10 @@ import (
 	"net/http"
 	"testing"
 
+	"git.sr.ht/~icikowski/gpts/common"
+	"git.sr.ht/~icikowski/gpts/utils"
 	"github.com/rs/zerolog"
 	"github.com/stretchr/testify/require"
-	"icikowski.pl/gpts/common"
-	"icikowski.pl/gpts/utils"
 )
 
 func TestGetConfigurationAndSetConfiguration(t *testing.T) {

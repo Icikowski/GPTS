@@ -9,9 +9,9 @@ type: application
 version: 0.1.0
 appVersion: "0.1.0"
 home: https://icikowski.github.io/GPTS
-icon: https://github.com/Icikowski/GPTS/raw/master/.assets/helm_icon.png
+icon: https://git.sr.ht/~icikowski/gpts/raw/master/.assets/helm_icon.png
 sources:
-  - http://github.com/Icikowski/GPTS
+  - http://git.sr.ht/~icikowski/gpts
 maintainers:
   - name: Piotr Icikowski
     url: https://icikowski.pl

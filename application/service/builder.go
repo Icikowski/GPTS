@@ -6,12 +6,12 @@ import (
 	"net/http"
 	"strings"
 
+	"git.sr.ht/~icikowski/gpts/common"
+	"git.sr.ht/~icikowski/gpts/config"
+	"git.sr.ht/~icikowski/gpts/health"
+	"git.sr.ht/~icikowski/gpts/utils"
 	"github.com/gorilla/mux"
 	"github.com/rs/zerolog"
-	"icikowski.pl/gpts/common"
-	"icikowski.pl/gpts/config"
-	"icikowski.pl/gpts/health"
-	"icikowski.pl/gpts/utils"
 )
 
 func getHandlerForRoute(path string, route config.Route, log zerolog.Logger) func(http.ResponseWriter, *http.Request) {
@@ -114,7 +114,7 @@ func PrepareServer(log zerolog.Logger, port int) *http.Server {
 	r.NotFoundHandler = getDefaultHandler(log)
 
 	log.Debug().Msg("registering shutdown hooks")
-	server.RegisterOnShutdown(health.ServiceStatus.MarkAsDown)
+	server.RegisterOnShutdown(health.ServiceStatus.Pass)
 
 	log.Info().Msg("server prepared")
 	return server

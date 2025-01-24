@@ -1,5 +1,3 @@
-github.com/Icikowski/kubeprobes v1.2.0 h1:EFtWiZq/8AoEG8gD9Wt6Sx81SyPWNo0WzunEWlosq1Q=
-github.com/Icikowski/kubeprobes v1.2.0/go.mod h1:gw4mc5imc3OgFw6TtBTCWXWbJJd5vRlyOHDQbiKlKN0=
 github.com/coreos/go-systemd/v22 v22.3.3-0.20220203105225-a9a7ef127534/go.mod h1:Y58oyj3AT4RCenI/lSvhwexgC+NSVTIJ3seZv2GcEnc=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
@@ -47,3 +45,5 @@ gopkg.in/yaml.v2 v2.4.0/go.mod h1:RDklbk79AGWmwhnvt/jBztapEOGDOx6ZbXqjP6csGnQ=
 gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
 gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
 gopkg.in/yaml.v3 v3.0.1/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
+pkg.icikowski.pl/kubeprobes v1.3.2 h1:jV+f7diPJRhieN1UI3wVduUD6UhAPMqfxaKIvPrhwGQ=
+pkg.icikowski.pl/kubeprobes v1.3.2/go.mod h1:tYTDa+8SmdPKgU1GNrrM7ov9rEfBUBA1DWijyETggK0=

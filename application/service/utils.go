@@ -6,9 +6,9 @@ import (
 	"sort"
 	"strings"
 
+	"git.sr.ht/~icikowski/gpts/common"
+	"git.sr.ht/~icikowski/gpts/config"
 	"github.com/rs/zerolog"
-	"icikowski.pl/gpts/common"
-	"icikowski.pl/gpts/config"
 )
 
 func getLoggerForRouteAndRequest(log zerolog.Logger, routePath, routeType string, request *http.Request) zerolog.Logger {

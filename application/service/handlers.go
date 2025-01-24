@@ -7,9 +7,9 @@ import (
 	"strings"
 	"time"
 
+	"git.sr.ht/~icikowski/gpts/common"
+	"git.sr.ht/~icikowski/gpts/config"
 	"github.com/rs/zerolog"
-	"icikowski.pl/gpts/common"
-	"icikowski.pl/gpts/config"
 )
 
 func getConfigHandlerFunction(log zerolog.Logger, server *http.Server) func(w http.ResponseWriter, r *http.Request) {

@@ -1,13 +1,13 @@
 package health
 
 import (
-	"github.com/Icikowski/kubeprobes"
+	"pkg.icikowski.pl/kubeprobes"
 )
 
 var (
 	// ApplicationStatus represents current application liveness
-	ApplicationStatus = kubeprobes.NewStatefulProbe()
+	ApplicationStatus, _ = kubeprobes.NewManualProbe("app")
 
 	// ServiceStatus represents current test service readiness
-	ServiceStatus = kubeprobes.NewStatefulProbe()
+	ServiceStatus, _ = kubeprobes.NewManualProbe("svc")
 )

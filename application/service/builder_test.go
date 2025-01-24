@@ -6,10 +6,10 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"git.sr.ht/~icikowski/gpts/config"
+	"git.sr.ht/~icikowski/gpts/utils"
 	"github.com/rs/zerolog"
 	"github.com/stretchr/testify/require"
-	"icikowski.pl/gpts/config"
-	"icikowski.pl/gpts/utils"
 )
 
 func TestPrepareServer(t *testing.T) {

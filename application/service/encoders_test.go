@@ -5,8 +5,8 @@ import (
 	"strings"
 	"testing"
 
+	"git.sr.ht/~icikowski/gpts/common"
 	"github.com/stretchr/testify/require"
-	"icikowski.pl/gpts/common"
 )
 
 var testSubject = map[string]any{

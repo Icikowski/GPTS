@@ -6,7 +6,7 @@ title: Executable files
 
 ## Using prebuilt binaries
 
-**GPTS** binaries can be downloaded directly from [releases page of project's repository](https://github.com/Icikowski/GPTS/releases).
+**GPTS** binaries can be downloaded directly from [releases page of project's repository](https://git.sr.ht/~icikowski/gpts/releases).
 
 ## Manually building binaries
 
@@ -17,16 +17,11 @@ title: Executable files
 
 ### Cloning the repository
 
-First thing you have to do in order to compile application on your own is cloning the [project's repository](https://github.com/Icikowski/GPTS):
+First thing you have to do in order to compile application on your own is cloning the [project's repository](https://git.sr.ht/~icikowski/gpts):
 
-=== "Clone via HTTPS"
-    ```bash
-    git clone https://github.com/Icikowski/GPTS.git
-    ```
-=== "Clone via SSH"
-    ```bash
-    git clone git@github.com:Icikowski/GPTS.git
-    ```
+```bash
+git clone https://git.sr.ht/~icikowski/gpts
+```
 
 ### Downloading dependencies
 

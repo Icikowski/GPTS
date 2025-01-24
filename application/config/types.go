@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"sync"
 
+	"git.sr.ht/~icikowski/gpts/common"
+	"git.sr.ht/~icikowski/gpts/utils"
 	"github.com/rs/zerolog"
-	"icikowski.pl/gpts/common"
-	"icikowski.pl/gpts/utils"
 )
 
 // Response represents response details

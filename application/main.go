@@ -5,11 +5,11 @@ import (
 	"net/http"
 	"runtime"
 
-	"icikowski.pl/gpts/common"
-	"icikowski.pl/gpts/config"
-	"icikowski.pl/gpts/health"
-	"icikowski.pl/gpts/logs"
-	"icikowski.pl/gpts/service"
+	"git.sr.ht/~icikowski/gpts/common"
+	"git.sr.ht/~icikowski/gpts/config"
+	"git.sr.ht/~icikowski/gpts/health"
+	"git.sr.ht/~icikowski/gpts/logs"
+	"git.sr.ht/~icikowski/gpts/service"
 )
 
 var version = common.BuildValueUnknown
@@ -63,12 +63,12 @@ func main() {
 	}
 
 	log.Debug().Msg("marking application liveness as UP")
-	health.ApplicationStatus.MarkAsUp()
+	health.ApplicationStatus.Pass()
 
 	for {
 		service.ExpectingShutdown = false
 		server := service.PrepareServer(logFactory.For(common.ComponentService), common.ServicePort)
-		health.ServiceStatus.MarkAsUp()
+		health.ServiceStatus.Pass()
 		if err := server.ListenAndServe(); err != nil {
 			if service.ExpectingShutdown && err == http.ErrServerClosed {
 				log.Info().Msg("service has been shut down for configuration change")

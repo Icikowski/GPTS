@@ -5,8 +5,8 @@ import (
 	"strconv"
 	"testing"
 
+	"git.sr.ht/~icikowski/gpts/utils"
 	"github.com/stretchr/testify/require"
-	"icikowski.pl/gpts/utils"
 )
 
 func TestStringPassthrough(t *testing.T) {

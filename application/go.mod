@@ -1,13 +1,13 @@
-module icikowski.pl/gpts
+module git.sr.ht/~icikowski/gpts
 
 go 1.19
 
 require (
-	github.com/Icikowski/kubeprobes v1.2.0
 	github.com/gorilla/mux v1.8.0
 	github.com/rs/zerolog v1.27.0
 	github.com/stretchr/testify v1.8.0
 	gopkg.in/yaml.v2 v2.4.0
+	pkg.icikowski.pl/kubeprobes v1.3.2
 )
 
 require (

@@ -8,10 +8,10 @@ import (
 	"net/url"
 	"testing"
 
+	"git.sr.ht/~icikowski/gpts/common"
+	"git.sr.ht/~icikowski/gpts/config"
 	"github.com/rs/zerolog"
 	"github.com/stretchr/testify/require"
-	"icikowski.pl/gpts/common"
-	"icikowski.pl/gpts/config"
 )
 
 func TestGetLoggerForRouteAndRequest(t *testing.T) {

@@ -1,9 +1,7 @@
 site_name: GPTS / General Purpose Test Service
 site_description: Project documentation
 site_author: Piotr Icikowski
-site_url: https://icikowski.github.io/GPTS/
-repo_url: https://github.com/Icikowski/GPTS
-repo_name: Icikowski/GPTS
+repo_url: https://git.sr.ht/~icikowski/gpts
 edit_uri: ""
 copyright: "&copy; Copyright by Piotr Icikowski"
 
